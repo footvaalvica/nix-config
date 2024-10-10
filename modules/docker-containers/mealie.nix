@@ -41,8 +41,6 @@
       "SMTP_PORT" = "465";
       "SMTP_USER" = "mateusleitepinho@gmail.com";
       "TZ" = "Europe/Lisbon";
-      # # "OPENAI_API_KEY" = "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";
-      # # "OPENAI_MODEL" = "gpt-4o-mini";	      
       "WEB_CONCURRENCY" = "1";
     };
     volumes = [
