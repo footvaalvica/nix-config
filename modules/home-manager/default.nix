@@ -108,20 +108,6 @@
 
     fish.enable = true; # see note on other shells below
 
-    # Set git config 
-    git = {
-      enable = true;
-      userName  = "Mateus Pinho";
-      userEmail = "mateus.pinho@rnl.tecnico.ulisboa.pt";
-      extraConfig = {
-        pull = {
-          rebase = true;
-        };
-        rebase = {
-          autostash = true;
-        };
-      };
-    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
