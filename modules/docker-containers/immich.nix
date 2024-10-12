@@ -68,7 +68,7 @@
     environment = {
       "POSTGRES_DB" = "immich";
       "POSTGRES_INITDB_ARGS" = "--data-checksums";
-      "POSTGRES_PASSWORD" = "postgres";
+      "POSTGRES_PASSWORD" = "${secrets.immich.postgres.password}";
       "POSTGRES_USER" = "postgres";
     };
     environmentFiles = [
