@@ -61,14 +61,15 @@
     bind
     vlc
     wsmancli
+    onlyoffice-bin
     xorg.xrandr
     stdenv.cc.cc.lib
     xdg-utils
-    discord
     arc-theme
     kdePackages.plasma-browser-integration
     papirus-icon-theme
     vorta
+    vesktop
     reptyr
     pciutils
     mattermost-desktop
