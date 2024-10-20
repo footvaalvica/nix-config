@@ -73,9 +73,11 @@
     reptyr
     pciutils
     mattermost-desktop
+    dracula-theme
     spotify
     ntfs3g
     google-chrome
+    nerdfonts
     remmina
     rustdesk-flutter
     gnome.gnome-tweaks
