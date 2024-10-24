@@ -159,7 +159,7 @@
       "/mnt/nextcloud:/mnt/nextcloud:rw"
     ];
     ports = [
-      "2283:3001/tcp"
+      "2283:2283/tcp"
     ];
     dependsOn = [
       "immich_postgres"
