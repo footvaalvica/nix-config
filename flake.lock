@@ -6,11 +6,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1728804768,
-        "narHash": "sha256-WG8KWmT72SA1XrmixxJwI1RRWrT9D97kkYSE5OfOJdg=",
+        "lastModified": 1730294700,
+        "narHash": "sha256-piHI881ekHn14FEqwGyKkTEHTgXJrsKjX37gJFYx9G8=",
         "owner": "GermanBread",
         "repo": "declarative-flatpak",
-        "rev": "42cc2c4d97a03889d551cc82c43a0b124fd403f6",
+        "rev": "09b73f988d4a8376b81d0d22126bc8c2e039d36d",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1729233716,
-        "narHash": "sha256-6KKTybx+J3Es62MNYtmka0Hb8m1H0NSdlOSSjvXHvkU=",
+        "lastModified": 1730272153,
+        "narHash": "sha256-B5WRZYsRlJgwVHIV6DvidFN7VX7Fg9uuwkRW9Ha8z+w=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c858402c2a629211153137fb8d39be9fde4694ff",
+        "rev": "2d2a9ddbe3f2c00747398f3dc9b05f7f2ebb0f53",
         "type": "github"
       },
       "original": {
@@ -75,11 +75,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1729181673,
-        "narHash": "sha256-LDiPhQ3l+fBjRATNtnuDZsBS7hqoBtPkKBkhpoBHv3I=",
+        "lastModified": 1730327045,
+        "narHash": "sha256-xKel5kd1AbExymxoIfQ7pgcX6hjw9jCgbiBjiUfSVJ8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4eb33fe664af7b41a4c446f87d20c9a0a6321fa3",
+        "rev": "080166c15633801df010977d9d7474b4a6c549d7",
         "type": "github"
       },
       "original": {
