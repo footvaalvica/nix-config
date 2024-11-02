@@ -20,17 +20,17 @@
 
   # Containers
   virtualisation.oci-containers.containers."immich_machine_learning" = {
-    image = "ghcr.io/immich-app/immich-machine-learning:release";
+    image = "ghcr.io/immich-app/immich-machine-learning:v1.119.1";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "release";
+      "IMMICH_VERSION" = "v1.119.1";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/.env"
+      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
     ];
     volumes = [
       "immich_model-cache:/cache:rw"
@@ -72,7 +72,7 @@
       "POSTGRES_USER" = "postgres";
     };
     environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/.env"
+      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
     ];
     volumes = [
       "/home/mateusp/ImmichDB:/var/lib/postgresql/data:rw"
@@ -111,7 +111,7 @@
   virtualisation.oci-containers.containers."immich_redis" = {
     image = "docker.io/redis:6.2-alpine@sha256:2d1463258f2764328496376f5d965f20c6a67f66ea2b06dc42af351f75248792";
     environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/.env"
+      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
     ];
     log-driver = "journald";
     extraOptions = [
@@ -141,17 +141,17 @@
     ];
   };
   virtualisation.oci-containers.containers."immich_server" = {
-    image = "ghcr.io/immich-app/immich-server:release";
+    image = "ghcr.io/immich-app/immich-server:v1.119.1";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "release";
+      "IMMICH_VERSION" = "v1.119.1";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/.env"
+      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
     ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
