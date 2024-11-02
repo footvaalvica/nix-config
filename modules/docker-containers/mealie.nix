@@ -20,7 +20,7 @@
   
   # Containers
   virtualisation.oci-containers.containers."mealie" = {
-    image = "ghcr.io/mealie-recipes/mealie:v1.11.0";
+    image = "ghcr.io/mealie-recipes/mealie:v2.0.0";
     environment = {
       "ALLOW_SIGNUP" = "false";
       "BASE_URL" = "https://mealie.casa-vlc.duckdns.org";
