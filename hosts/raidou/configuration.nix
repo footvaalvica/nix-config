@@ -20,6 +20,8 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "raidou"; # Define your hostname.
+  security.pam.sshAgentAuth.enable = true;
+  programs.ssh.startAgent = true;
 
   # Enable Bluetooth
   hardware.bluetooth = {
@@ -43,16 +45,6 @@
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Allow flatpak
-  services.flatpak = {
-    enable = true;
-    packages = ["flathub:app/com.valvesoftware.Steam//stable"];
-    remotes = {
-      "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

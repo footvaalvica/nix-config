@@ -3,22 +3,19 @@
 
   inputs = {
     # NixOS official package source
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
-    # nix flatpak
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
   };
 
   outputs = { 
     self, 
     nixpkgs, 
     home-manager,
-    flatpaks,
     ... 
   } @inputs: let 
     inherit (self) outputs;
@@ -59,7 +56,6 @@
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/raidou/configuration.nix
-          flatpaks.nixosModules.default
         ];
       };
       omi = nixpkgs.lib.nixosSystem {
