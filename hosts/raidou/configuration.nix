@@ -76,7 +76,6 @@
     kdePackages.plasma-browser-integration
     papirus-icon-theme
     vorta
-    vesktop
     reptyr
     pciutils
     mattermost-desktop
@@ -86,6 +85,7 @@
     google-chrome
     nerdfonts
     remmina
+    discord
     rustdesk-flutter
     gnome.gnome-tweaks
     gnome.gnome-remote-desktop
