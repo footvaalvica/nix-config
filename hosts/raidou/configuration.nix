@@ -87,8 +87,6 @@
     remmina
     discord
     rustdesk-flutter
-    gnome.gnome-tweaks
-    gnome.gnome-remote-desktop
   ];
 
   # Open ports in the firewall.
