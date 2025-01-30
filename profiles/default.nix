@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscode-server.nix
-    ./nordvpn.nix
+    ../modules/nordvpn.nix
   ];  
 
   nixpkgs = {
@@ -30,7 +30,7 @@
       allowUnfree = true;
     };
   };
-
+  
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
@@ -86,6 +86,8 @@
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
   services.openssh.settings.X11Forwarding = true;
+
+  myypo.services.custom.nordvpn.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

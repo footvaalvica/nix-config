@@ -22,13 +22,13 @@
     wireguard-tools,
   }: let
     pname = "nordvpn";
-    version = "3.18.3";
+    version = "3.20.0";
 
     nordVPNBase = stdenv.mkDerivation {
       inherit pname version;
 
       src = fetchurl {
-        url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${version}_amd64.deb";
+        url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${version}_amd64.deb";
         hash = "sha256-pCveN8cEwEXdvWj2FAatzg89fTLV9eYehEZfKq5JdaY=";
       };
 
@@ -113,11 +113,13 @@ in
 
     config = mkIf config.myypo.services.custom.nordvpn.enable {
       networking.firewall.checkReversePath = false;
+      networking.firewall.allowedTCPPorts = [ 443 ];
+      networking.firewall.allowedUDPPorts = [ 1194 ];
 
       environment.systemPackages = [nordVpnPkg];
 
       users.groups.nordvpn = {};
-      users.groups.nordvpn.members = ["myypo"];
+      users.groups.nordvpn.members = ["mateusp"];
       systemd = {
         services.nordvpn = {
           description = "NordVPN daemon.";
