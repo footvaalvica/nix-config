@@ -1,9 +1,9 @@
 { inputs, outputs, config, pkgs, lib, secrets, ... }:
 
 {
-  
   imports = [
     ./vscode-server.nix
+    ./nordvpn.nix
   ];  
 
   nixpkgs = {

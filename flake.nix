@@ -9,13 +9,18 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
     self, 
     nixpkgs, 
     home-manager,
+    nur,
     ... 
   } @inputs: let 
     inherit (self) outputs;
@@ -53,6 +58,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
+          nur.modules.nixos.default
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/raidou/configuration.nix
@@ -62,6 +68,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
+          nur.modules.nixos.default
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
