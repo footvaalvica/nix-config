@@ -18,6 +18,8 @@
     cacert,
     libxml2,
     libidn2,
+    libnl,
+    libcap_ng,
     zlib,
     wireguard-tools,
   }: let
@@ -29,10 +31,10 @@
 
       src = fetchurl {
         url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${version}_amd64.deb";
-        hash = "sha256-pCveN8cEwEXdvWj2FAatzg89fTLV9eYehEZfKq5JdaY=";
+        hash = "sha256-3/HSCTPt/1CprrpVD60Ga02Nz+vBwNBE1LEl+7z7ADs=";
       };
 
-      buildInputs = [libxml2 libidn2];
+      buildInputs = [libxml2 libidn2 libnl libcap_ng ];
       nativeBuildInputs = [dpkg autoPatchelfHook stdenv.cc.cc.lib];
 
       dontConfigure = true;
@@ -115,7 +117,10 @@ in
       networking.firewall.checkReversePath = false;
       networking.firewall.allowedTCPPorts = [ 443 ];
       networking.firewall.allowedUDPPorts = [ 1194 ];
+      users.users.mateusp.extraGroups = ["nordvpn"];
 
+      # This kinda sucks and it's not very declarative but it works!
+      environment.etc.hosts.mode = "0644";
       environment.systemPackages = [nordVpnPkg];
 
       users.groups.nordvpn = {};
@@ -124,7 +129,7 @@ in
         services.nordvpn = {
           description = "NordVPN daemon.";
           serviceConfig = {
-            ExecStart = "${nordVpnPkg}/bin/nordvpnd";
+            ExecStart = "${nordVpnPkg}/bin/nordvpnd && /bin/sh -lc 'nordvpn set meshnet off && nordvpn set meshnet on'";
             ExecStartPre = pkgs.writeShellScript "nordvpn-start" ''
               mkdir -m 700 -p /var/lib/nordvpn;
               if [ -z "$(ls -A /var/lib/nordvpn)" ]; then

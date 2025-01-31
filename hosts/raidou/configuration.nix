@@ -8,7 +8,7 @@
     ../../profiles/desktop.nix
     ../../profiles/nvidia.nix
   ];
-
+   
   # Enable docker for AGISIT
   virtualisation.docker.enable = true;
   virtualisation.docker.package = pkgs.docker_24;
