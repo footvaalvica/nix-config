@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscode-server.nix
-    ../modules/nordvpn.nix
+    ./tailscale.nix
   ];  
 
   nixpkgs = {
@@ -86,8 +86,6 @@
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
   services.openssh.settings.X11Forwarding = true;
-
-  myypo.services.custom.nordvpn.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
