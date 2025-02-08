@@ -5,8 +5,8 @@
   systemd.timers."ping-healthchecks" = {
   wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
+      OnBootSec = "2m";
+      OnUnitActiveSec = "2m";
       Unit = "ping-healthchecks.service";
     };
   };
