@@ -58,6 +58,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
+  boot.loader.grub.memtest86.enable = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
