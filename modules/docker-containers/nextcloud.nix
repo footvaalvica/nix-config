@@ -32,12 +32,12 @@
       "APACHE_PORT" = "11000";
       "APACHE_IP_BINDING" = "127.0.0.1"; 
       "NEXTCLOUD_DATADIR" = "/mnt/nextcloud";
-      "NEXTCLOUD_ENABLE_DRI_DEVICE" = "true"; 
+      "NEXTCLOUD_ENABLE_DRI_DEVICE" = "true";
+      "NEXTCLOUD_MOUNT" ="/mnt/"; 
     };
     volumes = [
       "nextcloud_aio_mastercontainer:/mnt/docker-aio-config"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
-      "/mnt/immich:/mnt/immich:ro"
     ];
     ports = [
       "8080:8080"

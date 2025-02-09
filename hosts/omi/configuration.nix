@@ -34,7 +34,7 @@
   users.users.mateusp = {
     isNormalUser = true;
     description = "Mateus Pinho";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "ydotool" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -48,7 +48,7 @@
     cifs-utils 
     sshfs
   ];
-  
+
   # Firewall
   networking.firewall = {
     allowedTCPPorts = [ 80 443 3478 8080 8384 8443 22000 ];
@@ -57,6 +57,41 @@
 
   # Fail2Ban
   services.fail2ban.enable = true;
+
+  programs.ydotool.enable = true;
+  systemd.services.press-unknown = {
+    description = "Press UNKNOWN key every minute";
+    after = [ "ydotoold.service" ];  # Ensure ydotoold is running
+    wants = [ "ydotoold.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
+      User = "mateusp"; # Change this if needed
+    };
+  };
+
+  systemd.timers.press-unknown = {
+    description = "Timer for UNKNOWN keypress";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/1"; # Every minute
+      Persistent = true;
+    };
+  };
+  
+  services.prometheus.exporters.node = {
+    enable = true;
+    port = 9100;
+    enabledCollectors = [
+      "logind"
+      "systemd"
+    ];
+    disabledCollectors = [
+      "textfile"
+    ];
+    openFirewall = true;
+    firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

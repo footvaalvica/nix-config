@@ -20,13 +20,13 @@
 
   # Containers
   virtualisation.oci-containers.containers."immich_machine_learning" = {
-    image = "ghcr.io/immich-app/immich-machine-learning:v1.124.2";
+    image = "ghcr.io/immich-app/immich-machine-learning:v1.125.7";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "v1.124.2";
+      "IMMICH_VERSION" = "v1.125.7";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
@@ -141,13 +141,13 @@
     ];
   };
   virtualisation.oci-containers.containers."immich_server" = {
-    image = "ghcr.io/immich-app/immich-server:v1.124.2";
+    image = "ghcr.io/immich-app/immich-server:v1.125.7";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "v1.124.2";
+      "IMMICH_VERSION" = "v1.125.7";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
