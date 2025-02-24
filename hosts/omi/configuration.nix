@@ -92,6 +92,13 @@
     openFirewall = true;
     firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
   };
+  
+  services.cloudflare-dyndns = {
+    enable = true;
+    frequency = "*:0/5";
+    domains = [ "footvaalvica.com" "www.footvaalvica.com" ];
+    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

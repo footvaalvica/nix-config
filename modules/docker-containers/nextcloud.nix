@@ -5,10 +5,10 @@
   # Reverse proxy config for Docker
   services.caddy = {
     enable = true;
-    virtualHosts."nextcloud.casa-vlc.duckdns.org:443".extraConfig = ''
+    virtualHosts."cloud.footvaalvica.com:443".extraConfig = ''
       reverse_proxy localhost:11000
     '';
-    virtualHosts."nextcloud.casa-vlc.duckdns.org:8443".extraConfig = ''
+    virtualHosts."cloud.footvaalvica.com:8443".extraConfig = ''
       reverse_proxy https://localhost:8080 {
         transport http {
             tls_insecure_skip_verify
@@ -17,7 +17,9 @@
     ''; 
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
- 
+
+  services.cloudflare-dyndns.domains = [ "cloud.footvaalvica.com" ];
+
   # Runtime
   virtualisation.docker = {
     enable = true;

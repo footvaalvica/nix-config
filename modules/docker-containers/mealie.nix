@@ -12,18 +12,20 @@
   # Caddy config for mealie
   services.caddy = {
     enable = true;
-    virtualHosts."mealie.casa-vlc.duckdns.org".extraConfig = ''
+    virtualHosts."mealie.footvaalvica.com".extraConfig = ''
       reverse_proxy localhost:9925
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
+
+  services.cloudflare-dyndns.domains = [ "mealie.footvaalvica.com" ];
   
   # Containers
   virtualisation.oci-containers.containers."mealie" = {
     image = "ghcr.io/mealie-recipes/mealie:v2.0.0";
     environment = {
       "ALLOW_SIGNUP" = "false";
-      "BASE_URL" = "https://mealie.casa-vlc.duckdns.org";
+      "BASE_URL" = "https://mealie.footvaalvica.com";
       "DB_ENGINE" = "postgres";
       "MAX_WORKERS" = "1";
       "PGID" = "1000";

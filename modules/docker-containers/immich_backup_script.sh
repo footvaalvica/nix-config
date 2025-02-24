@@ -4,6 +4,8 @@
 UPLOAD_LOCATION="/mnt/immich/Library"
 DATABASE_LOCATION="/home/mateusp/ImmichDB"
 
+## verify that  /mnt/immich_backup/ is mounted
+
 docker exec -t immich_postgres pg_dumpall --clean --if-exists --username=postgres > "$DATABASE_LOCATION"/database-backup/immich-database.sql
 
 ### Append to remote Borg repository
