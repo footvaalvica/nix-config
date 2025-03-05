@@ -94,6 +94,13 @@
   # networking.firewall.allowedUDPPorts = [ 31555 ];
   # or disable the firewall
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;  
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
