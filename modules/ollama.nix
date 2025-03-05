@@ -12,7 +12,7 @@
     enable = true;
     openFirewall = true;
     port = 11111;
-  }
+  };
 
   services.caddy = {
     enable = true;
