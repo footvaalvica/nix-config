@@ -16,6 +16,7 @@
     ../../modules/docker-containers/mealie.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
+    ../../modules/ollama.nix
   ];
    
   # Bootloader.

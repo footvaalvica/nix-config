@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
   services.ollama = {
     enable = true;
     # Optional: load models on startup
