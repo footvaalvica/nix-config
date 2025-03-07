@@ -23,6 +23,31 @@ in
   };
   virtualisation.oci-containers.backend = "docker";
 
+  # Run the script every day at 3:00 AM as root
+  systemd.services."immich_backup_script" = {
+    script = ''
+        /bin/sh -lc 'cd /mnt/immich_backup'
+        /bin/sh -lc 'cd ~'
+        /bin/sh -lc 'docker exec -t immich_postgres pg_dumpall --clean --if-exists --username=postgres > /home/mateusp/ImmichDB/database-backup/immich-database.sql'
+        /bin/sh -lc 'borg create /mnt/immich_backup/immich-borg::{now} /home/mateusp/ImmichDB/database-backup/immich-database.sql'
+        /bin/sh -lc 'borg create /mnt/immich_backup/immich-borg::{now} /mnt/immich/Library --exclude /mnt/immich/Library/thumbs/ --exclude /mnt/immich/Library/encoded-video/'
+        /bin/sh -lc 'borg prune --keep-weekly=4 --keep-monthly=3 /mnt/immich_backup/immich-borg'
+        /bin/sh -lc 'borg compact /mnt/immich_backup/immich-borg'
+    '';
+    serviceConfig = {
+      User = "root";
+      Type = "oneshot";
+    };
+  };
+
+  systemd.timers."immich_backup_script" = {
+    timerConfig = {
+      OnCalendar = "*-*-* 03:00:00";
+      Unit = "immich_backup_script.service";
+    };
+    wantedBy = [ "timers.target" ];
+  };
+
   # Containers
   virtualisation.oci-containers.containers."immich_machine_learning" = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
@@ -34,9 +59,6 @@ in
       "IMMICH_VERSION" = "${immichVersion}";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
-    environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
-    ];
     volumes = [
       "immich_model-cache:/cache:rw"
     ];
@@ -76,9 +98,6 @@ in
       "POSTGRES_PASSWORD" = "${secrets.immich.postgres.password}";
       "POSTGRES_USER" = "postgres";
     };
-    environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
-    ];
     volumes = [
       "/home/mateusp/ImmichDB:/var/lib/postgresql/data:rw"
     ];
@@ -115,9 +134,14 @@ in
   };
   virtualisation.oci-containers.containers."immich_redis" = {
     image = "docker.io/redis:6.2-alpine@sha256:2d1463258f2764328496376f5d965f20c6a67f66ea2b06dc42af351f75248792";
-    environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
-    ];
+    environment = {
+      "DB_DATABASE_NAME" = "immich";
+      "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
+      "DB_PASSWORD" = "${secrets.immich.postgres.password}";
+      "DB_USERNAME" = "postgres";
+      "IMMICH_VERSION" = "${immichVersion}";
+      "UPLOAD_LOCATION" = "/mnt/immich/Library";
+    };
     log-driver = "journald";
     extraOptions = [
       "--health-cmd=redis-cli ping || exit 1"
@@ -155,9 +179,6 @@ in
       "IMMICH_VERSION" = "${immichVersion}";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
-    environmentFiles = [
-      "/home/mateusp/nix-config/modules/docker-containers/immich.env"
-    ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "/mnt/immich/Library:/usr/src/app/upload:rw"
