@@ -1,7 +1,10 @@
 # Auto-generated using compose2nix v0.2.3-pre.
 { pkgs, lib, secrets, ... }:
 
+let immichVersion = "v1.129.0";
+in
 {
+  # Create a variable for the current immich version
   # Caddy config for Immich
   services.caddy = {
     enable = true;
@@ -22,13 +25,13 @@
 
   # Containers
   virtualisation.oci-containers.containers."immich_machine_learning" = {
-    image = "ghcr.io/immich-app/immich-machine-learning:v1.128.0";
+    image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "v1.128.0";
+      "IMMICH_VERSION" = "${immichVersion}";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
@@ -143,13 +146,13 @@
     ];
   };
   virtualisation.oci-containers.containers."immich_server" = {
-    image = "ghcr.io/immich-app/immich-server:v1.128.0";
+    image = "ghcr.io/immich-app/immich-server:${immichVersion}";
     environment = {
       "DB_DATABASE_NAME" = "immich";
       "DB_DATA_LOCATION" = "/home/mateusp/ImmichDB";
       "DB_PASSWORD" = "${secrets.immich.postgres.password}";
       "DB_USERNAME" = "postgres";
-      "IMMICH_VERSION" = "v1.128.0";
+      "IMMICH_VERSION" = "${immichVersion}";
       "UPLOAD_LOCATION" = "/mnt/immich/Library";
     };
     environmentFiles = [
