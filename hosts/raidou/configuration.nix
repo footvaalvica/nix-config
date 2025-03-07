@@ -11,8 +11,6 @@
    
   # Enable docker for AGISIT
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_24;
-  nixpkgs.config.permittedInsecurePackages = [ "docker-24.0.9" ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
