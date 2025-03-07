@@ -86,7 +86,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.openFirewall = false; # only from tailscale
+  services.openssh.openFirewall = true; # only from tailscale
   services.openssh.settings.X11Forwarding = true;
 
   # Some programs need SUID wrappers, can be configured further or are
