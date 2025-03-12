@@ -84,6 +84,10 @@
     nerdfonts
     remmina
     discord
+    libreoffice-qt6-fresh
+    hunspell
+    hunspellDicts.pt_PT
+    hunspellDicts.en_US
     rustdesk-flutter
   ];
 
