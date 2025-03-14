@@ -89,6 +89,7 @@
     hunspellDicts.pt_PT
     hunspellDicts.en_US
     rustdesk-flutter
+    exo
   ];
 
   # Open ports in the firewall.
