@@ -84,10 +84,37 @@
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.openFirewall = false; # only from tailscale
-  services.openssh.settings.X11Forwarding = true;
+  # Enable SSH server
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      # Disable password authentication globally
+      PasswordAuthentication = false;
+      # Only allow pubkey authentication by default
+      PubkeyAuthentication = true;
+      X11Forwarding = true;
+    };
+    
+    # Custom configuration for different authentication methods
+    extraConfig = ''
+      # For Tailscale connections (assuming Tailscale uses 100.x.x.x)
+      Match Address 100.0.0.0/8
+        PasswordAuthentication yes
+        PubkeyAuthentication no
+
+      # For all other connections
+      Match Address *,!100.0.0.0/8
+        PasswordAuthentication no
+        PubkeyAuthentication yes
+    '';
+  };
+
+  users.users.root = {
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqacUuGE1cwsquurVTRnW2Ixa5108dMwlKoUEdwZZPs deployment_key"
+    ];
+  };  
 
   system.autoUpgrade = {
     enable = true;
