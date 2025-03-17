@@ -16,6 +16,8 @@
     ../../modules/docker-containers/mealie.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
+    ../../modules/docker-containers/watchtower.nix
+    ../../modules/docker-containers/sillytavern.nix
     ../../modules/ollama.nix
   ];
    
