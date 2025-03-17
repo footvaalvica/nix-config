@@ -21,18 +21,26 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-  # Containers
   virtualisation.oci-containers.containers."sillytavern" = {
     image = "ghcr.io/sillytavern/sillytavern:latest";
     environment = {
       "FORCE_COLOR" = "1";
       "NODE_ENV" = "production";
+      "SILLYTAVERN_ENABLEUSERACCOUNTS" = "true";
+      ## "SILLYTAVERN_PERUSERBASICAUTH" = "true";
+      "SILLYTAVERN_ENABLEDISCREETLOGIN" = "true";
+      "SILLYTAVERN_ENABLESERVERPLUGINS" = "true";
+      "SILLYTAVERN_LISTEN" = "true";
+      "SILLYTAVERN_PORT" = "42069";
+      "SILLYTAVERN_WHITELISTMODE" = "false";
+      "SILLYTAVERN_BASICAUTHMODE" = "true";
+      "SILLYTAVERN_EXTENSIONS_ENABLED" = "true";
     };
     volumes = [
-      "/home/mateusp/nix-config/modules/docker-containers/config:/home/node/app/config:rw"
-      "/home/mateusp/nix-config/modules/docker-containers/data:/home/node/app/data:rw"
-      "/home/mateusp/nix-config/modules/docker-containers/extensions:/home/node/app/public/scripts/extensions/third-party:rw"
-      "/home/mateusp/nix-config/modules/docker-containers/plugins:/home/node/app/plugins:rw"
+      "/home/mateusp/nix-config/modules/docker-containers/sillytavern/config:/home/node/app/config:rw"
+      "/home/mateusp/nix-config/modules/docker-containers/sillytavern/data:/home/node/app/data:rw"
+      "/home/mateusp/nix-config/modules/docker-containers/sillytavern/extensions:/home/node/app/public/scripts/extensions/third-party:rw"
+      "/home/mateusp/nix-config/modules/docker-containers/sillytavern/plugins:/home/node/app/plugins:rw"
     ];
     ports = [
       "42069:42069/tcp"

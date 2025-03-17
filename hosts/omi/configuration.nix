@@ -18,6 +18,7 @@
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
     ../../modules/docker-containers/sillytavern.nix
+    ../../modules/docker-containers/authelia.nix
     ../../modules/ollama.nix
   ];
    
