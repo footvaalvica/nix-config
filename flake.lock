@@ -96,11 +96,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1742169275,
-        "narHash": "sha256-nkH2Edu9rClcsQp2PYBe8E6fp8LDPi2uDBQ6wyMdeXI=",
+        "lastModified": 1742206328,
+        "narHash": "sha256-q+AQ///oMnyyFzzF4H9ShSRENt3Zsx37jTiRkLkXXE0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5d9b5431f967007b3952c057fc92af49a4c5f3b2",
+        "rev": "096478927c360bc18ea80c8274f013709cf7bdcd",
         "type": "github"
       },
       "original": {
@@ -135,11 +135,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1742237469,
-        "narHash": "sha256-RlNqKU0gHvZeJeFW7nkW+XjSPXWusytVslAK9FBkTgc=",
+        "lastModified": 1742253497,
+        "narHash": "sha256-woyhSn4K7dnehIXsTcnCFdLbBkYa5AYx/P6ihYtVNO0=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5b6491fbec477d667a6aae4e3163b98ef13fb9ae",
+        "rev": "de04740a4d0ceb1dc1a8da4c83d080c8c26e231d",
         "type": "github"
       },
       "original": {
@@ -215,11 +215,11 @@
     "website": {
       "flake": false,
       "locked": {
-        "lastModified": 1742236419,
-        "narHash": "sha256-/+lgjkRK7qaCChb1s6HeLGRWQNHFMOw2z9jy/Jx3HuY=",
+        "lastModified": 1742253898,
+        "narHash": "sha256-DldXXiVLqJOpDujHuYuk8nU98LN7lly5COZfAqz2YgM=",
         "owner": "footvaalvica",
         "repo": "footvaalvica.com",
-        "rev": "667a558bb77c0a86a37c5faff05334a37a2f54a9",
+        "rev": "34d9b0dd0002fe3c8400225bf4439ab143f2b189",
         "type": "github"
       },
       "original": {
