@@ -1,10 +1,16 @@
-{ inputs, outputs, config, pkgs, lib, secrets, ... }:
-
 {
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  secrets,
+  ...
+}: {
   imports = [
     ./vscode-server.nix
     ./tailscale.nix
-  ];  
+  ];
 
   nixpkgs = {
     # You can add overlays here
@@ -30,7 +36,7 @@
       allowUnfree = true;
     };
   };
-  
+
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
@@ -41,7 +47,7 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
-      trusted-users = [ "root" "mateusp" ];
+      trusted-users = ["root" "mateusp"];
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -66,8 +72,8 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  environment.systemPackages = with pkgs; [ 
-    distrobox 
+  environment.systemPackages = with pkgs; [
+    distrobox
     vscode-fhs
     wget
     git
@@ -95,7 +101,7 @@
       PubkeyAuthentication = true;
       X11Forwarding = true;
     };
-    
+
     # Custom configuration for different authentication methods
     extraConfig = ''
       # For Tailscale connections (assuming Tailscale uses 100.x.x.x)
@@ -114,7 +120,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqacUuGE1cwsquurVTRnW2Ixa5108dMwlKoUEdwZZPs deployment_key"
     ];
-  };  
+  };
 
   system.autoUpgrade = {
     enable = true;

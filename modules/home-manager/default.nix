@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -35,7 +37,7 @@
     ripgrep
     gh
     git-crypt
-	 
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -107,7 +109,6 @@
     };
 
     fish.enable = true; # see note on other shells below
-
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -144,10 +145,9 @@
   home.sessionVariables = {
     EDITOR = "nano";
   };
-  
+
   systemd.user.startServices = "sd-switch";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }

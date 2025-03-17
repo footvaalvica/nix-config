@@ -15,7 +15,7 @@
       url = "github:footvaalvica/footvaalvica.com";
       flake = false;
     };
-    
+
     deploy-rs.url = "github:serokell/deploy-rs";
 
     nur = {
@@ -24,14 +24,15 @@
     };
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
+  outputs = {
+    self,
+    nixpkgs,
     home-manager,
     nur,
     website,
-    ... 
-  } @inputs: let 
+    deploy-rs,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -61,8 +62,8 @@
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
-   
-    nixosConfigurations = { 
+
+    nixosConfigurations = {
       raidou = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs secrets;};
@@ -87,17 +88,18 @@
 
     deploy = {
       nodes = {
-        # # raidou = {
-        # #   hostname = "raidou.rnl.tecnico.ulisboa.pt";
-        # #   profiles.system = {
-        # #     user = "root";
-        # #     path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
-        # # };
+        # raidou = {
+        #   hostname = "raidou.rnl.tecnico.ulisboa.pt";
+        #   profiles.system = {
+        #     user = "root";
+        #     path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
+        # };
         omi = {
           hostname = "omi.footvaalvica.com";
           profiles.system = {
             user = "root";
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.omi;
+          };
         };
       };
     };

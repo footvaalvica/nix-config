@@ -17,11 +17,11 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-GoYfpr6oFpreWQtSomOwgfzSoBAbjqGZ1mcc0u9TBl4=";
   };
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [setuptools];
 
   pythonRelaxDeps = true;
 
-  pythonRemoveDeps = [ "uuid" ];
+  pythonRemoveDeps = ["uuid"];
 
   dependencies = with python3Packages; [
     tensorflow
@@ -77,7 +77,7 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://github.com/exo-explore/exo";
     changelog = "https://github.com/exo-explore/exo/releases/tag/v${version}";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [ GaetanLepage ];
+    maintainers = with lib.maintainers; [GaetanLepage];
     mainProgram = "exo";
   };
 }

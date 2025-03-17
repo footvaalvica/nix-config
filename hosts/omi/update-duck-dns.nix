@@ -1,9 +1,13 @@
-{ pkgs, lib, config, secrets, ... }:
-
-{ 
-  # Update DUCKDNS   
+{
+  pkgs,
+  lib,
+  config,
+  secrets,
+  ...
+}: {
+  # Update DUCKDNS
   systemd.timers."update-duckdns" = {
-  wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnBootSec = "5m";
       OnUnitActiveSec = "5m";
@@ -13,8 +17,8 @@
 
   systemd.services."update-duckdns" = {
     script = ''
-       source ${config.system.build.setEnvironment}
-       echo url="${secrets.duckdns.url}" | curl -k -K -
+      source ${config.system.build.setEnvironment}
+      echo url="${secrets.duckdns.url}" | curl -k -K -
     '';
     serviceConfig = {
       Type = "oneshot";

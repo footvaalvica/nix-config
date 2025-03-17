@@ -1,11 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
- 
-{ inputs, outputs, config, pkgs, lib, secrets, ... }:
-
 {
-  imports =[ # Include the results of the hardware scan.
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  secrets,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./network-filesystems.nix
     ./healthchecks.nix
@@ -22,7 +28,7 @@
     ../../modules/webserver.nix
     ../../modules/ollama.nix
   ];
-   
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -39,7 +45,7 @@
   users.users.mateusp = {
     isNormalUser = true;
     description = "Mateus Pinho";
-    extraGroups = [ "networkmanager" "wheel" "docker" "ydotool" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "ydotool"];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -50,14 +56,14 @@
     gh
     git
     wireguard-tools
-    cifs-utils 
+    cifs-utils
     sshfs
   ];
 
   # Firewall
   networking.firewall = {
-    allowedTCPPorts = [ 80 443 3478 8080 8384 8443 22000 ];
-    allowedUDPPorts = [ 443 3478 22000 21027 ];
+    allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
+    allowedUDPPorts = [443 3478 22000 21027];
   };
 
   # Fail2Ban
@@ -66,8 +72,8 @@
   programs.ydotool.enable = true;
   systemd.services.press-unknown = {
     description = "Press UNKNOWN key every minute";
-    after = [ "ydotoold.service" ];  # Ensure ydotoold is running
-    wants = [ "ydotoold.service" ];
+    after = ["ydotoold.service"]; # Ensure ydotoold is running
+    wants = ["ydotoold.service"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
@@ -77,13 +83,13 @@
 
   systemd.timers.press-unknown = {
     description = "Timer for UNKNOWN keypress";
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnCalendar = "*:0/1"; # Every minute
       Persistent = true;
     };
   };
-  
+
   services.prometheus.exporters.node = {
     enable = true;
     port = 9100;
@@ -97,11 +103,11 @@
     openFirewall = true;
     firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
   };
-  
+
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
-    domains = [ omi.footvaalvica.com ];
+    domains = [omi.footvaalvica.com];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 

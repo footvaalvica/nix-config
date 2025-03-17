@@ -1,14 +1,19 @@
-{ inputs, outputs, config, pkgs, lib, secrets, ... }:
-
 {
-
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  secrets,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../profiles/default.nix
     ../../profiles/desktop.nix
     ../../profiles/nvidia.nix
   ];
-   
+
   # Enable docker for AGISIT
   virtualisation.docker.enable = true;
 
@@ -27,12 +32,12 @@
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
     package = pkgs.bluez;
   };
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mateusp = {
     isNormalUser = true;
     description = "Mateus Pinho";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -48,7 +53,7 @@
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-      gamescopeSession.enable = true;  
+      gamescopeSession.enable = true;
     };
     gamescope = {
       enable = true;
@@ -57,7 +62,7 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -101,7 +106,7 @@
     enable = true;
     autoStart = true;
     capSysAdmin = true;
-    openFirewall = true;  
+    openFirewall = true;
   };
 
   # This value determines the NixOS release from which the default

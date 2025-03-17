@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.ollama = {
     enable = true;
     # Optional: load models on startup
-    loadModels = [ "deepseek-r1:1.5b" "deepseek-r1:7b" "taozhiyuai/llama-3-8b-ultra-instruct:q2_k"];
+    loadModels = ["deepseek-r1:1.5b" "deepseek-r1:7b" "taozhiyuai/llama-3-8b-ultra-instruct:q2_k"];
     openFirewall = true;
     host = "0.0.0.0";
   };
@@ -23,5 +25,5 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = [ "chat.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["chat.footvaalvica.com"];
 }

@@ -1,7 +1,10 @@
 # Auto-generated using compose2nix v0.2.2-pre.
-{ pkgs, lib, config, ... }:
-
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   # Reverse proxy config for Docker
   services.caddy = {
     enable = true;
@@ -14,11 +17,11 @@
             tls_insecure_skip_verify
         }
       }
-    ''; 
+    '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = [ "cloud.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["cloud.footvaalvica.com"];
 
   # Runtime
   virtualisation.docker = {
@@ -26,16 +29,16 @@
     autoPrune.enable = true;
   };
   virtualisation.oci-containers.backend = "docker";
-    
+
   # Containers
   virtualisation.oci-containers.containers."nextcloud-aio-mastercontainer" = {
     image = "nextcloud/all-in-one:latest";
     environment = {
       "APACHE_PORT" = "11000";
-      "APACHE_IP_BINDING" = "127.0.0.1"; 
+      "APACHE_IP_BINDING" = "127.0.0.1";
       "NEXTCLOUD_DATADIR" = "/mnt/nextcloud";
       "NEXTCLOUD_ENABLE_DRI_DEVICE" = "true";
-      "NEXTCLOUD_MOUNT" ="/mnt/"; 
+      "NEXTCLOUD_MOUNT" = "/mnt/";
     };
     volumes = [
       "nextcloud_aio_mastercontainer:/mnt/docker-aio-config"
