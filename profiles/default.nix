@@ -96,9 +96,6 @@
     openFirewall = true;
     permitRootLogin = "prohibit-password";
     settings = {
-      # Disable password authentication globally
-      PasswordAuthentication = false;
-      # Only allow pubkey authentication by default
       PubkeyAuthentication = true;
       X11Forwarding = true;
     };
@@ -108,10 +105,8 @@
       # For Tailscale connections (assuming Tailscale uses 100.x.x.x)
       Match Address 100.0.0.0/8
         PasswordAuthentication yes
-        PubkeyAuthentication no
 
-      # For all other connections
-      Match Address *,!100.0.0.0/8
+      Match all
         PasswordAuthentication no
         PubkeyAuthentication yes
     '';
