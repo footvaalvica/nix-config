@@ -94,8 +94,8 @@
   services.openssh = {
     enable = true;
     openFirewall = true;
-    permitRootLogin = "prohibit-password";
     settings = {
+      PermitRootLogin = "prohibit-password";
       PubkeyAuthentication = true;
       X11Forwarding = true;
     };
