@@ -146,6 +146,11 @@
     EDITOR = "nano";
   };
 
+  services.home-manager.autoUpgrade = {
+    enable = true;
+    frequency = "daily";
+  };
+
   systemd.user.startServices = "sd-switch";
 
   # Let Home Manager install and manage itself.
