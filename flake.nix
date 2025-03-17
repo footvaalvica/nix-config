@@ -89,18 +89,18 @@
 
     deploy = {
       nodes = {
-        # raidou = {
-        #   hostname = "raidou.rnl.tecnico.ulisboa.pt";
-        #   profiles.system = {
-        #     user = "root";
-        #     path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
-        # };
+        raidou = {
+          hostname = "raidou.rnl.tecnico.ulisboa.pt";
+          profiles.system = {
+            user = "root";
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
+        };
         omi = {
           hostname = "omi.footvaalvica.com";  
           profiles.system = {
             user = "root";
             sshUser = "root";
-            remoteBuild = true;
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.omi;
           };
         };
