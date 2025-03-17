@@ -94,6 +94,7 @@
   services.openssh = {
     enable = true;
     openFirewall = true;
+    permitRootLogin = "prohibit-password";
     settings = {
       # Disable password authentication globally
       PasswordAuthentication = false;

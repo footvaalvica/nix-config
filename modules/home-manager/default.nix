@@ -151,6 +151,15 @@
     frequency = "daily";
   };
 
+  # inherit flakeInputs from the parent scope
+  # TODO something like this for home-manager?
+  # # nix.channels = {
+  # #   flakeInputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  # #   flakeInputs.nixpkgs.inputs = {
+  # #     nixpkgs.follows = "nixpkgs";
+  # #   };
+  # # };
+
   systemd.user.startServices = "sd-switch";
 
   # Let Home Manager install and manage itself.
