@@ -101,7 +101,7 @@
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
-    domains = [ ];
+    domains = [ omi.footvaalvica.com ];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 

@@ -15,6 +15,8 @@
       url = "github:footvaalvica/footvaalvica.com";
       flake = false;
     };
+    
+    deploy-rs.url = "github:serokell/deploy-rs";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -83,6 +85,24 @@
       };
     };
 
+    deploy = {
+      nodes = {
+        # # raidou = {
+        # #   hostname = "raidou.rnl.tecnico.ulisboa.pt";
+        # #   profiles.system = {
+        # #     user = "root";
+        # #     path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
+        # # };
+        omi = {
+          hostname = "omi.footvaalvica.com";
+          profiles.system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.omi;
+        };
+      };
+    };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
