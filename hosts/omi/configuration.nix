@@ -19,6 +19,7 @@
     ../../modules/docker-containers/watchtower.nix
     ../../modules/docker-containers/sillytavern.nix
     ../../modules/docker-containers/authelia.nix
+    ../../modules/webserver.nix
     ../../modules/ollama.nix
   ];
    
@@ -100,7 +101,7 @@
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
-    domains = [ "footvaalvica.com" "www.footvaalvica.com" ];
+    domains = [ ];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 

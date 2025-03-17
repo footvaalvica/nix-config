@@ -27,7 +27,7 @@
       "FORCE_COLOR" = "1";
       "NODE_ENV" = "production";
       "SILLYTAVERN_ENABLEUSERACCOUNTS" = "true";
-      ## "SILLYTAVERN_PERUSERBASICAUTH" = "true";
+      "SILLYTAVERN_PERUSERBASICAUTH" = "true";
       "SILLYTAVERN_ENABLEDISCREETLOGIN" = "true";
       "SILLYTAVERN_ENABLESERVERPLUGINS" = "true";
       "SILLYTAVERN_LISTEN" = "true";
