@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Run everyday at midnight
   workflow_dispatch:     # Allow manual triggering
+  repository_dispatch:
+    types: [website-update]
 
 jobs:
   update-flake:
