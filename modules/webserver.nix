@@ -1,5 +1,5 @@
 
-{ pkgs, lib, secrets, ... }:
+{ pkgs, lib, secrets, inputs, ... }:
 
 {
   services.caddy = {
@@ -14,7 +14,7 @@
 
   services.static-web-server = {
     enable = true;
-    root = website;
+    root = inputs.website;
   };
 
 }

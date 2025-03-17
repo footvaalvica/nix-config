@@ -27,6 +27,7 @@
     nixpkgs, 
     home-manager,
     nur,
+    website,
     ... 
   } @inputs: let 
     inherit (self) outputs;
