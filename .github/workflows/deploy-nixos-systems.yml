@@ -7,6 +7,11 @@ on:
     workflows: ["Update Nix Flake"]
   workflow_dispatch:    # Allow manual triggering
 
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
