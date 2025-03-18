@@ -12,7 +12,7 @@
 
     # Website
     website = {
-      url = "github:footvaalvica/footvaalvica.com";
+      url = "github:footvaalvica/footvaalvica.com/gh-pages";
       flake = false;
     };
 

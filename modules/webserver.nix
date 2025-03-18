@@ -17,6 +17,6 @@
 
   services.static-web-server = {
     enable = true;
-    root = inputs.website + "/public";
+    root = inputs.website;
   };
 }

@@ -215,15 +215,16 @@
     "website": {
       "flake": false,
       "locked": {
-        "lastModified": 1742299183,
-        "narHash": "sha256-IwidfgSxXOYUM2wYZuS5Ct13Y63LRmzJTr2F4qT7G7Y=",
+        "lastModified": 1742299196,
+        "narHash": "sha256-Dwer9wpxEZGhh8H8FsP+8WJq9b/Xkn3IA6+NePqTyM4=",
         "owner": "footvaalvica",
         "repo": "footvaalvica.com",
-        "rev": "503e6f7ef90b97373fe14f63ab94639519bb6d97",
+        "rev": "a877e5abaf603de8ac152a70cce64f2d35b34c54",
         "type": "github"
       },
       "original": {
         "owner": "footvaalvica",
+        "ref": "gh-pages",
         "repo": "footvaalvica.com",
         "type": "github"
       }
