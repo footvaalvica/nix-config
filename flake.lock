@@ -135,11 +135,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1742255114,
-        "narHash": "sha256-BcebcgXf8+VfdZPpopAbHjSprKOx+CXQggOupj4fXbA=",
+        "lastModified": 1742290204,
+        "narHash": "sha256-rhfUOLYob05ZYifD65j0mrG9+Dah2YkanOx4lI7d7w4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d8d68f705ef631e44c0414d8331b273d1c376e52",
+        "rev": "2e03ee7181d61aab1f3c22e1ca2c9536993edc8d",
         "type": "github"
       },
       "original": {
@@ -215,11 +215,11 @@
     "website": {
       "flake": false,
       "locked": {
-        "lastModified": 1742255594,
-        "narHash": "sha256-xezuTWOktEVeFox7IF83X75Pp+oRYt8IcMAJehAIIV4=",
+        "lastModified": 1742291791,
+        "narHash": "sha256-gofrCRKpyp6g+THYHU/L7efR8SxtMy/upRGFCSuG8jk=",
         "owner": "footvaalvica",
         "repo": "footvaalvica.com",
-        "rev": "8ef96592e0a5f30d4cbbfa55753e27a1ef3e76e1",
+        "rev": "5e6669423258c4d58e058c939ef8c42907498cec",
         "type": "github"
       },
       "original": {
