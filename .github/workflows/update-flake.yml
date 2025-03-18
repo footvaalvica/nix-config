@@ -7,6 +7,10 @@ on:
   repository_dispatch:
     types: [website-update]
 
+concurrency:
+  group: "flake_update"
+  cancel-in-progress: true
+
 jobs:
   update-flake:
     runs-on: ubuntu-latest
