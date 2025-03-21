@@ -18,4 +18,7 @@
   home.packages = with pkgs; [
     topgrade
   ];
+
+  targets.genericLinux.enable = true;
+
 }

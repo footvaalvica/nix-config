@@ -14,4 +14,6 @@
     # ./nvim.nix
     ../../modules/home-manager/default.nix
   ];
+
+  targets.genericLinux.enable = true;
 }
