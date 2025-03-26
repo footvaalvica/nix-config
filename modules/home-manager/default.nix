@@ -37,6 +37,8 @@
     ripgrep
     gh
     git-crypt
+    aider-chat
+    git-lfs
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -106,6 +108,11 @@
         swift.symbol = " ";
         zig.symbol = " ";
       };
+    };
+
+    git = {
+        enable = true;
+        lfs.enable = true;
     };
 
     fish.enable = true; # see note on other shells below

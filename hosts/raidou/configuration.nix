@@ -71,6 +71,7 @@
     bind
     vlc
     wsmancli
+    anki-bin
     onlyoffice-bin
     xorg.xrandr
     stdenv.cc.cc.lib
@@ -95,6 +96,8 @@
     hunspellDicts.en_US
     rustdesk-flutter
     exo
+    obsidian
+    code-cursor
   ];
 
   # Open ports in the firewall.
