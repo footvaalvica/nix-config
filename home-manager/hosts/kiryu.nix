@@ -17,8 +17,8 @@
 
   targets.genericLinux.enable = true;
 
-  # Activation script to manage OpenGL driver symlinks
-  home.activation.openglLink = pkgs.lib.hm.dag.entryAfter ["writeBoundary"] ''
+    
+  home.activation.openglLink = config.lib.dag.entryAfter ["writeBoundary"] ''
     echo "Setting up OpenGL driver symlinks..."
     OPENGL_PROFILE="/nix/var/nix/profiles/opengl-driver"
     OPENGL_PROFILE_32="/nix/var/nix/profiles/opengl-driver-32"
