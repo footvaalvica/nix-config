@@ -38,6 +38,7 @@
     gh
     git-crypt
     aider-chat
+    git-lfs
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -108,6 +109,16 @@
         zig.symbol = " ";
       };
     };
+
+    git = {
+      enable = true;
+      userName  = "Mateus Pinho";
+      userEmail = "mateusleitepinho@gmail.com";
+      extraConfig.pull.rebase = true;
+      lfs.enable = true;
+    };
+    
+    gitui.enable = true;
 
     fish.enable = true; # see note on other shells below
   };
