@@ -118,18 +118,18 @@
     ];
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--no-write-lock-file"
-      "-L" # print build logs
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
+  # # system.autoUpgrade = {
+  # #   enable = true;
+  # #   flake = inputs.self.outPath;
+  # #   flags = [
+  # #     "--update-input"
+  # #     "nixpkgs"
+  # #     "--no-write-lock-file"
+  # #     "-L" # print build logs
+  # #   ];
+  # #   dates = "02:00";
+  # #   randomizedDelaySec = "45min";
+  # # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
