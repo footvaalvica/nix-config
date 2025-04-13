@@ -34,11 +34,12 @@
     waypipe
     devenv
     nano
-    ripgrep
     gh
     git-crypt
     aider-chat
     git-lfs
+    yq
+    ugrep
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -61,6 +62,32 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    
+    atuin = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    
+    fd.enable = true;
+    ripgrep.enable = true;   
+    tealdeer.enable = true;
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+
 
     starship = {
       enable = true;
