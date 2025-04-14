@@ -108,7 +108,6 @@
 
       Match all
         PasswordAuthentication no
-        PubkeyAuthentication yes
     '';
   };
 

@@ -90,7 +90,7 @@
     deploy = {
       nodes = {
         raidou = {
-          hostname = "raidou.rnl.tecnico.ulisboa.pt";
+          hostname = "raidou";
           profiles.system = {
             user = "root";
             sshUser = "root";
@@ -99,7 +99,7 @@
           };
         };
         omi = {
-          hostname = "omi.footvaalvica.com";  
+          hostname = "omi";  
           profiles.system = {
             user = "root";
             sshUser = "root";
