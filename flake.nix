@@ -3,24 +3,36 @@
 
   inputs = {
     # NixOS official package source
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    
-    # nix flatpak
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+
+    # Website
+    website = {
+      url = "github:footvaalvica/footvaalvica.com/gh-pages";
+      flake = false;
+    };
+
+    deploy-rs.url = "github:serokell/deploy-rs";
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
+  outputs = {
+    self,
+    nixpkgs,
     home-manager,
-    flatpaks,
-    ... 
-  } @inputs: let 
+    nur,
+    website,
+    deploy-rs,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -46,26 +58,28 @@
     overlays = import ./overlays {inherit inputs;};
     # Reusable nixos modules you might want to export
     # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
+    # TODO this line below should be used, the current solution sucks
+    # # nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
-   
-    nixosConfigurations = { 
+
+    nixosConfigurations = {
       raidou = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
+          nur.modules.nixos.default
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/raidou/configuration.nix
-          flatpaks.nixosModules.default
         ];
       };
       omi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
+          nur.modules.nixos.default
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
@@ -73,6 +87,30 @@
       };
     };
 
+    deploy = {
+      nodes = {
+        raidou = {
+          hostname = "raidou.rnl.tecnico.ulisboa.pt";
+          profiles.system = {
+            user = "root";
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.raidou;
+            remoteBuild = true;
+          };
+        };
+        omi = {
+          hostname = "omi.footvaalvica.com";  
+          profiles.system = {
+            user = "root";
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.omi;
+            remoteBuild = true;
+          };
+        };
+      };
+    };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {

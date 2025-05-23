@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -16,4 +18,6 @@
   home.packages = with pkgs; [
     topgrade
   ];
+
+  targets.genericLinux.enable = true;
 }

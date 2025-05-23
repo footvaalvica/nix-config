@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
@@ -35,7 +37,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
+
   # Enable RDP.
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
@@ -43,12 +45,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  
+
   # Vscode server on wayland variable
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

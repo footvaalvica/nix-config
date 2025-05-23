@@ -1,22 +1,33 @@
-name: update-flake-lock
+name: Update Nix Flake
+
 on:
-  workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: '0 0 * * *' # runs weekly on Sunday at 00:00
+    - cron: '0 0 * * *'  # Run everyday at midnight
+  workflow_dispatch:     # Allow manual triggering
+  repository_dispatch:
+    types: [website-update]
+
+concurrency:
+  group: "flake_update"
+  cancel-in-progress: true
 
 jobs:
-  lockfile:
+  update-flake:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@main
-        with:
-          pr-title: "Update flake.lock" # Title of PR to be created
-          pr-labels: |                  # Labels to be set on the PR
-            dependencies
-            automated
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+      - name: Update flake
+        run: |
+          nix flake update
+          if git diff --quiet flake.lock; then
+            echo "No updates available"
+            exit 0
+          fi
+      - name: Commit and push
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add flake.lock
+          git commit -m "Update flake inputs"
+          git push

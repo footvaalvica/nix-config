@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -32,10 +34,13 @@
     waypipe
     devenv
     nano
-    ripgrep
     gh
     git-crypt
-	 
+    aider-chat
+    git-lfs
+    yq
+    ugrep
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -56,6 +61,35 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    
+    atuin = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    
+    fd.enable = true;
+    ripgrep.enable = true;   
+    tealdeer.enable = true;
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    thefuck = {
+      enable = true;
+      enableFishIntegration = true;
     };
 
     starship = {
@@ -106,22 +140,17 @@
       };
     };
 
-    fish.enable = true; # see note on other shells below
-
-    # Set git config 
     git = {
       enable = true;
       userName  = "Mateus Pinho";
-      userEmail = "mateus.pinho@rnl.tecnico.ulisboa.pt";
-      extraConfig = {
-        pull = {
-          rebase = true;
-        };
-        rebase = {
-          autostash = true;
-        };
-      };
+      userEmail = "mateusleitepinho@gmail.com";
+      extraConfig.pull.rebase = true;
+      lfs.enable = true;
     };
+    
+    gitui.enable = true;
+
+    fish.enable = true; # see note on other shells below
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -158,10 +187,24 @@
   home.sessionVariables = {
     EDITOR = "nano";
   };
-  
+
+  services.home-manager.autoUpgrade = {
+    enable = true;
+    frequency = "daily";
+  };
+
+  # inherit flakeInputs from the parent scope
+  # TODO something like this for home-manager?
+  # # nix.channels = {
+  # #   flakeInputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  # #   flakeInputs.nixpkgs.inputs = {
+  # #     nixpkgs.follows = "nixpkgs";
+  # #   };
+  # # };
+
   systemd.user.startServices = "sd-switch";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
+  nixpkgs.config.allowUnfree = true;
 }

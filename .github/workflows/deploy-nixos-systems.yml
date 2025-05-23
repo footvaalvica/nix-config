@@ -1,0 +1,44 @@
+name: Deploy NixOS Systems
+
+on:
+  push:
+    branches: [ main ]  # Trigger on pushes to main branch
+  workflow_run:
+    workflows: ["Update Nix Flake"]
+    types:
+      - completed
+  workflow_dispatch:    # Allow manual triggering
+
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # # - name: Free Disk Space (Ubuntu)
+      # #   uses: jlumbroso/free-disk-space@v1.3.1
+      # #   with:
+      # #     docker-images: false
+
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan omi.footvaalvica.com raidou.rnl.tecnico.ulisboa.pt >> ~/.ssh/known_hosts
+      - uses: actions/checkout@master
+      - name: Unlock secrets
+        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
+        env:
+          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
+      
+      - name: Deploy systems
+        run: |
+          nix run github:serokell/deploy-rs -- -s .

@@ -1,11 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
- 
-{ inputs, outputs, config, pkgs, lib, secrets, ... }:
-
 {
-  imports =[ # Include the results of the hardware scan.
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  secrets,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./network-filesystems.nix
     ./healthchecks.nix
@@ -16,8 +22,26 @@
     ../../modules/docker-containers/mealie.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
+    ../../modules/docker-containers/watchtower.nix
+    ../../modules/docker-containers/sillytavern.nix
+    ../../modules/docker-containers/authelia.nix
+    ../../modules/docker-containers/memos.nix
+    ../../modules/webserver.nix
+    ../../modules/ollama.nix
+    ../../modules/docker-containers/firefly-iii.nix
   ];
-   
+
+  # TEMPORARY THESIS STUFFS
+  services.caddy = {
+    enable = true;
+    virtualHosts."thesis.footvaalvica.com".extraConfig = ''
+      reverse_proxy localhost:6565
+    '';
+    virtualHosts."backend-thesis.footvaalvica.com".extraConfig = ''
+      reverse_proxy localhost:8000
+    '';
+  };
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -34,7 +58,7 @@
   users.users.mateusp = {
     isNormalUser = true;
     description = "Mateus Pinho";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "ydotool"];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -42,20 +66,63 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    gh
+    git
     wireguard-tools
-    cifs-utils 
+    cifs-utils
     sshfs
   ];
-  
+
   # Firewall
   networking.firewall = {
-    allowedTCPPorts = [ 80 443 3478 8080 8384 8443 22000 ];
-    allowedUDPPorts = [ 443 3478 22000 21027 ];
+    allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
+    allowedUDPPorts = [443 3478 22000 21027];
   };
 
   # Fail2Ban
   services.fail2ban.enable = true;
+
+  programs.ydotool.enable = true;
+  systemd.services.press-unknown = {
+    description = "Press UNKNOWN key every minute";
+    after = ["ydotoold.service"]; # Ensure ydotoold is running
+    wants = ["ydotoold.service"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
+      User = "mateusp"; # Change this if needed
+    };
+  };
+
+  systemd.timers.press-unknown = {
+    description = "Timer for UNKNOWN keypress";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*:0/1"; # Every minute
+      Persistent = true;
+    };
+  };
+
+  services.prometheus.exporters.node = {
+    enable = true;
+    port = 9100;
+    enabledCollectors = [
+      "logind"
+      "systemd"
+    ];
+    disabledCollectors = [
+      "textfile"
+    ];
+    openFirewall = true;
+    firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
+  };
+
+  services.cloudflare-dyndns = {
+    enable = true;
+    frequency = "*:0/5";
+    domains = [ "omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com" ];
+    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -65,4 +132,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 }
-

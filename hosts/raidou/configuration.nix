@@ -1,7 +1,12 @@
-{ inputs, outputs, config, pkgs, lib, secrets, ... }:
-
 {
-
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  secrets,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../profiles/default.nix
@@ -11,15 +16,35 @@
 
   # Enable docker for AGISIT
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_24;
-  nixpkgs.config.permittedInsecurePackages = [ "docker-24.0.9" ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "raidou"; # Define your hostname.
+  networking = {
+    hostName = "raidou"; # Define your hostname.    
+    firewall.enable = lib.mkForce false;
+    interfaces.enp4s0 = {
+      ipv4 = {
+        addresses = [{
+          address = "193.136.164.196";
+          prefixLength = 27;
+        }];
+      };
+      ipv6 = {
+        addresses = [{
+          address = "2001:690:2100:82::196";
+          prefixLength = 64;
+        }];
+      };
+    };
+    defaultGateway = "193.136.164.222";
+    nameservers = [ "193.136.164.1" "193.136.164.2" ];
+  };  
+
+  security.pam.sshAgentAuth.enable = true;
+  programs.ssh.startAgent = true;
 
   # Enable Bluetooth
   hardware.bluetooth = {
@@ -27,12 +52,12 @@
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
     package = pkgs.bluez;
   };
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mateusp = {
     isNormalUser = true;
     description = "Mateus Pinho";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
@@ -41,18 +66,23 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Allow flatpak
-  services.flatpak = {
-    enable = true;
-    packages = ["flathub:app/com.valvesoftware.Steam//stable"];
-    remotes = {
-      "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
+  programs = {
+    java.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      gamescopeSession.enable = true;
+    };
+    gamescope = {
+      enable = true;
+      capSysNice = true;
     };
   };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -61,10 +91,11 @@
     bind
     vlc
     wsmancli
+    anki-bin
+    onlyoffice-bin
     xorg.xrandr
     stdenv.cc.cc.lib
     xdg-utils
-    discord
     arc-theme
     kdePackages.plasma-browser-integration
     papirus-icon-theme
@@ -72,19 +103,34 @@
     reptyr
     pciutils
     mattermost-desktop
+    dracula-theme
     spotify
     ntfs3g
     google-chrome
+    nerdfonts
     remmina
+    discord
+    libreoffice-qt6-fresh
+    hunspell
+    hunspellDicts.pt_PT
+    hunspellDicts.en_US
     rustdesk-flutter
-    gnome.gnome-tweaks
-    gnome.gnome-remote-desktop
+    exo
+    obsidian
+    code-cursor
   ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 31555 ];
   # networking.firewall.allowedUDPPorts = [ 31555 ];
   # or disable the firewall
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

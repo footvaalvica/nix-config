@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -12,4 +14,9 @@
     # ./nvim.nix
     ../../modules/home-manager/default.nix
   ];
+
+  targets.genericLinux.enable = true;
+
+  # programs.fish.interactiveShellInit = "source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish";
+
 }
