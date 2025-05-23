@@ -5,7 +5,7 @@
   secrets,
   ...
 }: let
-  immichVersion = "v1.129.0";
+  immichVersion = "v1.133.0";
 in {
   # Create a variable for the current immich version
   # Caddy config for Immich
@@ -94,23 +94,20 @@ in {
     ];
   };
   virtualisation.oci-containers.containers."immich_postgres" = {
-    image = "docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0";
+    image = "ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0";
     environment = {
       "POSTGRES_DB" = "immich";
       "POSTGRES_INITDB_ARGS" = "--data-checksums";
       "POSTGRES_PASSWORD" = "${secrets.immich.postgres.password}";
       "POSTGRES_USER" = "postgres";
+      "DB_STORAGE_TYPE" = "SSD";
     };
     volumes = [
       "/home/mateusp/ImmichDB:/var/lib/postgresql/data:rw"
     ];
-    cmd = ["postgres" "-c" "shared_preload_libraries=vectors.so" "-c" "search_path=\"$user\", public, vectors" "-c" "logging_collector=on" "-c" "max_wal_size=2GB" "-c" "shared_buffers=512MB" "-c" "wal_compression=on"];
     log-driver = "journald";
     extraOptions = [
-      "--health-cmd=pg_isready --dbname='immich' --username='postgres' || exit 1; Chksum=\"$(psql --dbname='immich' --username='postgres' --tuples-only --no-align --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')\"; echo \"checksum failure count is $Chksum\"; [ \"$Chksum\" = '0' ] || exit 1"
-      "--health-interval=5m0s"
-      "--health-start-interval=30s"
-      "--health-start-period=5m0s"
+
       "--network-alias=database"
       "--network=immich_default"
     ];
