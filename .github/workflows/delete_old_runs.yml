@@ -1,7 +1,8 @@
 on:
   schedule:
     - cron: '0 0 * * *'  # Specify your own schedule
-
+  workflow_dispatch:    # Allow manual triggering
+  
 jobs:
   delete-old-actions:
     runs-on: ubuntu-latest
@@ -10,4 +11,4 @@ jobs:
       - uses: yanovation/delete-old-actions@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          days-ago: 30
+          days-ago: 0
