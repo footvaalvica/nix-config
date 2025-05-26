@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.2-pre.
-{ pkgs, lib, ... }:
+{ pkgs, lib, secrets, ... }:
 
 {
   services.caddy = {
@@ -103,6 +103,23 @@
       "OVERLEAF_MONGO_URL" = "mongodb://mongo/sharelatex";
       "OVERLEAF_REDIS_HOST" = "redis";
       "REDIS_HOST" = "redis";
+
+      "OVERLEAF_EMAIL_FROM_ADDRESS" = "mateusleitepinho@gmail.com";
+      "OVERLEAF_SITE_URL" = "https://overleaf.footvaalvica.com";
+      "OVERLEAF_NAV_TITLE" = "Overleaf Community Edition";
+      "OVERLEAF_ADMIN_EMAIL" = "mateusleitepinho@gmail.com";
+      "ENABLE_CRON_RESOURCE_DELETION" = "true";
+      "OVERLEAF_EMAIL_SMTP_HOST" = "smtp.gmail.com";
+      "OVERLEAF_EMAIL_SMTP_PORT" = "587"; 
+      "OVERLEAF_EMAIL_SMTP_SECURE" = "false";
+      "OVERLEAF_EMAIL_SMTP_USER" = "mateusleitepinho@gmail.com";
+      "OVERLEAF_EMAIL_SMTP_PASS" = "${secrets.overleaf.smtp.password}";
+      "OVERLEAF_EMAIL_SMTP_TLS_REJECT_UNAUTH" = "true";
+      "OVERLEAF_EMAIL_SMTP_IGNORE_TLS" = "false";
+      "OVERLEAF_EMAIL_SMTP_LOGGER" = "true";
+      "OVERLEAF_CUSTOM_EMAIL_FOOTER" = "This system is run by Mateus Pinho";
+        
+
       # "SANDBOXED_COMPILES" = "true";
       # "SANDBOXED_COMPILES_HOST_DIR_COMPILES" = "/home/user/sharelatex_data/data/compiles";
       # "SANDBOXED_COMPILES_HOST_DIR_OUTPUT" = "/home/user/sharelatex_data/data/output";
