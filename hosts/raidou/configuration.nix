@@ -81,6 +81,48 @@
     };
   };
 
+  ########################### JAPANESE 
+ 
+  fonts = {
+    fonts = with pkgs; [
+      source-han-sans
+      source-han-sans-japanese
+      source-han-serif-japanese
+      corefonts
+      vistafonts
+    ];
+    fontconfig.defaultFonts = {
+      serif = [ "Source Han Serif" ];
+      sansSerif = [ "Source Han Sans" ];
+    };
+  };
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+        fcitx5-configtool
+      ];
+      waylandFrontend = true;
+      # TODO quickPhrase
+    };
+  };
+
+  environment.sessionVariables = rec {
+    NIX_PROFILES =
+        "${lib.concatStringsSep " " (lib.reverseList config.environment.profiles)}";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+  environment.variables.QT_PLUGIN_PATH = [ "${pkgs.fcitx5-with-addons}/${pkgs.qt6.qtbase.qtPluginPrefix}" ];
+
+  ########################### END JAPANESE
+  programs.firefox.enable = true;	
+  
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
@@ -89,6 +131,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     bind
+    pandoc
     vlc
     wsmancli
     anki-bin
@@ -101,11 +144,13 @@
     papirus-icon-theme
     vorta
     reptyr
+    texlive
     pciutils
     mattermost-desktop
     dracula-theme
     spotify
     ntfs3g
+    zoom-us
     google-chrome
     nerdfonts
     remmina
