@@ -95,7 +95,7 @@
   virtualisation.oci-containers.containers."sharelatex" = {
     image = "sharelatex/sharelatex";
     environment = {
-      "DOCKER_RUNNER" = "true";
+      # "DOCKER_RUNNER" = "true";
       "EMAIL_CONFIRMATION_DISABLED" = "true";
       "ENABLED_LINKED_FILE_TYPES" = "project_file,project_output_file";
       "ENABLE_CONVERSIONS" = "true";
@@ -103,13 +103,14 @@
       "OVERLEAF_MONGO_URL" = "mongodb://mongo/sharelatex";
       "OVERLEAF_REDIS_HOST" = "redis";
       "REDIS_HOST" = "redis";
-      "SANDBOXED_COMPILES" = "true";
-      "SANDBOXED_COMPILES_HOST_DIR_COMPILES" = "/home/user/sharelatex_data/data/compiles";
-      "SANDBOXED_COMPILES_HOST_DIR_OUTPUT" = "/home/user/sharelatex_data/data/output";
-      "SANDBOXED_COMPILES_SIBLING_CONTAINERS" = "true";
+      # "SANDBOXED_COMPILES" = "true";
+      # "SANDBOXED_COMPILES_HOST_DIR_COMPILES" = "/home/user/sharelatex_data/data/compiles";
+      # "SANDBOXED_COMPILES_HOST_DIR_OUTPUT" = "/home/user/sharelatex_data/data/output";
+      # "SANDBOXED_COMPILES_SIBLING_CONTAINERS" = "true";
     };
     volumes = [
       "/home/mateusp/sharelatex_data:/var/lib/overleaf:rw"
+      "/var/run/docker.sock:/var/run/docker.sock"
     ];
     ports = [
       "4465:80/tcp"
