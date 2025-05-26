@@ -29,6 +29,7 @@
     ../../modules/webserver.nix
     ../../modules/ollama.nix
     ../../modules/docker-containers/firefly-iii.nix
+    ../../modules/docker-containers/overleaf.nix
   ];
 
   # TEMPORARY THESIS STUFFS
@@ -41,6 +42,22 @@
       reverse_proxy localhost:8000
     '';
   };
+
+  
+  systemd.services.devenv-up-thesis-project = {
+    description = "Run devenv up on myproject";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      User = "mateusp";
+      WorkingDirectory = "/home/mateusp/Documents/Dev/thesis-project";
+      ExecStart = "/run/current-system/sw/bin/bash -l -c 'devenv up --detach'";      
+    };
+  };
+
 
   # Bootloader.
   boot.loader.grub.enable = true;
