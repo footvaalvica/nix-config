@@ -144,7 +144,7 @@
     papirus-icon-theme
     vorta
     reptyr
-    texlive
+    texlive.combined.scheme-full
     pciutils
     mattermost-desktop
     dracula-theme
