@@ -93,7 +93,7 @@
     ];
   };
   virtualisation.oci-containers.containers."sharelatex" = {
-    image = "sharelatex/sharelatex";
+    image = "sharelatex/sharelatex:v1-texlive-full";
     environment = {
       # "DOCKER_RUNNER" = "true";
       "EMAIL_CONFIRMATION_DISABLED" = "true";
