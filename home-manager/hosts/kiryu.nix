@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -14,6 +15,9 @@
     # ./nvim.nix
     ../../modules/home-manager/default.nix
   ];
+
+  home.username = lib.mkForce "deck";
+  home.homeDirectory = lib.mkForce "/home/deck";
 
   targets.genericLinux.enable = true;
 
