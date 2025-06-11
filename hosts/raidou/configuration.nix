@@ -84,13 +84,13 @@
   ########################### JAPANESE 
  
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       source-han-sans
       source-han-sans-japanese
       source-han-serif-japanese
       corefonts
       vistafonts
-    ];
+    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     fontconfig.defaultFonts = {
       serif = [ "Source Han Serif" ];
       sansSerif = [ "Source Han Sans" ];
@@ -152,7 +152,6 @@
     ntfs3g
     zoom-us
     google-chrome
-    nerdfonts
     remmina
     discord
     libreoffice-qt6-fresh

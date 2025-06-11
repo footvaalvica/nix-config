@@ -89,7 +89,7 @@
     tmux
     curl
     gh
-    filelight
+    kdePackages.filelight
     borgbackup
     fastfetch
   ];
