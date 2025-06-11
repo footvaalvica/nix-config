@@ -9,7 +9,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
+    
     # Website
     website = {
       url = "github:footvaalvica/footvaalvica.com/gh-pages";
