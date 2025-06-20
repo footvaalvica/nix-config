@@ -128,7 +128,7 @@
           ./home-manager/hosts/omi.nix
         ];
       };
-      "deck@kiryu" = home-manager.lib.homeManagerConfiguration {
+      "mateusp@kiryu" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
