@@ -16,6 +16,9 @@
     ../../modules/home-manager/default.nix
   ];
 
+  home.username = lib.mkForce "deck";
+  home.homeDirectory = lib.mkForce "/home/deck";
+
   targets.genericLinux.enable = true;
 
   # programs.fish.interactiveShellInit = "source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish";
