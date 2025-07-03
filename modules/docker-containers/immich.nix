@@ -5,7 +5,7 @@
   secrets,
   ...
 }: let
-  immichVersion = "v1.133.0";
+  immichVersion = "v1.135.3";
 in {
   # Create a variable for the current immich version
   # Caddy config for Immich
