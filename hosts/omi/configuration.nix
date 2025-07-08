@@ -60,7 +60,7 @@
     };
     # Add OnFailure to log a specific message or trigger a script
     # For simplicity, we'll log a message. A more complex action could be a script.
-    OnFailure = [ "systemd-cat -p err echo FSRS Optimizer Service FAILED" ];
+    onFailure = [ "systemd-cat -p err echo FSRS Optimizer Service FAILED" ];
     wantedBy = [ "default.target" ];
     partOf = [ "default.target" ];
   };
