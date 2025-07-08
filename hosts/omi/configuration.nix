@@ -47,12 +47,12 @@
     description = "FSRS Parameter Optimizer Service";
     script = ''
       echo "Starting FSRS optimization script scheduled by systemd timer..."
-      ${config.languages.python.package}/bin/python backend/scripts/optimize_fsrs.py --scope global
+      ${pkgs.python3}/bin/python backend/scripts/optimize_fsrs.py --scope global
       echo "FSRS optimization script finished."
     '';
     serviceConfig = {
       Type = "oneshot";
-      WorkingDirectory = config.devenv.root;
+      WorkingDirectory = "/home/mateusp/Documents/Dev/thesis-project";
       # Log to journal on failure
       ExecStartPost = ''
         -/bin/sh -c 'echo "FSRS Optimizer service completed successfully."'
@@ -60,10 +60,19 @@
     };
     # Add OnFailure to log a specific message or trigger a script
     # For simplicity, we'll log a message. A more complex action could be a script.
-    onFailure = [ "systemd-cat -p err echo FSRS Optimizer Service FAILED" ];
+    onFailure = [ "fsrs-optimizer-failure-handler.service" ];
     wantedBy = [ "default.target" ];
     partOf = [ "default.target" ];
   };
+
+  systemd.services.fsrs-optimizer-failure-handler = {
+    description = "Handle FSRS Optimizer Failure";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemd-cat -p err echo 'FSRS Optimizer Service FAILED'";
+    };
+  };
+
 
   systemd.timers.fsrs-optimizer-weekly = {
     description = "Weekly FSRS Parameter Optimizer Timer";
