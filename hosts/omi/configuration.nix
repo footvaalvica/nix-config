@@ -42,6 +42,40 @@
       reverse_proxy localhost:8000
     '';
   };
+  
+  systemd.services.fsrs-optimizer = {
+    description = "FSRS Parameter Optimizer Service";
+    script = ''
+      echo "Starting FSRS optimization script scheduled by systemd timer..."
+      ${config.languages.python.package}/bin/python backend/scripts/optimize_fsrs.py --scope global
+      echo "FSRS optimization script finished."
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      WorkingDirectory = config.devenv.root;
+      # Log to journal on failure
+      ExecStartPost = ''
+        -/bin/sh -c 'echo "FSRS Optimizer service completed successfully."'
+      '';
+    };
+    # Add OnFailure to log a specific message or trigger a script
+    # For simplicity, we'll log a message. A more complex action could be a script.
+    OnFailure = [ "systemd-cat -p err echo FSRS Optimizer Service FAILED" ];
+    wantedBy = [ "default.target" ];
+    partOf = [ "default.target" ];
+  };
+
+  systemd.timers.fsrs-optimizer-weekly = {
+    description = "Weekly FSRS Parameter Optimizer Timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "Sun 03:00:00";
+      Unit = "fsrs-optimizer.service";
+      Persistent = true;
+    };
+    partOf = [ "default.target" ];
+  };
+
 
   # Bootloader.
   boot.loader.grub.enable = true;
