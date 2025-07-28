@@ -81,6 +81,9 @@
     };
   };
 
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   ########################### JAPANESE 
  
   fonts = {
@@ -164,6 +167,7 @@
     discord
     libreoffice-qt6-fresh
     hunspell
+    steam-run
     hunspellDicts.pt_PT
     hunspellDicts.en_US
     rustdesk-flutter

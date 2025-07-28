@@ -9,9 +9,15 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    }
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
   };
 
   services.xserver.videoDrivers = [ "amdgpu" ];
