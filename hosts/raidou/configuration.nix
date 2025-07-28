@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
     ../../profiles/default.nix
     ../../profiles/desktop.nix
-    ../../profiles/nvidia.nix
+    ../../profiles/amd.nix
   ];
 
   # Enable docker for AGISIT
