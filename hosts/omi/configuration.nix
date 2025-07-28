@@ -23,11 +23,7 @@
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
-    ../../modules/docker-containers/sillytavern.nix
-    ../../modules/docker-containers/authelia.nix
-    ../../modules/docker-containers/memos.nix
     ../../modules/webserver.nix
-    ../../modules/ollama.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
   ];
