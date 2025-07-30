@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
     ../../profiles/default.nix
     ../../profiles/desktop.nix
-    ../../profiles/nvidia.nix
+    ../../profiles/amd.nix
   ];
 
   # Enable docker for AGISIT
@@ -80,6 +80,9 @@
       capSysNice = true;
     };
   };
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   ########################### JAPANESE 
  
@@ -164,6 +167,7 @@
     discord
     libreoffice-qt6-fresh
     hunspell
+    steam-run
     hunspellDicts.pt_PT
     hunspellDicts.en_US
     rustdesk-flutter
