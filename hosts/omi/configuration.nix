@@ -65,6 +65,7 @@
   environment.systemPackages = with pkgs; [
     gh
     git
+    unstable.claude-code
     wireguard-tools
     cifs-utils
     sshfs
