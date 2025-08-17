@@ -68,6 +68,7 @@
     wireguard-tools
     cifs-utils
     sshfs
+    unstable.claude-code
   ];
 
   # Firewall
