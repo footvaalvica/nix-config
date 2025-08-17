@@ -140,16 +140,6 @@
       };
     };
 
-    git = {
-      enable = true;
-      userName  = "Mateus Pinho";
-      userEmail = "mateusleitepinho@gmail.com";
-      extraConfig.pull.rebase = true;
-      lfs.enable = true;
-    };
-    
-    gitui.enable = true;
-
     fish.enable = true; # see note on other shells below
   };
 
