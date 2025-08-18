@@ -16,12 +16,9 @@
   services.cachefilesd = {
     enable = true;
     extraConfig = ''
-      brun 70%
-      bcull 60%
-      bstop 50%
-      frun 70%
-      fcull 60%
-      fstop 50%
+      brun 10%
+      bcull 7%
+      bstop 3%
     '';
   };
   fileSystems."/mnt/nextcloud" = {
