@@ -15,5 +15,10 @@
     ../../modules/home-manager/default.nix
   ];
 
+  home.sessionVariables = {
+    # moon deck buddy bullshit
+    NO_GUI = "1";
+  };
+
   targets.genericLinux.enable = true;
 }
