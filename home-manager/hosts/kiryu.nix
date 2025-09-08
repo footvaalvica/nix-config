@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  self,
   ...
 }: {
   imports = [
@@ -29,17 +30,18 @@
     '';
   };
 
-  programs.topgrade = { 
+
+  programs.topgrade = {
     enable = true;
     settings = {
       misc.disable = [
-       "system" 
-       "nix"
+        "system"
+        "nix"
       ];
-      git.repos = [ "/home/deck/nix-config" ];
+      git.repos = [ "${self.sourceInfo.path}" ];
       linux.home_manager_arguments = [
         "--flake"
-        "/home/deck/nix-config/#deck@kiryu"
+        "${self.sourceInfo.path}#${config.home.username}@kiryu"
       ];
     };
   };

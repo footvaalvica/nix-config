@@ -111,7 +111,7 @@
       };
       "deck@kiryu" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./home-manager/hosts/kiryu.nix
         ];
