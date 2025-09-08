@@ -30,7 +30,6 @@
     '';
   };
 
-
   programs.topgrade = {
     enable = true;
     settings = {
@@ -38,10 +37,10 @@
         "system"
         "nix"
       ];
-      git.repos = [ "${self.sourceInfo.path}" ];
+      git.repos = [ "${config.home.homeDirectory}/nix-config" ];
       linux.home_manager_arguments = [
         "--flake"
-        "${self.sourceInfo.path}#${config.home.username}@kiryu"
+        "${config.home.homeDirectory}/nix-config/#${config.home.username}@kiryu"
       ];
     };
   };
