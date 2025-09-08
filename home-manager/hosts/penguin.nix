@@ -15,9 +15,7 @@
     ../../modules/home-manager/default.nix
   ];
 
-  home.packages = with pkgs; [
-    topgrade
-  ];
+  programs.topgrade.enable = true;
 
   targets.genericLinux.enable = true;
 

@@ -21,6 +21,29 @@
 
   targets.genericLinux.enable = true;
 
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host *
+        User mateusp
+    '';
+  };
+
+  programs.topgrade = { 
+    enable = true;
+    settings = {
+      misc.disable = [
+       "system" 
+       "nix"
+      ];
+      git.repos = [ "/home/deck/nix-config" ];
+      linux.home_manager_arguments = [
+        "--flake"
+        "/home/deck/nix-config/#deck@kiryu"
+      ];
+    };
+  };
+
   # programs.fish.interactiveShellInit = "source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish";
 
 }
