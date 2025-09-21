@@ -25,7 +25,7 @@
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      Host *
+      Host omi raidou
         User mateusp
     '';
   };
