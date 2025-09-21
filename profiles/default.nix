@@ -8,7 +8,6 @@
   ...
 }: {
   imports = [
-    ./vscode-server.nix
     ./tailscale.nix
   ];
 
