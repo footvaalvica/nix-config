@@ -19,7 +19,7 @@
     ../../profiles/syncthing-server.nix
     ../../profiles/default.nix
     ../../profiles/desktop.nix
-    ../../profiles/coder-server.nix
+    ../../profiles/vscode-server.nix
     ../../modules/docker-containers/mealie.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
