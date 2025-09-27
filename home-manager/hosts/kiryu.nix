@@ -19,7 +19,8 @@
 
   home.username = lib.mkForce "deck";
   home.homeDirectory = lib.mkForce "/home/deck";
-
+  home.sessionPath = [ "/opt/tailscale" ];
+ 	
   targets.genericLinux.enable = true;
 
   programs.ssh = {
