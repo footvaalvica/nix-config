@@ -79,22 +79,18 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     
   environment.systemPackages = with pkgs; [
-    distrobox
-    vscode-fhs
     wget
     git
     inputs.home-manager.packages.${pkgs.system}.default
     htop
     tmux
     curl
-    gh
     kdePackages.filelight
     borgbackup
     fastfetch
   ];
 
   programs.fish.enable = true;
-  programs.nix-ld.enable = true;
 
   # Enable SSH server
   services.openssh = {

@@ -9,9 +9,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/default.nix
+    ../../profiles/server.nix
     ../../profiles/desktop.nix
-    ../../profiles/amd.nix
+    ./amd.nix
   ];
 
   # Enable docker for AGISIT

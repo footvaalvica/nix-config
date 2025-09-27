@@ -16,7 +16,6 @@
   ];
 
   programs.topgrade.enable = true;
-
   targets.genericLinux.enable = true;
 
 }

@@ -17,4 +17,11 @@
 
     wantedBy = ["multi-user.target"];
   };
+
+  programs.nix-ld.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    vscode-fhs
+    gh
+  ];
 }

@@ -14,13 +14,10 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./network-filesystems.nix
-    ./healthchecks.nix
-    ./update-duck-dns.nix
-    ../../profiles/syncthing-server.nix
-    ../../profiles/default.nix
+    ../../profiles/server.nix
     ../../profiles/desktop.nix
-    ../../profiles/vscode-server.nix
-    ../../modules/docker-containers/mealie.nix
+    ../../modules/vscode-server.nix
+    ../../modules/healthchecks.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
