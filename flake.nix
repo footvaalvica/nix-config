@@ -6,6 +6,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # Use `github:nix-darwin/nix-darwin/nix-darwin-25.05` to use Nixpkgs 25.05.
+    nix-darwin.url = "github:nix-darwin/nix-darwin-25.05";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +32,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-darwin,
     nur,
     website,
     deploy-rs,
@@ -89,6 +94,14 @@
           };
         };
       };
+    };
+
+    darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [ 
+        ./hosts/sonic.nix 
+        home-manager.darwinModules.home-manager
+      ];
     };
 
     checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
