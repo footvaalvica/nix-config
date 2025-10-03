@@ -19,6 +19,17 @@
       url = "github:footvaalvica/footvaalvica.com/gh-pages";
       flake = false;
     };
+  
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
@@ -33,6 +44,9 @@
     nixpkgs,
     home-manager,
     nix-darwin,
+    nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
     nur,
     website,
     deploy-rs,
@@ -51,8 +65,7 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-  in {
-    # Your custom packages
+  in {    # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     # Formatter for your nix files, available through 'nix fmt'
@@ -98,9 +111,10 @@
 
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = {inherit inputs outputs secrets;};
+      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core;};
       modules = [ 
-        ./hosts/sonic.nix 
+        ./hosts/sonic/sonic.nix
+        nix-homebrew.darwinModules.nix-homebrew
         home-manager.darwinModules.home-manager
       ];
     };
