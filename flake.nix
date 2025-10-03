@@ -7,7 +7,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Use `github:nix-darwin/nix-darwin/nix-darwin-25.05` to use Nixpkgs 25.05.
-    nix-darwin.url = "github:nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home manager
@@ -98,6 +98,7 @@
 
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+      specialArgs = {inherit inputs outputs secrets;};
       modules = [ 
         ./hosts/sonic.nix 
         home-manager.darwinModules.home-manager
