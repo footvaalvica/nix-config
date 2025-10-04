@@ -60,21 +60,31 @@
   homebrew = {
     enable = true;
     taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "mas"
+    ];
     casks = [
      "discord"
      "firefox"
      "visual-studio-code"
      "ghostty"
      "google-chrome"
-     "nordvpn"
      "altserver"
      "obsidian"
      "transmission"
      "reaper"
-    ];  
+    ];
+    global.autoUpdate = true;
+    masApps = { 
+      Bitwarden = 1352778147;
+      GarageBand = 682658836;
+      NordVPN = 905953485;
+     };
+    onActivation.cleanup = "zap";
   };
   
   nix.enable = false;
 
   system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
+  system.defaults.dock.show-recents = false;
 }
