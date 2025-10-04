@@ -21,8 +21,8 @@
 
   services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
-  direnv = {
-    enable = lib.MkForce false;
-    nix-direnv.enable = lib.MkForce false;
+  programs.direnv = {
+    enable = lib.mkForce false;
+    nix-direnv.enable = lib.mkForce false;
   };
 }

@@ -12,8 +12,13 @@
   home-manager = {
     users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
   };	
- 
-  users.users.mateusp.home = "/Users/mateusp";
+  
+  users.knownUsers = [ "mateusp" ];
+  users.users.mateusp = {
+    home = "/Users/mateusp";
+    shell = pkgs.fish;
+    uid = 501;
+  };
   
   system.stateVersion = 6;
   system.primaryUser = "mateusp";
