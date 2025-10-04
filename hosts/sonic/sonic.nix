@@ -9,15 +9,21 @@
   homebrew-cask,
   ...
 }: {
-  imports = [
-    ../../home-manager/hosts/sonic.nix  
-  ];
-
+  home-manager = {
+    users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
+  };	
+ 
+  users.users.mateusp.home = "/Users/mateusp";
+  
   system.stateVersion = 6;
   system.primaryUser = "mateusp";
 
   programs = {
     fish.enable = true;  # default shell on catalina
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   nix-homebrew = {
@@ -49,8 +55,10 @@
      "discord"
      "firefox"
      "visual-studio-code"
+     "ghostty"
+     "google-chrome"
     ];  
- };
-
+  };
+  
   nix.enable = false;
 }

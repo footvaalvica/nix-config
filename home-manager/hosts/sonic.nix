@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  lib,
+  self,
   ...
 }: {
   imports = [
@@ -15,9 +17,12 @@
     ../../modules/home-manager/default.nix
   ];
 
-  home.packages = with pkgs; [
-    topgrade
-  ];
+  home.homeDirectory = lib.mkForce "/Users/mateusp";
 
-  targets.genericLinux.enable = true;
+  services.home-manager.autoUpgrade.enable = lib.mkForce false;
+
+  direnv = {
+    enable = lib.MkForce false;
+    nix-direnv.enable = lib.MkForce false;
+  };
 }
