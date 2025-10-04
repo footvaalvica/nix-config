@@ -16,7 +16,6 @@
     ./network-filesystems.nix
     ../../profiles/server.nix
     ../../profiles/desktop.nix
-    ../../modules/vscode-server.nix
     ../../modules/healthchecks.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
