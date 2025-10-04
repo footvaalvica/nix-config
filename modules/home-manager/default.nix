@@ -193,6 +193,11 @@
 
   systemd.user.startServices = "sd-switch";
 
+  programs.git = { 
+    enable = true;
+    lfs.enable = true;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
