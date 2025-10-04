@@ -12,6 +12,8 @@
   home-manager = {
     users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
   };	
+
+  networking.hostName = "sonic";
   
   users.knownUsers = [ "mateusp" ];
   users.users.mateusp = {
@@ -19,6 +21,8 @@
     shell = pkgs.fish;
     uid = 501;
   };
+
+  services.tailscale.enable = true;
   
   system.stateVersion = 6;
   system.primaryUser = "mateusp";
@@ -62,8 +66,12 @@
      "visual-studio-code"
      "ghostty"
      "google-chrome"
+     "nordvpn"
+     "altserver"
     ];  
   };
   
   nix.enable = false;
+
+  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
 }
