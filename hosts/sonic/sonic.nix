@@ -24,9 +24,7 @@
 
   services.tailscale.enable = true;
   
-  system.stateVersion = 6;
-  system.primaryUser = "mateusp";
-
+  
   programs = {
     fish.enable = true;  # default shell on catalina
     direnv = {
@@ -73,6 +71,7 @@
      "obsidian"
      "transmission"
      "reaper"
+     "grandperspective"
     ];
     global.autoUpdate = true;
     masApps = { 
@@ -85,6 +84,21 @@
   
   nix.enable = false;
 
-  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
-  system.defaults.dock.show-recents = false;
+  system = {
+    stateVersion = 6;
+    primaryUser = "mateusp";
+    defaults = {
+      NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
+      dock.show-recents = false;
+      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+      NSGlobalDomain."com.apple.swipescrolldirection" = false;
+      NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      NSGlobalDomain.AppleShowAllFiles = true;
+      NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+      controlcenter.BatteryShowPercentage = true;
+      finder.AppleShowAllExtensions = true;
+      finder.AppleShowAllFiles = true;
+    };
+  };
 }
