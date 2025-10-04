@@ -68,6 +68,9 @@
      "google-chrome"
      "nordvpn"
      "altserver"
+     "obsidian"
+     "transmission"
+     "reaper"
     ];  
   };
   
