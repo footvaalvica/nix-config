@@ -39,9 +39,11 @@
       # For Tailscale connections (assuming Tailscale uses 100.x.x.x)
       Match Address 100.0.0.0/8
         PasswordAuthentication yes
+        KbdInteractiveAuthentication yes
 
       Match all
         PasswordAuthentication no
+        KbdInteractiveAuthentication no
         PubkeyAuthentication yes
     '';
   };
