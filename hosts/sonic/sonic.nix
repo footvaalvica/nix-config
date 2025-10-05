@@ -65,7 +65,6 @@
      "discord"
      "firefox"
      "visual-studio-code"
-     "ghostty"
      "google-chrome"
      "altserver"
      "obsidian"
