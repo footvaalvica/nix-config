@@ -48,6 +48,9 @@
     extraGroups = ["networkmanager" "wheel" "docker" "ydotool"];
     packages = with pkgs; [];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzd+9n5/Y34hs5Q5+mSEAW9jCLOr7zQw/AMZwW68jBB mateusp@omi"
+    ];
   };
 
   users.users.borg = {
