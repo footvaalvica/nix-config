@@ -73,6 +73,7 @@
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
       "utm"
+      "vorta"
     ];
     global.autoUpdate = true;
     masApps = {

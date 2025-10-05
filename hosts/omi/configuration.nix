@@ -108,6 +108,22 @@
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 
+  # mount local drive for borg backup
+  fileSystems."/mnt/borg" = {
+    device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
+    fsType = "ext4";
+    options = ["defaults" "x-systemd.automount" "noauto" "user" "rw"];
+  };
+
+  services.borgbackup = {
+    repos."musicbackup" = {
+      path = "/mnt/borg/musicbackup";
+      authorizedKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
+      ];
+    };
+  };
+  
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -33,14 +33,6 @@
     options = ["username=${secrets.smb.username}" "password=${secrets.smb.password}" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" "x-systemd.device-timeout=5s" "x-systemd.mount-timeout=5s" "rw" "mfsymlinks" "seal" "uid=1000" "gid=100" "file_mode=0777" "dir_mode=0777"];
   };
 
-
-  # mount local drive for borg backup
-  fileSystems."/mnt/borg" = {
-    device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
-    fsType = "ext4";
-    options = ["defaults" "x-systemd.automount" "noauto" "user" "rw"];
-  };
-
   # Backups in StorageBox
   fileSystems."/mnt/nextcloud_backup" = {
     device = "//${secrets.hetzner.username}.your-storagebox.de/backup/NextCloudBackup";
