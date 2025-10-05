@@ -101,10 +101,6 @@
           format = "[$user]($style) on ";
           style_user = "bold #bd93f9";
         };
-        character = {
-          success_symbol = "[λ](bold #f8f8f2)";
-          error_symbol = "[λ](bold #ff5555)";
-        };
         aws.symbol = "  ";
         buf.symbol = " ";
         c.symbol = " ";

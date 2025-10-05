@@ -71,6 +71,7 @@
       "reaper"
       "grandperspective"
       "font-sf-mono-nerd-font-ligaturized"
+      "moonlight"
     ];
     global.autoUpdate = true;
     masApps = {
