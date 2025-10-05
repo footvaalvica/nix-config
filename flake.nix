@@ -12,6 +12,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Home manager
+    home-manager-2505 = "github:nix-community/home-manager/release-25.05";
+    home-manager-2505.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
     
@@ -44,6 +46,7 @@
     self,
     nixpkgs,
     home-manager,
+    home-manager-2505,
     nix-darwin,
     nix-homebrew,
     homebrew-core,
@@ -89,7 +92,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager.nixosModules.home-manager
+          home-manager-2505.nixosModules.home-manager
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix

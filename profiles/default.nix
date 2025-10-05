@@ -73,7 +73,6 @@
   environment.systemPackages = with pkgs; [
     wget
     git
-    inputs.home-manager.packages.${pkgs.system}.default
     htop
     tmux
     curl
