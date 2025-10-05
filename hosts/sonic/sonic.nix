@@ -78,6 +78,7 @@
       GarageBand = 682658836;
       NordVPN = 905953485;
       LookAway = 6747192301;
+      Mattermost = 1614666244;
     };
     onActivation.cleanup = "zap";
   };
