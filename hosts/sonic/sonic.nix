@@ -72,6 +72,7 @@
       "grandperspective"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
+      "utm"
     ];
     global.autoUpdate = true;
     masApps = {
@@ -93,7 +94,6 @@
       NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
       dock.show-recents = false;
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
-      NSGlobalDomain."com.apple.swipescrolldirection" = false;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
       NSGlobalDomain.AppleShowAllExtensions = true;
       NSGlobalDomain.AppleShowAllFiles = true;

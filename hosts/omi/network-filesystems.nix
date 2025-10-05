@@ -4,13 +4,6 @@
   secrets,
   ...
 }: {
-  # MOVE INTO BORG.NIX
-  users.users.borg = {
-    isNormalUser = true;
-    home = "/home/borg";
-    description = "Alice Foobar";
-    extraGroups = ["wheel" "networkmanager"];
-  };
 
   # mount network drive as local drive for backups, and cache it as well
   services.cachefilesd = {
@@ -40,11 +33,12 @@
     options = ["username=${secrets.smb.username}" "password=${secrets.smb.password}" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" "x-systemd.device-timeout=5s" "x-systemd.mount-timeout=5s" "rw" "mfsymlinks" "seal" "uid=1000" "gid=100" "file_mode=0777" "dir_mode=0777"];
   };
 
-  # mount network drive as local drive for backups
+
+  # mount local drive for borg backup
   fileSystems."/mnt/borg" = {
-    device = "//192.168.1.250/Mateus/Borg/";
-    fsType = "cifs";
-    options = ["username=${secrets.smb.username}" "password=${secrets.smb.password}" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" "x-systemd.device-timeout=5s" "x-systemd.mount-timeout=5s" "rw" "mfsymlinks" "seal" "uid=1001" "gid=100" "file_mode=0777" "dir_mode=0777"];
+    device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
+    fsType = "ext4";
+    options = ["defaults" "x-systemd.automount" "noauto" "user" "rw"];
   };
 
   # Backups in StorageBox
