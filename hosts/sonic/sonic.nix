@@ -14,6 +14,12 @@
   };	
 
   networking.hostName = "sonic";
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.mononoki
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.fira-code
+  ];
   
   users.knownUsers = [ "mateusp" ];
   users.users.mateusp = {
