@@ -50,6 +50,17 @@
     shell = pkgs.fish;
   };
 
+  users.users.borg = {
+    isSystemUser = true;
+    description = "Borg Backup User";
+    group = "borg";
+    home = "/var/lib/borg";
+    createHome = true;
+    shell = pkgs.bash;
+  };
+
+  users.groups.borg = {};
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -112,8 +123,14 @@
   fileSystems."/mnt/borg" = {
     device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
     fsType = "ext4";
-    options = ["defaults" "x-systemd.automount" "noauto" "user" "rw"];
+    options = ["defaults" "x-systemd.automount" "noauto" "users" "rw"];
   };
+
+  # Ensure borg backup directory has correct ownership
+  systemd.tmpfiles.rules = [
+    "d /mnt/borg 0755 root root -"
+    "d /mnt/borg/musicbackup 0750 borg borg -"
+  ];
 
   services.borgbackup = {
     repos."musicbackup" = {
@@ -121,6 +138,7 @@
       authorizedKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
       ];
+      user = "borg";
     };
   };
   
