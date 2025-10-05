@@ -22,6 +22,9 @@
     borgbackup
   ];
 
+  # Fail2Ban
+  services.fail2ban.enable = true;
+
   # Enable SSH server
   services.openssh = {
     enable = true;

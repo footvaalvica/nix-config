@@ -81,7 +81,7 @@
     # # nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
+    homeManagerModules = import ./home-manager/modules;
 
     nixosConfigurations = {
       omi = nixpkgs.lib.nixosSystem {
@@ -89,6 +89,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
+          home-manager.nixosModules.home-manager
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
@@ -131,25 +132,11 @@
           ./home-manager/hosts/raidou.nix
         ];
       };
-      "mateusp@omi" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/hosts/omi.nix
-        ];
-      };
       "deck@kiryu" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./home-manager/hosts/kiryu.nix
-        ];
-      };
-      "mateusp@penguin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/hosts/penguin.nix
         ];
       };
       "mateusp@joker" = home-manager.lib.homeManagerConfiguration {

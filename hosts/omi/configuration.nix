@@ -26,16 +26,9 @@
     ../../modules/docker-containers/overleaf.nix
   ];
 
-  # TEMPORARY THESIS STUFFS
-  services.caddy = {
-    enable = true;
-    virtualHosts."thesis.footvaalvica.com".extraConfig = ''
-      reverse_proxy localhost:6565
-    '';
-    virtualHosts."backend-thesis.footvaalvica.com".extraConfig = ''
-      reverse_proxy localhost:8000
-    '';
-  };
+  home-manager = {
+    users.mateusp.imports = [ ../../home-manager/hosts/omi.nix ];
+  };	
   
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -44,7 +37,6 @@
 
   # Enable zram.
   zramSwap.enable = true;
-
   networking.hostName = "omi"; # Define your hostname.
 
   # Enable firefox
@@ -61,7 +53,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gh
     git
     unstable.claude-code
     wireguard-tools
@@ -75,29 +66,26 @@
     allowedUDPPorts = [443 3478 22000 21027];
   };
 
-  # Fail2Ban
-  services.fail2ban.enable = true;
+  # # programs.ydotool.enable = true;
+  # # systemd.services.press-unknown = {
+  # #   description = "Press UNKNOWN key every minute";
+  # #   after = ["ydotoold.service"]; # Ensure ydotoold is running
+  # #   wants = ["ydotoold.service"];
+  # #   serviceConfig = {
+  # #     Type = "oneshot";
+  # #     ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
+  # #     User = "mateusp"; # Change this if needed
+  # #   };
+  # # };
 
-  programs.ydotool.enable = true;
-  systemd.services.press-unknown = {
-    description = "Press UNKNOWN key every minute";
-    after = ["ydotoold.service"]; # Ensure ydotoold is running
-    wants = ["ydotoold.service"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
-      User = "mateusp"; # Change this if needed
-    };
-  };
-
-  systemd.timers.press-unknown = {
-    description = "Timer for UNKNOWN keypress";
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*:0/1"; # Every minute
-      Persistent = true;
-    };
-  };
+  # # systemd.timers.press-unknown = {
+  # #   description = "Timer for UNKNOWN keypress";
+  # #   wantedBy = ["timers.target"];
+  # #   timerConfig = {
+  # #     OnCalendar = "*:0/1"; # Every minute
+  # #     Persistent = true;
+  # #   };
+  # # };
 
   services.prometheus.exporters.node = {
     enable = true;
