@@ -23,25 +23,29 @@
   boot.loader.grub.useOSProber = true;
 
   networking = {
-    hostName = "raidou"; # Define your hostname.    
+    hostName = "raidou"; # Define your hostname.
     firewall.enable = lib.mkForce false;
     interfaces.enp4s0 = {
       ipv4 = {
-        addresses = [{
-          address = "193.136.164.196";
-          prefixLength = 27;
-        }];
+        addresses = [
+          {
+            address = "193.136.164.196";
+            prefixLength = 27;
+          }
+        ];
       };
       ipv6 = {
-        addresses = [{
-          address = "2001:690:2100:82::196";
-          prefixLength = 64;
-        }];
+        addresses = [
+          {
+            address = "2001:690:2100:82::196";
+            prefixLength = 64;
+          }
+        ];
       };
     };
     defaultGateway = "193.136.164.222";
-    nameservers = [ "193.136.164.1" "193.136.164.2" ];
-  };  
+    nameservers = ["193.136.164.1" "193.136.164.2"];
+  };
 
   security.pam.sshAgentAuth.enable = true;
   programs.ssh.startAgent = true;
@@ -84,19 +88,21 @@
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
-  ########################### JAPANESE 
- 
+  ########################### JAPANESE
+
   fonts = {
-    packages = with pkgs; [
-      source-han-sans
-      source-han-sans-japanese
-      source-han-serif-japanese
-      corefonts
-      vistafonts
-    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    packages = with pkgs;
+      [
+        source-han-sans
+        source-han-sans-japanese
+        source-han-serif-japanese
+        corefonts
+        vistafonts
+      ]
+      ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     fontconfig.defaultFonts = {
-      serif = [ "Source Han Serif" ];
-      sansSerif = [ "Source Han Sans" ];
+      serif = ["Source Han Serif"];
+      sansSerif = ["Source Han Sans"];
     };
   };
 
@@ -115,22 +121,21 @@
   };
 
   environment.sessionVariables = rec {
-    NIX_PROFILES =
-        "${lib.concatStringsSep " " (lib.reverseList config.environment.profiles)}";
+    NIX_PROFILES = "${lib.concatStringsSep " " (lib.reverseList config.environment.profiles)}";
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
   };
-  environment.variables.QT_PLUGIN_PATH = [ "${pkgs.fcitx5-with-addons}/${pkgs.qt6.qtbase.qtPluginPrefix}" ];
+  environment.variables.QT_PLUGIN_PATH = ["${pkgs.fcitx5-with-addons}/${pkgs.qt6.qtbase.qtPluginPrefix}"];
 
   ########################### END JAPANESE
   programs.firefox = {
-    package = (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {});
+    package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
     enable = true;
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
-  };  
+  };
   services.pipewire.enable = true;
   xdg.portal = {
     enable = true;

@@ -19,8 +19,8 @@
 
   home.username = lib.mkForce "deck";
   home.homeDirectory = lib.mkForce "/home/deck";
-  home.sessionPath = [ "/opt/tailscale" ];
- 	
+  home.sessionPath = ["/opt/tailscale"];
+
   targets.genericLinux.enable = true;
 
   programs.ssh = {
@@ -38,7 +38,7 @@
         "system"
         "nix"
       ];
-      git.repos = [ "${config.home.homeDirectory}/nix-config" ];
+      git.repos = ["${config.home.homeDirectory}/nix-config"];
       linux.home_manager_arguments = [
         "--flake"
         "${config.home.homeDirectory}/nix-config/#${config.home.username}@kiryu"

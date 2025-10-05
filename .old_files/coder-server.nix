@@ -14,18 +14,17 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["coder.footvaalvica.com" "code.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["coder.footvaalvica.com" "code.footvaalvica.com"];
 
-  services.coder = { 
+  services.coder = {
     enable = true;
     accessUrl = "https://coder.footvaalvica.com";
     listenAddress = "0.0.0.0:3000";
   };
 
   users.users.coder = {
-    extraGroups = [ "docker" ];
+    extraGroups = ["docker"];
   };
-
 
   services.code-server = {
     enable = true;

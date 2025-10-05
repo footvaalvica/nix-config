@@ -6,7 +6,7 @@
 }: {
   # AMD
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = ["amdgpu"];
 
   # Enable OpenGL
   hardware = {
@@ -20,8 +20,8 @@
     };
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  
+  services.xserver.videoDrivers = ["amdgpu"];
+
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
@@ -29,12 +29,12 @@
   hardware.graphics.extraPackages = with pkgs; [
     amdvlk
   ];
-  # For 32 bit applications 
+  # For 32 bit applications
   hardware.graphics.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
   ];
-  
-  environment.systemPackages = with pkgs; [ lact ];
-  systemd.packages = with pkgs; [ lact ];
+
+  environment.systemPackages = with pkgs; [lact];
+  systemd.packages = with pkgs; [lact];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 }

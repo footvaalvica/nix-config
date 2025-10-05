@@ -21,7 +21,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["cloud.footvaalvica.com" "collabora.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["cloud.footvaalvica.com" "collabora.footvaalvica.com"];
 
   # Runtime
   virtualisation.docker = {

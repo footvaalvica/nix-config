@@ -27,9 +27,9 @@
   ];
 
   home-manager = {
-    users.mateusp.imports = [ ../../home-manager/hosts/omi.nix ];
-  };	
-  
+    users.mateusp.imports = [../../home-manager/hosts/omi.nix];
+  };
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -104,7 +104,7 @@
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
-    domains = [ "omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com" ];
+    domains = ["omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com"];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 

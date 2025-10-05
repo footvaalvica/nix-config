@@ -107,7 +107,6 @@ in {
     ];
     log-driver = "journald";
     extraOptions = [
-
       "--network-alias=database"
       "--network=immich_default"
     ];

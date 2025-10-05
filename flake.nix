@@ -16,13 +16,13 @@
     home-manager-2505.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    
+
     # Website
     website = {
       url = "github:footvaalvica/footvaalvica.com/gh-pages";
       flake = false;
     };
-  
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     homebrew-core = {
@@ -69,7 +69,8 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-  in {    # Your custom packages
+  in {
+    # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     # Formatter for your nix files, available through 'nix fmt'
@@ -103,7 +104,7 @@
     deploy = {
       nodes = {
         omi = {
-          hostname = "omi.footvaalvica.com";  
+          hostname = "omi.footvaalvica.com";
           profiles.system = {
             user = "root";
             sshUser = "root";
@@ -117,7 +118,7 @@
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core;};
-      modules = [ 
+      modules = [
         ./hosts/sonic/sonic.nix
         nix-homebrew.darwinModules.nix-homebrew
         home-manager.darwinModules.home-manager

@@ -10,18 +10,12 @@
   ...
 }: {
   home-manager = {
-    users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
-  };	
+    users.mateusp.imports = [../../home-manager/hosts/sonic.nix];
+  };
 
   networking.hostName = "sonic";
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.mononoki
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.fira-code
-  ];
-  
-  users.knownUsers = [ "mateusp" ];
+  users.knownUsers = ["mateusp"];
   users.users.mateusp = {
     home = "/Users/mateusp";
     shell = pkgs.fish;
@@ -29,10 +23,9 @@
   };
 
   services.tailscale.enable = true;
-  
-  
+
   programs = {
-    fish.enable = true;  # default shell on catalina
+    fish.enable = true; # default shell on catalina
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -59,8 +52,8 @@
     #
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
     mutableTaps = false;
-  };  
-  
+  };
+
   homebrew = {
     enable = true;
     taps = builtins.attrNames config.nix-homebrew.taps;
@@ -68,26 +61,27 @@
       "mas"
     ];
     casks = [
-     "discord"
-     "firefox"
-     "visual-studio-code"
-     "google-chrome"
-     "altserver"
-     "obsidian"
-     "transmission"
-     "reaper"
-     "grandperspective"
+      "discord"
+      "firefox"
+      "visual-studio-code"
+      "google-chrome"
+      "altserver"
+      "obsidian"
+      "transmission"
+      "reaper"
+      "grandperspective"
+      "font-sf-mono-nerd-font-ligaturized"
     ];
     global.autoUpdate = true;
-    masApps = { 
+    masApps = {
       Bitwarden = 1352778147;
       GarageBand = 682658836;
       NordVPN = 905953485;
       LookAway = 6747192301;
-     };
+    };
     onActivation.cleanup = "zap";
   };
-  
+
   nix.enable = false;
 
   system = {

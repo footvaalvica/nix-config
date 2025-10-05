@@ -61,7 +61,7 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    
+
     atuin = {
       enable = true;
       enableFishIntegration = true;
@@ -71,9 +71,9 @@
       enable = true;
       enableFishIntegration = true;
     };
-    
+
     fd.enable = true;
-    ripgrep.enable = true;   
+    ripgrep.enable = true;
     tealdeer.enable = true;
 
     fzf = {
@@ -188,7 +188,7 @@
 
   systemd.user.startServices = "sd-switch";
 
-  programs.git = { 
+  programs.git = {
     enable = true;
     lfs.enable = true;
   };

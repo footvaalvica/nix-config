@@ -7,7 +7,7 @@
   environment.systemPackages = [pkgs.unstable.tailscale];
 
   # enable the tailscale service
-  services.tailscale = { 
+  services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
   };
