@@ -12,7 +12,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Home manager
-    home-manager-2505 = "github:nix-community/home-manager/release-25.05";
+    home-manager-2505.url = "github:nix-community/home-manager/release-25.05";
     home-manager-2505.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
