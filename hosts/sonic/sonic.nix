@@ -78,6 +78,7 @@
       Bitwarden = 1352778147;
       GarageBand = 682658836;
       NordVPN = 905953485;
+      LookAway = 6747192301;
      };
     onActivation.cleanup = "zap";
   };
