@@ -58,8 +58,7 @@
     createHome = true;
     shell = pkgs.bash;
     openssh.authorizedKeys.keys = [
-      # Allow borg backup operations only
-      ''command="borg serve --restrict-to-path /mnt/borg/musicbackup",restrict ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi''
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
     ];
   };
 
