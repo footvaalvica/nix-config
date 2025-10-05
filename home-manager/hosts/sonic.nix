@@ -29,7 +29,7 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "* borg" = {
+      "borg@*" = {
         user = "borg";
         identityFile = "~/.ssh/borg_key";
       };
