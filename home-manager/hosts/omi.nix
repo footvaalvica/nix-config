@@ -14,8 +14,4 @@
     # ./nvim.nix
     ./modules/default.nix
   ];
-
-  home.packages = with pkgs; [
-    topgrade
-  ];
 }
