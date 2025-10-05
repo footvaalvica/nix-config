@@ -25,4 +25,14 @@
     enable = lib.mkForce false;
     nix-direnv.enable = lib.mkForce false;
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "* borg" = {
+        user = "borg";
+        identityFile = "~/.ssh/borg_key";
+      };
+    };
+  };
 }
