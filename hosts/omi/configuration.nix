@@ -68,6 +68,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    gh
     unstable.claude-code
     wireguard-tools
     cifs-utils
