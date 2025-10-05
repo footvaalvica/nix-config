@@ -14,7 +14,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ../../modules/home-manager/default.nix
+    ./modules/default.nix
   ];
 
   home.username = lib.mkForce "deck";
