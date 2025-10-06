@@ -74,6 +74,8 @@
       "moonlight"
       "utm"
       "vorta"
+      "monitorcontrol"
+      "jump-desktop"
     ];
     global.autoUpdate = true;
     masApps = {
@@ -82,6 +84,7 @@
       NordVPN = 905953485;
       LookAway = 6747192301;
       Mattermost = 1614666244;
+      Wireguard = 1451685025;
     };
     onActivation.cleanup = "zap";
   };
