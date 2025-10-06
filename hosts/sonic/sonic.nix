@@ -99,6 +99,7 @@
       dock.show-recents = false;
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      NSGlobalDomain."com.apple.swipescrolldirection" = false;
       NSGlobalDomain.AppleShowAllExtensions = true;
       NSGlobalDomain.AppleShowAllFiles = true;
       NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
