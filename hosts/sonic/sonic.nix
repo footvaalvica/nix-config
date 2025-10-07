@@ -100,6 +100,7 @@
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
       NSGlobalDomain."com.apple.swipescrolldirection" = false;
+      iCal."first day of week" = "Monday";
       NSGlobalDomain.AppleShowAllExtensions = true;
       NSGlobalDomain.AppleShowAllFiles = true;
       NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
