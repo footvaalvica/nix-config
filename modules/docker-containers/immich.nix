@@ -31,6 +31,8 @@ in {
     script = ''
       /bin/sh -lc 'cd /mnt/immich_backup'
       /bin/sh -lc 'cd ~'
+      /bin/sh -lc 'cd /mnt/immich'
+      /bin/sh -lc 'cd ~'
       /bin/sh -lc 'docker exec -t immich_postgres pg_dumpall --clean --if-exists --username=postgres > /home/mateusp/ImmichDB/database-backup/immich-database.sql'
       /bin/sh -lc 'borg create /mnt/immich_backup/immich-borg::{now} /home/mateusp/ImmichDB/database-backup/immich-database.sql'
       /bin/sh -lc 'borg create /mnt/immich_backup/immich-borg::{now} /mnt/immich/Library --exclude /mnt/immich/Library/thumbs/ --exclude /mnt/immich/Library/encoded-video/'
