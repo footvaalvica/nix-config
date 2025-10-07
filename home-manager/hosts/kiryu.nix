@@ -24,6 +24,7 @@
   targets.genericLinux.enable = true;
 
   programs.ssh = {
+    enableDefaultConfig = false;
     enable = true;
     extraConfig = ''
       Host omi raidou
