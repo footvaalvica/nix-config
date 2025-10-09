@@ -285,6 +285,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
+        "tjsousa-cask": "tjsousa-cask",
         "website": "website"
       }
     },
@@ -300,6 +301,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tjsousa-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1618066585,
+        "narHash": "sha256-dhSfUudJAZuttdq8nCHd01ncNihP2KkjOjsl3DDTQkY=",
+        "owner": "tjsousa",
+        "repo": "homebrew-cask",
+        "rev": "b76a95e322a13be16c7b07e9c394fbe777895feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tjsousa",
+        "repo": "homebrew-cask",
         "type": "github"
       }
     },

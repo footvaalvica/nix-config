@@ -33,6 +33,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    tjsousa-cask = {
+      url = "github:tjsousa/homebrew-cask";
+      flake = false;
+    };
 
     deploy-rs.url = "github:serokell/deploy-rs";
 

@@ -46,6 +46,7 @@
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -75,6 +76,10 @@
       "utm"
       "vorta"
       "betterdisplay"
+      "tjsousa/cask/altgr-weur"
+      "anki"
+      "steam"
+      "zoom"
     ];
     global.autoUpdate = true;
     masApps = {
