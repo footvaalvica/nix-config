@@ -79,14 +79,15 @@
       "tjsousa/cask/altgr-weur"
       "anki"
       "steam"
+      "stremio"
       "zoom"
+      "lookaway"
     ];
     global.autoUpdate = true;
     masApps = {
       Bitwarden = 1352778147;
       GarageBand = 682658836;
       NordVPN = 905953485;
-      LookAway = 6747192301;
       Mattermost = 1614666244;
       Wireguard = 1451685025;
       MicrosoftApp = 1295203466; # Microsoft Remote Desktop
