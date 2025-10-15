@@ -22,7 +22,7 @@
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
     ../../modules/webserver.nix
-    ../../modules/vscode-server.nix
+    # # ../../modules/vscode-server.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
   ];
