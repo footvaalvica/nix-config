@@ -23,6 +23,11 @@
   programs.topgrade = {
     enable = true;
     settings = {
+      misc = {
+        # Required section for new topgrade config format
+        disable = [];
+        ignore_failures = [];
+      };
       linux.bootc = true;
       git.repos = ["${config.home.homeDirectory}/nix-config"];
       linux.home_manager_arguments = [
