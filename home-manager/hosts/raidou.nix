@@ -24,7 +24,7 @@
     enable = true;
     settings = {
       misc = {
-        disable = [ "waydroid" ]; # Disable waydroid for now until I configure it properly
+        disable = [ "waydroid" "nix" ]; # Disable waydroid for now until I configure it properly
         ignore_failures = [];
       };
       git.repos = ["${config.home.homeDirectory}/nix-config"];
