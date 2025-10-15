@@ -39,6 +39,10 @@ jobs:
         env:
           GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
       
+      - name: Build system configuration
+        run: |
+          nix build .#nixosConfigurations.omi.config.system.build.toplevel --no-link
+      
       - name: Deploy systems
         run: |
-          nix run github:serokell/deploy-rs -- .
+          nix run .#deploy-rs -- --skip-checks .
