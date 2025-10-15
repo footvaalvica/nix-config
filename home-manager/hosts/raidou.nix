@@ -24,16 +24,17 @@
     enable = true;
     settings = {
       misc = {
-        # Required section for new topgrade config format
-        disable = [];
+        disable = [ "waydroid" ]; # Disable waydroid for now until I configure it properly
         ignore_failures = [];
       };
-      linux.bootc = true;
       git.repos = ["${config.home.homeDirectory}/nix-config"];
-      linux.home_manager_arguments = [
-        "--flake"
-        "${config.home.homeDirectory}/nix-config/#${config.home.username}@raidou"
-      ];
+      linux = { 
+        rpm_ostree = true;
+        home_manager_arguments = [
+          "--flake"
+          "${config.home.homeDirectory}/nix-config/#${config.home.username}@raidou"
+        ];
+      };
     };
   };
 
