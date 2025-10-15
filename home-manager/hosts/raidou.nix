@@ -20,5 +20,17 @@
     NO_GUI = "1";
   };
 
+  programs.topgrade = {
+    enable = true;
+    settings = {
+      linux.bootc = true;
+      git.repos = ["${config.home.homeDirectory}/nix-config"];
+      linux.home_manager_arguments = [
+        "--flake"
+        "${config.home.homeDirectory}/nix-config/#${config.home.username}@raidou"
+      ];
+    };
+  };
+
   targets.genericLinux.enable = true;
 }
