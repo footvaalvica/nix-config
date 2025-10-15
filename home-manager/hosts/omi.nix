@@ -12,6 +12,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./modules/default.nix
+    ../modules/default.nix
   ];
 }
