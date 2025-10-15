@@ -132,21 +132,21 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "mateusp@raidou" = home-manager.lib.homeManagerConfiguration {
+      "mateusp@raidou" = home-manager-2505.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/hosts/raidou.nix
         ];
       };
-      "deck@kiryu" = home-manager.lib.homeManagerConfiguration {
+      "deck@kiryu" = home-manager-2505.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./home-manager/hosts/kiryu.nix
         ];
       };
-      "mateusp@joker" = home-manager.lib.homeManagerConfiguration {
+      "mateusp@joker" = home-manager-2505.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
