@@ -33,7 +33,6 @@
   home.packages = with pkgs; [
     devenv
     nano
-    gh
     git-crypt
     aider-chat
     git-lfs
@@ -90,7 +89,7 @@
     starship = {
       enable = true;
       enableFishIntegration = true;
-      
+
       settings = {
         aws.symbol = "  ";
         buf.symbol = " ";
@@ -192,6 +191,12 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+  };
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
   };
 
   # Let Home Manager install and manage itself.

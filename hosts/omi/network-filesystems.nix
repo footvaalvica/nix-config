@@ -4,7 +4,6 @@
   secrets,
   ...
 }: {
-
   # mount network drive as local drive for backups, and cache it as well
   services.cachefilesd = {
     enable = true;
