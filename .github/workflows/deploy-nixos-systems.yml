@@ -41,4 +41,4 @@ jobs:
       
       - name: Deploy systems
         run: |
-          nix run .#deploy-rs -- --skip-checks .
+          nix run github:serokell/deploy-rs -- -s .
