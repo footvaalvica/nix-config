@@ -11,6 +11,7 @@
 }: {
   home-manager = {
     users.mateusp.imports = [../../home-manager/hosts/sonic.nix];
+    backupFileExtension = "backup";
   };
 
   networking.hostName = "sonic";

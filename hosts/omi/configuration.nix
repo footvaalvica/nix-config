@@ -29,6 +29,7 @@
 
   home-manager = {
     users.mateusp.imports = [../../home-manager/hosts/omi.nix];
+    backupFileExtension = "backup";
   };
 
   # Bootloader.
