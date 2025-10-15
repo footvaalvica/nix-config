@@ -37,7 +37,7 @@ jobs:
           ssh-keyscan omi.footvaalvica.com raidou.rnl.tecnico.ulisboa.pt >> ~/.ssh/known_hosts
       - uses: actions/checkout@master
       - name: Unlock secrets
-        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
+        uses: sliteteam/github-action-git-crypt-unlock@1.3.0
         env:
           GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
       
