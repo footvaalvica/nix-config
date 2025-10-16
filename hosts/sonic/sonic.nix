@@ -83,6 +83,7 @@
       "stremio"
       "zoom"
       "lookaway"
+      "musicbrainz-picard"
     ];
     global.autoUpdate = true;
     masApps = {
