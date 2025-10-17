@@ -93,6 +93,9 @@
       Mattermost = 1614666244;
       Wireguard = 1451685025;
       MicrosoftApp = 1295203466; # Microsoft Remote Desktop
+      MicrosoftWord = 462054704;
+      MicrosoftExcel = 462058435;
+      MicrosoftPowerpoint = 462062816;
     };
     onActivation.cleanup = "zap";
   };
