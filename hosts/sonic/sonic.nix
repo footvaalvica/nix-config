@@ -84,7 +84,6 @@
       "zoom"
       "lookaway"
       "musicbrainz-picard"
-      "proton-pass"
     ];
     global.autoUpdate = true;
     masApps = {
