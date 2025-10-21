@@ -88,6 +88,7 @@
     global.autoUpdate = true;
     masApps = {
       GarageBand = 682658836;
+      Bitwarden = 1352778147;
       NordVPN = 905953485;
       Mattermost = 1614666244;
       Wireguard = 1451685025;
