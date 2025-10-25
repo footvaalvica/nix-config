@@ -84,6 +84,7 @@
       "zoom"
       "lookaway"
       "musicbrainz-picard"
+      "balenaetcher"
     ];
     global.autoUpdate = true;
     masApps = {
