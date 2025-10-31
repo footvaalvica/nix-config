@@ -27,7 +27,7 @@ jobs:
       # #   with:
       # #     docker-images: false
       - uses: DeterminateSystems/flake-checker-action@main
-      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/determinate-nix-action@v3.11.2
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Set up SSH
         run: |
