@@ -73,6 +73,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    gh
     wireguard-tools
     cifs-utils
     sshfs
