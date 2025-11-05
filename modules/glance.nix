@@ -17,8 +17,12 @@
   services.glance = {
     enable = true;
     openFirewall = true;
-    port = 5423;
-    host = "0.0.0.0";
+    settings = {
+      server = { 
+        port = 5423;
+        host = "0.0.0.0";
+      };
+    };
     pages = [
       {
         name = "Startpage";
