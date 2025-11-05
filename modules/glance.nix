@@ -55,7 +55,11 @@
                     }
                     { title = "Firefly III";
                       url = "https://firefly.footvaalvica.com/";
-                      icon = "si:firefly-iii";
+                      icon = "si:fireflyiii";
+                    }
+                    { title = "Website";
+                      url = "https://www.footvaalvica.com/";
+                      icon = "si:blogger";
                     }
                   ];    
                 }
