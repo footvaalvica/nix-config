@@ -39,29 +39,21 @@
                 cache = "1m";
                 title = "Services";
                 sites = [
-                  { title = "Jellyfin";
-                    url = "https://yourdomain.com/";
-                    icon = "si:jellyfin";
-                  }
-                  { title = "Gitea";
-                    url = "https://yourdomain.com/";
-                    icon = "si:gitea";
-                  }
-                  { title = "qBittorrent"; # only for Linux ISOs, of course
-                    url = "https://yourdomain.com/";
-                    icon = "si:qbittorrent";
+                  { title = "Nextcloud";
+                    url = "https://cloud.footvaalvica.com/";
+                    icon = "si:nextcloud";
                   }
                   { title = "Immich";
-                    url = "https://yourdomain.com/";
+                    url = "https://photos.footvaalvica.com/";
                     icon = "si:immich";
                   }
-                  { title = "AdGuard Home";
-                    url = "https://yourdomain.com/";
-                    icon = "si:adguard";
+                  { title = "Overleaf";
+                    url = "https://overleaf.footvaalvica.com/";
+                    icon = "si:overleaf";
                   }
-                  { title = "Vaultwarden";
-                    url = "https://yourdomain.com/";
-                    icon = "si:vaultwarden";
+                  { title = "Firefly III";
+                    url = "https://firefly.footvaalvica.com/";
+                    icon = "si:firefly-iii";
                   }
                 ];    
               }
