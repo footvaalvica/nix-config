@@ -16,7 +16,6 @@
 
   services.glance = {
     enable = true;
-    dataDir = "/var/lib/glance";
     openFirewall = true;
     port = 5423;
     host = "0.0.0.0";
