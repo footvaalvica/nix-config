@@ -22,48 +22,48 @@
         port = 5423;
         host = "0.0.0.0";
       };
+      pages = [
+        {
+          name = "Startpage";
+          width = "slim";
+          hide-desktop-navigation = true;
+          center-vertically = true;
+          columns = [
+            {
+              size = "full";
+              widgets = [
+                {
+                  type = "search";
+                  autofocus = true;
+                }
+                {
+                  type = "monitor";
+                  cache = "1m";
+                  title = "Services";
+                  sites = [
+                    { title = "Nextcloud";
+                      url = "https://cloud.footvaalvica.com/";
+                      icon = "si:nextcloud";
+                    }
+                    { title = "Immich";
+                      url = "https://photos.footvaalvica.com/";
+                      icon = "si:immich";
+                    }
+                    { title = "Overleaf";
+                      url = "https://overleaf.footvaalvica.com/";
+                      icon = "si:overleaf";
+                    }
+                    { title = "Firefly III";
+                      url = "https://firefly.footvaalvica.com/";
+                      icon = "si:firefly-iii";
+                    }
+                  ];    
+                }
+              ];
+            }
+          ];
+        }
+      ];
     };
-    pages = [
-      {
-        name = "Startpage";
-        width = "slim";
-        hide-desktop-navigation = true;
-        center-vertically = true;
-        columns = [
-          {
-            size = "full";
-            widgets = [
-              {
-                type = "search";
-                autofocus = true;
-              }
-              {
-                type = "monitor";
-                cache = "1m";
-                title = "Services";
-                sites = [
-                  { title = "Nextcloud";
-                    url = "https://cloud.footvaalvica.com/";
-                    icon = "si:nextcloud";
-                  }
-                  { title = "Immich";
-                    url = "https://photos.footvaalvica.com/";
-                    icon = "si:immich";
-                  }
-                  { title = "Overleaf";
-                    url = "https://overleaf.footvaalvica.com/";
-                    icon = "si:overleaf";
-                  }
-                  { title = "Firefly III";
-                    url = "https://firefly.footvaalvica.com/";
-                    icon = "si:firefly-iii";
-                  }
-                ];    
-              }
-            ];
-          }
-        ];
-      }
-    ];
   };
 }
