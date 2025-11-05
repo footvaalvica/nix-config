@@ -59,7 +59,7 @@
                     }
                     { title = "Website";
                       url = "https://www.footvaalvica.com/";
-                      icon = "si:blogger";
+                      icon = "mdi:web";
                     }
                   ];    
                 }
