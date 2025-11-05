@@ -10,8 +10,8 @@
   services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
-    extraSetFlags = "--advertise-routes=192.168.1.0/24";
-    extraUpFlags = "--advertise-routes=192.168.1.0/24";
+    extraSetFlags = ["--advertise-routes=192.168.1.0/24"];
+    extraUpFlags = ["--advertise-routes=192.168.1.0/24"];
   };
 
   services.resolved.enable = true;
