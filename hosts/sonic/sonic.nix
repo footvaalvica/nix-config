@@ -85,7 +85,7 @@
       "lookaway"
       "musicbrainz-picard"
     ];
-    global.autoUpdate = true;
+    global.autoUpdate = false;
     masApps = {
       GarageBand = 682658836;
       NordVPN = 905953485;
@@ -97,7 +97,11 @@
       MicrosoftPowerpoint = 462062816;
       Unarchiver = 425424353;
     };
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
+    };
   };
 
   nix.enable = false;

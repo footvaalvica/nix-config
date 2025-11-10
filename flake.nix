@@ -55,6 +55,7 @@
     nix-homebrew,
     homebrew-core,
     homebrew-cask,
+    tjsousa-cask,
     nur,
     website,
     deploy-rs,
@@ -120,7 +121,7 @@
 
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core;};
+      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core tjsousa-cask;};
       modules = [
         ./hosts/sonic/sonic.nix
         nix-homebrew.darwinModules.nix-homebrew
