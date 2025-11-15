@@ -15,9 +15,28 @@
     ../modules/default.nix
   ];
 
-  home.packages = with pkgs; [
-    topgrade
-  ];
+  home.sessionVariables = {
+    # moon deck buddy bullshit
+    NO_GUI = "1";
+  };
+
+  programs.topgrade = {
+    enable = true;
+    settings = {
+      misc = {
+        disable = ["waydroid" "nix"]; # Disable waydroid for now until I configure it properly
+        ignore_failures = [];
+      };
+      git.repos = ["${config.home.homeDirectory}/nix-config"];
+      linux = {
+        rpm_ostree = true;
+        home_manager_arguments = [
+          "--flake"
+          "${config.home.homeDirectory}/nix-config/#${config.home.username}@joker"
+        ];
+      };
+    };
+  };
 
   targets.genericLinux.enable = true;
 }

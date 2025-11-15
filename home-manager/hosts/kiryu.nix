@@ -27,7 +27,7 @@
     enableDefaultConfig = false;
     enable = true;
     extraConfig = ''
-      Host omi raidou
+      Host omi raidou joker
         User mateusp
     '';
   };

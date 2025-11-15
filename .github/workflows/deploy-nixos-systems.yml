@@ -34,7 +34,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan omi.footvaalvica.com raidou.rnl.tecnico.ulisboa.pt >> ~/.ssh/known_hosts
+          ssh-keyscan omi.footvaalvica.com >> ~/.ssh/known_hosts
       - uses: actions/checkout@master
       - name: Unlock secrets
         uses: sliteteam/github-action-git-crypt-unlock@1.3.0
