@@ -17,7 +17,9 @@
     ../modules/default.nix
   ];
 
-  home.homeDirectory = lib.mkForce "/Users/mateusp";
+  home = {
+    homeDirectory = lib.mkForce "/Users/mateusp";
+  };
 
   services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
