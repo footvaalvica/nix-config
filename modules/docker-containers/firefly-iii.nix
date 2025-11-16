@@ -392,7 +392,7 @@
   systemd.services.firefly-db-backup = {
     description = "Backup Firefly III database";
     script = ''
-      ${pkgs.docker}/bin/docker run --rm -v "firefly_iii_db:/tmp" -v "/mnt/backup/firefly-iii:/backup" ubuntu tar -czvf /backup/firefly_db_$(date +%Y-%m-%d).tar /tmp
+      ${pkgs.docker}/bin/docker run --rm -v "firefly-iii_firefly_iii_db:/tmp" -v "/mnt/backup/firefly-iii:/backup" ubuntu tar -czvf /backup/firefly_db_$(date +%Y-%m-%d).tar /tmp
     '';
     serviceConfig = {
       Type = "oneshot";
