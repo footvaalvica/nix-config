@@ -189,4 +189,42 @@
     };
     wantedBy = ["multi-user.target"];
   };
+
+  # Backup service
+  systemd.services.overleaf-db-backup = {
+    description = "Backup Overleaf database to /mnt/backup/overleaf daily";
+    script = ''
+      set -e
+      TIMESTAMP=$(${pkgs.coreutils}/bin/date +%Y%m%d_%H%M%S)
+      echo "Stopping Overleaf services..."
+      ${pkgs.docker}/bin/docker stop sharelatex || true
+      ${pkgs.docker}/bin/docker stop mongo redis || true
+
+      echo "Creating backup tarball..."
+      mkdir -p /mnt/backup/overleaf
+      ${pkgs.gnutar}/bin/tar --create --file /mnt/backup/overleaf/backup-$TIMESTAMP.tar /home/mateusp/sharelatex_data /home/mateusp/mongo_data /home/mateusp/redis_data
+
+      echo "Starting Redis and Mongo..."
+      ${pkgs.docker}/bin/docker start mongo redis || true
+
+      echo "Starting Sharelatex..."
+      ${pkgs.docker}/bin/docker start sharelatex || true
+
+      echo "Backup completed successfully at /mnt/backup/overleaf/backup-$TIMESTAMP.tar"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
+
+  # Backup timer
+  systemd.timers.overleaf-db-backup = {
+    description = "Run Overleaf database backup daily at 3:30AM";
+    timerConfig = {
+      OnCalendar = "03:30";
+      Persistent = true;
+    };
+    wantedBy = ["timers.target"];
+  };
 }
