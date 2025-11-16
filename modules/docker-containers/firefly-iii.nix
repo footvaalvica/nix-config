@@ -387,4 +387,25 @@
     };
     wantedBy = ["multi-user.target"];
   };
+
+  # Backup service
+  systemd.services.firefly-db-backup = {
+    description = "Backup Firefly III database";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.docker}/bin/docker run --rm -v firefly-iii_firefly_iii_db:/tmp -v /mnt/backup:/backup ubuntu tar -czvf /backup/firefly_db_$(date +%Y-%m-%d).tar /tmp";
+    };
+    requires = ["docker-volume-firefly-iii_firefly_iii_db.service"];
+    after = ["docker-volume-firefly-iii_firefly_iii_db.service"];
+  };
+
+  # Backup timer
+  systemd.timers.firefly-db-backup = {
+    description = "Run Firefly III database backup daily at 4AM";
+    timerConfig = {
+      OnCalendar = "04:00";
+      Persistent = true;
+    };
+    wantedBy = ["timers.target"];
+  };
 }
