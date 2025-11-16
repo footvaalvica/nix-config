@@ -116,7 +116,6 @@
         fcitx5-configtool
       ];
       waylandFrontend = true;
-      # TODO quickPhrase
     };
   };
 
