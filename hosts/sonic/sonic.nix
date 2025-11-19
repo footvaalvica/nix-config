@@ -98,7 +98,7 @@
       MicrosoftPowerpoint = 462062816;
       Unarchiver = 425424353;
       wBlock = 6746388723;
-      FocusForYoutube = 1514703160;
+      UnTrap = 1637438059;
       WebScrobbler = 6449224218;
       TenTenJapaneseReader = 1573540634;
       SponsorBlock = 1573461917;
