@@ -85,7 +85,6 @@
       "zoom"
       "lookaway"
       "musicbrainz-picard"
-      "raycast"
     ];
     global.autoUpdate = false;
     masApps = {
