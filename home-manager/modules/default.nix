@@ -34,7 +34,6 @@
     devenv
     nano
     git-crypt
-    aider-chat
     git-lfs
     yq
     ugrep
@@ -74,7 +73,7 @@
 
     fd.enable = true;
     ripgrep.enable = true;
-    tealdeer.enable = true;
+    # # tealdeer.enable = true;
 
     fzf = {
       enable = true;
