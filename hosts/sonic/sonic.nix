@@ -86,6 +86,7 @@
       "lookaway"
       "musicbrainz-picard"
       "balenaetcher"
+      "league-of-legends"
     ];
     global.autoUpdate = false;
     masApps = {
