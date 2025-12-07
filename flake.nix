@@ -3,17 +3,17 @@
 
   inputs = {
     # NixOS official package source
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
-    # Use `github:nix-darwin/nix-darwin/nix-darwin-25.05` to use Nixpkgs 25.05.
+    # Use `github:nix-darwin/nix-darwin/nix-darwin-25.11` to use Nixpkgs 25.11.
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Home manager
-    home-manager-2505.url = "github:nix-community/home-manager/release-25.05";
-    home-manager-2505.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager-2511.url = "github:nix-community/home-manager/release-25.11";
+    home-manager-2511.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
@@ -50,7 +50,7 @@
     self,
     nixpkgs,
     home-manager,
-    home-manager-2505,
+    home-manager-2511,
     nix-darwin,
     nix-homebrew,
     homebrew-core,
@@ -98,7 +98,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager-2505.nixosModules.home-manager
+          home-manager-2511.nixosModules.home-manager
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
@@ -133,21 +133,21 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "mateusp@raidou" = home-manager-2505.lib.homeManagerConfiguration {
+      "mateusp@raidou" = home-manager-2511.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/hosts/raidou.nix
         ];
       };
-      "deck@kiryu" = home-manager-2505.lib.homeManagerConfiguration {
+      "deck@kiryu" = home-manager-2511.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./home-manager/hosts/kiryu.nix
         ];
       };
-      "mateusp@joker" = home-manager-2505.lib.homeManagerConfiguration {
+      "mateusp@joker" = home-manager-2511.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
