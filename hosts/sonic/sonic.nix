@@ -85,6 +85,7 @@
       "zoom"
       "lookaway"
       "musicbrainz-picard"
+      "balenaetcher"
     ];
     global.autoUpdate = false;
     masApps = {
@@ -97,6 +98,12 @@
       MicrosoftExcel = 462058435;
       MicrosoftPowerpoint = 462062816;
       Unarchiver = 425424353;
+      wBlock = 6746388723;
+      UnTrap = 1637438059;
+      WebScrobbler = 6449224218;
+      TenTenJapaneseReader = 1573540634;
+      SponsorBlock = 1573461917;
+      DeArrow = 6451469297;
     };
     onActivation = {
       cleanup = "zap";
