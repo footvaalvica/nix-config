@@ -87,6 +87,7 @@
       "musicbrainz-picard"
       "balenaetcher"
       "league-of-legends"
+      "antigravity"
     ];
     global.autoUpdate = false;
     masApps = {
