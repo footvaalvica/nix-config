@@ -89,6 +89,7 @@
       "league-of-legends"
       "antigravity"
       "google-earth-pro"
+      "mediahuman-audio-converter"
     ];
     global.autoUpdate = false;
     masApps = {
