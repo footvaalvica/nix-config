@@ -88,6 +88,7 @@
       "balenaetcher"
       "league-of-legends"
       "antigravity"
+      "google-earth-pro"
     ];
     global.autoUpdate = false;
     masApps = {
