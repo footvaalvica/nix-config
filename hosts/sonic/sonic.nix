@@ -90,6 +90,7 @@
       "antigravity"
       "google-earth-pro"
       "mediahuman-audio-converter"
+      "unity-hub"
     ];
     global.autoUpdate = false;
     masApps = {
