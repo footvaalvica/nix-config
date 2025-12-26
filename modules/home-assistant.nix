@@ -61,15 +61,14 @@
   };
 
   networking = {
-    # Disable NetworkManager in favor of simple bridge configuration
-    networkmanager.enable = false;
     # Use systemd-networkd for bridge management
     useNetworkd = true;
     # Required for Incus networking
     nftables.enable = true;
     # Disable firewall for simplified setup (local network only)
-    firewall.enable = false;
-
+    networking.firewall = {
+      allowedTCPPorts = [8123];
+    };
     # Create bridge interface with NixOS
     bridges.br0 = {
       interfaces = ["eno1"]; # Your ethernet interface
