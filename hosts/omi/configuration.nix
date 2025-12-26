@@ -107,6 +107,8 @@
   # #   };
   # # };
 
+  services.homebrige.enable = true;
+
   services.prometheus.exporters.node = {
     enable = true;
     port = 9100;
