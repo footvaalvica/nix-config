@@ -19,4 +19,17 @@
       ];
     };
   };
-}
+
+  networking.firewall.allowedTCPPorts = [ 8123 ];
+  
+  networking.firewall.allowedTCPPortRanges = 
+    [{
+	  from = 100;
+	  to = 65535;
+  }];
+  networking.firewall.allowedUDPPortRanges = 
+    [{
+	  from = 100;
+	  to = 65535;
+    }];
+  }
