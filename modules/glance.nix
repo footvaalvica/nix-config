@@ -52,6 +52,11 @@
                       icon = "si:immich";
                     }
                     {
+                      title = "Home Assistant";
+                      url = "https://homeassistant.footvaalvica.com/";
+                      icon = "si:home-assistant";
+                    }
+                    {
                       title = "Overleaf";
                       url = "https://overleaf.footvaalvica.com/";
                       icon = "si:overleaf";
