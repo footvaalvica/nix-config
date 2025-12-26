@@ -66,7 +66,7 @@
     # Required for Incus networking
     nftables.enable = true;
     # Disable firewall for simplified setup (local network only)
-    networking.firewall = {
+    firewall = {
       allowedTCPPorts = [8123];
     };
     # Create bridge interface with NixOS
