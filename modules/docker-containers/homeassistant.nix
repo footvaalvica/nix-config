@@ -28,6 +28,8 @@
     ];
     log-driver = "journald";
     extraOptions = [
+      "--cap-add=NET_ADMIN"
+      "--cap-add=NET_RAW"
       "--network=host"
       "--privileged"
     ];
