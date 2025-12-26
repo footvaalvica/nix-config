@@ -23,7 +23,7 @@
     ../../modules/docker-containers/watchtower.nix
     ../../modules/webserver.nix
     ../../modules/glance.nix
-    ../../modules/docker-containers/home-assistant.nix
+    ../../modules/home-assistant.nix
     # # ../../modules/vscode-server.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
