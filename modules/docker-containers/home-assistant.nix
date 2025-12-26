@@ -5,7 +5,7 @@
   ...
 }: {
   virtualisation.oci-containers = {
-    backend = "podman";
+    backend = "docker";
     containers.homeassistant = {
       volumes = [ "home-assistant:/config" ];
       environment.TZ = "Europe/Lisbon";
