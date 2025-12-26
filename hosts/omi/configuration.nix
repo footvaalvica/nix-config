@@ -23,7 +23,6 @@
     ../../modules/docker-containers/watchtower.nix
     ../../modules/webserver.nix
     ../../modules/glance.nix
-    ../../modules/home-assistant.nix
     # # ../../modules/vscode-server.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
@@ -107,6 +106,8 @@
   # #     Persistent = true;
   # #   };
   # # };
+
+  services.homebridge.enable = true;
 
   services.prometheus.exporters.node = {
     enable = true;
