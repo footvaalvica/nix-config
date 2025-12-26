@@ -8,6 +8,6 @@
     enable = true;
     openFirewall = true;
     config = null;
-    configWriteable = true;
+    configWritable = true;
   };
 }
