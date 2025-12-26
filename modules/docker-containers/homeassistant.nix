@@ -11,7 +11,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   networking.firewall = {
-    allowedTCPPorts = [8123 8443 21063];
+    allowedTCPPorts = [8123 8443 21063 21064];
     allowedUDPPorts = [5353 ];
   };
 
