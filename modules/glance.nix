@@ -18,7 +18,7 @@
     enable = true;
     openFirewall = true;
     settings = {
-      server = { 
+      server = {
         port = 5423;
         host = "0.0.0.0";
       };
@@ -41,27 +41,32 @@
                   cache = "1m";
                   title = "Services";
                   sites = [
-                    { title = "Nextcloud";
+                    {
+                      title = "Nextcloud";
                       url = "https://cloud.footvaalvica.com/";
                       icon = "si:nextcloud";
                     }
-                    { title = "Immich";
+                    {
+                      title = "Immich";
                       url = "https://photos.footvaalvica.com/";
                       icon = "si:immich";
                     }
-                    { title = "Overleaf";
+                    {
+                      title = "Overleaf";
                       url = "https://overleaf.footvaalvica.com/";
                       icon = "si:overleaf";
                     }
-                    { title = "Firefly III";
+                    {
+                      title = "Firefly III";
                       url = "https://firefly.footvaalvica.com/";
                       icon = "si:fireflyiii";
                     }
-                    { title = "Website";
+                    {
+                      title = "Website";
                       url = "https://www.footvaalvica.com/";
                       icon = "mdi:web";
                     }
-                  ];    
+                  ];
                 }
               ];
             }

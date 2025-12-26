@@ -24,6 +24,7 @@
     ../../modules/webserver.nix
     ../../modules/glance.nix
     # # ../../modules/vscode-server.nix
+    ../../modules/home-assistant.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
   ];
