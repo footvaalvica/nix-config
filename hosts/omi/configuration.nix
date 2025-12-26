@@ -42,6 +42,11 @@
   # Enable zram.
   zramSwap.enable = true;
   networking.hostName = "omi"; # Define your hostname.
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    package = pkgs.bluez;
+  };
 
   # Enable firefox
   programs.firefox.enable = true;
@@ -107,8 +112,6 @@
   # #     Persistent = true;
   # #   };
   # # };
-
-  services.homebridge.enable = true;
 
   services.prometheus.exporters.node = {
     enable = true;
