@@ -107,7 +107,7 @@
   # #   };
   # # };
 
-  services.homebrige.enable = true;
+  services.homebridge.enable = true;
 
   services.prometheus.exporters.node = {
     enable = true;
