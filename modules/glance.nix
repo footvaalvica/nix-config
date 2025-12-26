@@ -52,8 +52,8 @@
                       icon = "si:immich";
                     }
                     {
-                      title = "Home Assistant";
-                      url = "https://homeassistant.footvaalvica.com/";
+                      title = "Home Assistant - VLC";
+                      url = "https://homeassistantvlc.footvaalvica.com/";
                       icon = "si:home-assistant";
                     }
                     {
