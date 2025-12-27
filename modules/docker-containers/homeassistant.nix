@@ -21,7 +21,7 @@
   services.cloudflare-dyndns.domains = ["homeassistantvlc.footvaalvica.com"];
 
   networking.firewall = {
-    allowedTCPPorts = [8123 8443 21063 21064 21065];
+    allowedTCPPorts = [8443 21063 21064 21065];
     allowedUDPPorts = [5353 ];
   };
 
