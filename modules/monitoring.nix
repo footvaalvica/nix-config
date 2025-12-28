@@ -42,6 +42,18 @@
           }
         ];
       }
+      {
+        job_name = "hass-vlc";
+        scrape_interval = "60s";
+        metrics_path = "/api/prometheus";
+        authorization.credentials = "";
+        scheme = "https";
+        static_configs = [
+          {
+            targets = ["homeassistantvlc.footvaalvica.com"];
+          }
+        ];
+      }
 
     ];
   };
