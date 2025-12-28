@@ -92,26 +92,20 @@
     allowedUDPPorts = [443 3478 22000 21027];
   };
 
-  # # programs.ydotool.enable = true;
-  # # systemd.services.press-unknown = {
-  # #   description = "Press UNKNOWN key every minute";
-  # #   after = ["ydotoold.service"]; # Ensure ydotoold is running
-  # #   wants = ["ydotoold.service"];
-  # #   serviceConfig = {
-  # #     Type = "oneshot";
-  # #     ExecStart = "/bin/sh -lc '${pkgs.ydotool}/bin/ydotool key 190:1 190:0'";
-  # #     User = "mateusp"; # Change this if needed
-  # #   };
-  # # };
+  power.ups = {
+    enable = true;
+    openFirewall = true;
+    mode = "standalone";
+    ups."cyberpower-ups" = {
+      driver = "usbhid-ups";
+      port = "auto";
+      description = "VLC UPS";
+    };
 
-  # # systemd.timers.press-unknown = {
-  # #   description = "Timer for UNKNOWN keypress";
-  # #   wantedBy = ["timers.target"];
-  # #   timerConfig = {
-  # #     OnCalendar = "*:0/1"; # Every minute
-  # #     Persistent = true;
-  # #   };
-  # # };
+    users.upsmon = {
+      upsmon = "cyberpower-ups";    
+    };
+  };
 
   services.prometheus.exporters.node = {
     enable = true;
