@@ -108,7 +108,7 @@
     };
 
     users.upsmon = {
-      upsmon = "cyberpower-ups";
+      upsmon = "primary";
     };
 
   };
