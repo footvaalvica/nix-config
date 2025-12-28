@@ -8,7 +8,7 @@
   pkgs,
   lib,
   secrets,
-  agenix,a
+  agenix,
   ...
 }: {
   imports = [
