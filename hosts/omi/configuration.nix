@@ -109,7 +109,7 @@
         [
           "maxretry = 3"
           "pollinterval = 5"
-        ]
+        ];
     };
 
     users.upsmon = {
