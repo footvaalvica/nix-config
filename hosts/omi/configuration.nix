@@ -23,6 +23,7 @@
     ../../modules/docker-containers/watchtower.nix
     ../../modules/webserver.nix
     ../../modules/glance.nix
+    ../../modules/monitoring.nix
     # # ../../modules/vscode-server.nix
     ../../modules/docker-containers/homeassistant.nix
     ../../modules/docker-containers/firefly-iii.nix
@@ -140,20 +141,6 @@
         upsmon = "primary";
       };
     };
-  };
-
-  services.prometheus.exporters.node = {
-    enable = true;
-    port = 9100;
-    enabledCollectors = [
-      "logind"
-      "systemd"
-    ];
-    disabledCollectors = [
-      "textfile"
-    ];
-    openFirewall = true;
-    firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
   };
 
   services.cloudflare-dyndns = {
