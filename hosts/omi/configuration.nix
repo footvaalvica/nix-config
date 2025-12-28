@@ -119,7 +119,7 @@
     upsmon.monitor."cyberpower-ups" = {
       user = "upsmon";
       powerValue = 3;
-      system = "cyberpower-ups@localhost"; # Explicitly define system
+      system = "cyberpower-ups@omi"; # Explicitly define system
     };
 
     # 3. USERS DEFINITION
