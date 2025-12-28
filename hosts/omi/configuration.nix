@@ -100,16 +100,16 @@
       driver = "usbhid-ups";
       port = "auto";
       description = "VLC UPS";
-    };
-  
-    upsmon.monitor."cyberpower-ups" = {
-      user = "upsmon";
-      powerValue = 3;
       directives = 
         [
           "maxretry = 3"
           "pollinterval = 5"
         ];
+    };
+  
+    upsmon.monitor."cyberpower-ups" = {
+      user = "upsmon";
+      powerValue = 3;
     };
 
     users.upsmon = {
