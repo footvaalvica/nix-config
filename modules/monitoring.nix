@@ -76,7 +76,7 @@
       enable = true;
       datasources.settings.datasources = [
         {
-          name = "Prometheus";
+          name = "prometheus";
           type = "prometheus";
           url = "http://127.0.0.1:9090";
         }
