@@ -126,18 +126,12 @@
     # 4. USERS DEFINITION
     users = {
       upsmon = {
-        passwordFile = config.age.secrets.upsmon-password.path;
+        passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
         upsmon = "primary";
       };
     };
   };
-
-  age.secrets.upsmon-password = {
-    file = ../../secrets/upsmon.pass.age;
-    mode = "770";
-    owner = "upsmon";
-    group = "upsmon";
-  };
+  
 
   services.cloudflare-dyndns = {
     enable = true;
