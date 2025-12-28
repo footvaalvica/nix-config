@@ -92,6 +92,7 @@
     wireguard-tools
     cifs-utils
     sshfs
+    agenix.packages."${system}".default
   ];
 
   power.ups = {
