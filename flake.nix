@@ -103,9 +103,6 @@
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
           agenix.nixosMOdules.default
-          {
-            age.secrets."upsmon.pass".file = ./secrets/upsmon.pass.age;
-          }
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix

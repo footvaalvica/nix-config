@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  agenix,
   ...
 }: {
   services.caddy = {
@@ -9,6 +10,12 @@
       reverse_proxy localhost:3001
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
+  };
+
+  age.secrets.prometheus-nut-exporter-password = {
+    file = "../secrets/upsmon.pass.age";
+    user = "nut-exporter";
+    group = "nut-exporter";
   };
 
   services.cloudflare-dyndns.domains  = ["grafana.footvaalvica.com"];
@@ -43,7 +50,7 @@
     nut = {
       enable = true;
       nutUser = "upsmon";
-      passwordPath = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
+      passwordPath = config.age.secrets.prometheus-nut-exporter-password.path;
       openFirewall = true;
     };
   };
