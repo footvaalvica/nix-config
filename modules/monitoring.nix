@@ -21,7 +21,10 @@
         job_name = "all_exporters";
         static_configs = [
           {
-            targets = ["localhost:${toString config.services.prometheus.exporters.node.port}" "localhost:${toString config.services.prometheus.exporters.nut.port}"];
+            targets = [
+              "localhost:${toString config.services.prometheus.exporters.node.port}" 
+              "localhost:${toString config.services.prometheus.exporters.nut.port}"
+            ];
           }
         ];
       }
@@ -33,15 +36,9 @@
       enable = true;
       port = 9100;
       enabledCollectors = [
-        "logind"
         "systemd"
       ];
-      disabledCollectors = [
-        "textfile"
-      ];
-      
       openFirewall = true;
-      firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
     };
     nut = {
       enable = true;
@@ -65,7 +62,7 @@
         {
           name = "Prometheus";
           type = "prometheus";
-          url = "http://127.0.0.1:9100";
+          url = "http://127.0.0.1:9090";
         }
       ];
     };
