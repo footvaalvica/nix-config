@@ -97,31 +97,25 @@ power.ups = {
     mode = "netserver";
     openFirewall = true;
     
-    # 1. DEFINE THE UPS (RENAMED)
-    # The WD NAS forces a lookup for "usbhid", so we must name it exactly that.
-    ups."usbhid" = {  # <--- CHANGED FROM "cyberpower-ups"
+    # WD NAS forces a lookup for "usbhid", so we must name it exactly that.
+    ups."usbhid" = {
       driver = "usbhid-ups";
       port = "auto";
-      description = "VLC UPS (Renamed for WD NAS)";
+      description = "VLC UPS ";
       directives = [
         "maxretry = 3"
         "pollinterval = 5"
       ];
     };
 
-    # 2. LISTEN CONFIGURATION
     upsd.listen = [
       { address = "0.0.0.0"; port = 3493; } 
     ];
 
-    # 3. LOCAL MONITOR
-    # We must update the local monitor to look for the new name "usbhid"
-    upsmon.monitor."usbhid" = { # <--- CHANGED FROM "cyberpower-ups"
+    upsmon.monitor."usbhid" = {
       user = "upsmon";
       powerValue = 1;
-      # The system string is technically "upsname@hostname". 
-      # Since we renamed the UPS key above, this is now "usbhid@localhost"
-      system = "usbhid@localhost"; 
+      system = "usbhid@omi"; 
     };
 
     # 4. USERS DEFINITION
@@ -139,7 +133,7 @@ power.ups = {
       };
     };
   };
-  
+
   services.prometheus.exporters.node = {
     enable = true;
     port = 9100;
