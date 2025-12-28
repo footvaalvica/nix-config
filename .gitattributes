@@ -1,2 +1,3 @@
 secrets/** filter=git-crypt diff=git-crypt
 hosts/omi/cloudflaretoken.txt filter=git-crypt diff=git-crypt
+hosts/omi/upsmon.pass filter=git-crypt diff=git-crypt
