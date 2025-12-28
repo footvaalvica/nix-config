@@ -90,7 +90,7 @@
   # Firewall
   networking.firewall = {
     allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
-    allowedUDPPorts = [443 3478 22000 21027];
+    allowedUDPPorts = [9 443 3478 22000 21027];
   };
 
   # Enable Wake-on-LAN for the main ethernet interface
