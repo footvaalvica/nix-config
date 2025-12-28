@@ -67,6 +67,11 @@
                       icon = "si:fireflyiii";
                     }
                     {
+                      title = "Grafana";
+                      url = "https://grafana.footvaalvica.com/";
+                      icon = "si:grafana";
+                    }
+                    {
                       title = "Website";
                       url = "https://www.footvaalvica.com/";
                       icon = "mdi:web";
