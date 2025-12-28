@@ -43,7 +43,7 @@
     nut = {
       enable = true;
       nutUser = "upsmon";
-      passwordPath = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
+      passwordPath = "../hosts/omi/upsmon.pass";
       openFirewall = true;
     };
   };
