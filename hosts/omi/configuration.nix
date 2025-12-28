@@ -101,11 +101,17 @@
       port = "auto";
       description = "VLC UPS";
     };
-
+  
     upsmon.monitor."cyberpower-ups" = {
-      user = "nutmon";
+      user = "upsmon";
       powerValue = 3;
     };
+
+    users.upsmon = {
+      upsmon = "cyberpower-ups";
+    };
+
+    upsmon.monitor.cyberpower-ups.user = "upsmon";
   };
 
   services.prometheus.exporters.node = {
