@@ -111,7 +111,6 @@
       upsmon = "cyberpower-ups";
     };
 
-    upsmon.monitor.cyberpower-ups.user = "upsmon";
   };
 
   services.prometheus.exporters.node = {
