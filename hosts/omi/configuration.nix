@@ -95,7 +95,7 @@
   power.ups = {
     enable = true;
     openFirewall = true;
-    mode = "standalone";
+    mode = "netserver";
     ups."cyberpower-ups" = {
       driver = "usbhid-ups";
       port = "auto";
