@@ -54,7 +54,7 @@
                     {
                       title = "Home Assistant - VLC";
                       url = "https://homeassistantvlc.footvaalvica.com/";
-                      icon = "mi:home";
+                      icon = "mdi:home";
                     }
                     {
                       title = "Overleaf";
