@@ -7,7 +7,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."grafana.footvaalvica.com".extraConfig = ''
-      reverse_proxy localhost:3001
+      reverse_proxy localhost:3000
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
