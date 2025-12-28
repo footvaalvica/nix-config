@@ -8,7 +8,6 @@
   pkgs,
   lib,
   secrets,
-  agenix,
   ...
 }: {
   imports = [
@@ -93,7 +92,7 @@
     wireguard-tools
     cifs-utils
     sshfs
-    agenix.packages."${system}".default
+    inputs.agenix.packages."${system}".default
   ];
 
   power.ups = {
