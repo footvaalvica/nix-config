@@ -24,16 +24,25 @@
     globalConfig.scrape_interval = "10s"; # "1m"
     scrapeConfigs = [
       {
-        job_name = "all_exporters";
+        job_name = "node";
         static_configs = [
           {
             targets = [
               "localhost:${toString config.services.prometheus.exporters.node.port}" 
-              "localhost:${toString config.services.prometheus.exporters.nut.port}"
             ];
           }
         ];
       }
+      {
+        job_name = "nut";
+        metrics_path = "/ups_metrics";
+        static_configs = [
+          {
+            targets = ["localhost:${toString config.services.prometheus.exporters.nut.port}"];
+          }
+        ];
+      }
+
     ];
   };
 
