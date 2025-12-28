@@ -2,6 +2,7 @@
   config,
   pkgs,
   agenix,
+  secrets,
   ...
 }: {
   services.caddy = {
@@ -46,7 +47,7 @@
         job_name = "hass-vlc";
         scrape_interval = "60s";
         metrics_path = "/api/prometheus";
-        authorization.credentials = "";
+        authorization.credentials = "${secrets.hass.prometheus.token}";
         scheme = "https";
         static_configs = [
           {
