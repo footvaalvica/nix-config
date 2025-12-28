@@ -133,7 +133,7 @@
   };
 
   age.secrets.upsmon-password = {
-    file = ../secrets/upsmon.pass.age;
+    file = ../../secrets/upsmon.pass.age;
     mode = "770";
     owner = "upsmon";
     group = "upsmon";
