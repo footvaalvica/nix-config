@@ -86,7 +86,6 @@
     sshfs
   ];
 
-
   # Firewall
   networking.firewall = {
     allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
@@ -105,11 +104,11 @@
     wakeonlan
   ];
 
-power.ups = {
+  power.ups = {
     enable = true;
     mode = "netserver";
     openFirewall = true;
-    
+
     # WD NAS forces a lookup for "usbhid", so we must name it exactly that.
     ups."usbhid" = {
       driver = "usbhid-ups";
@@ -122,13 +121,16 @@ power.ups = {
     };
 
     upsd.listen = [
-      { address = "0.0.0.0"; port = 3493; } 
+      {
+        address = "0.0.0.0";
+        port = 3493;
+      }
     ];
 
     upsmon.monitor."usbhid" = {
       user = "upsmon";
       powerValue = 1;
-      system = "usbhid@omi"; 
+      system = "usbhid@omi";
     };
 
     # 4. USERS DEFINITION
