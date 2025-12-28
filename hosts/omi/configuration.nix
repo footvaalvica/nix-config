@@ -109,6 +109,7 @@
 
     users.upsmon = {
       upsmon = "primary";
+      passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
     };
 
   };
