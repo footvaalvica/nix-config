@@ -92,52 +92,54 @@
     allowedUDPPorts = [443 3478 22000 21027];
   };
 
-  power.ups = {
+power.ups = {
     enable = true;
     mode = "netserver";
-    openFirewall = true; # Opens port 3493
+    openFirewall = true;
     
-    # Define the UPS device
-    ups."cyberpower-ups" = {
+    # 1. DEFINE THE UPS (RENAMED)
+    # The WD NAS forces a lookup for "usbhid", so we must name it exactly that.
+    ups."usbhid" = {  # <--- CHANGED FROM "cyberpower-ups"
       driver = "usbhid-ups";
       port = "auto";
-      description = "VLC UPS";
+      description = "VLC UPS (Renamed for WD NAS)";
       directives = [
         "maxretry = 3"
         "pollinterval = 5"
       ];
     };
 
-    # 1. LISTEN CONFIGURATION
-    # By default, NixOS might only listen on localhost (127.0.0.1).
-    # We need to tell upsd to listen on all interfaces (0.0.0.0) or your specific LAN IP.
+    # 2. LISTEN CONFIGURATION
     upsd.listen = [
       { address = "0.0.0.0"; port = 3493; } 
     ];
 
-    # 2. LOCAL MONITOR (For the PC itself)
-    upsmon.monitor."cyberpower-ups" = {
+    # 3. LOCAL MONITOR
+    # We must update the local monitor to look for the new name "usbhid"
+    upsmon.monitor."usbhid" = { # <--- CHANGED FROM "cyberpower-ups"
       user = "upsmon";
       powerValue = 1;
-      system = "cyberpower-ups@omi"; # Explicitly define system
+      # The system string is technically "upsname@hostname". 
+      # Since we renamed the UPS key above, this is now "usbhid@localhost"
+      system = "usbhid@localhost"; 
     };
 
-    # 3. USERS DEFINITION
+    # 4. USERS DEFINITION
     users = {
-      # The local user for the PC
       upsmon = {
         passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
-        upsmon = "primary"; # "primary" is the new term for "master" in NUT 2.8+
+        upsmon = "primary";
       };
       
-      # The remote user for the WD NAS
+      # The WD NAS likely only uses 'upsc' (no password) to poll status, 
+      # but if it attempts to login as a slave, it will use this.
       wdnas = {
-        passwordFile = "/home/mateusp/nix-config/hosts/omi/wdnas.pass"; # Create this file with a simple password
-        upsmon = "secondary"; # "secondary" is the new term for "slave"
+        passwordFile = "/home/mateusp/nix-config/hosts/omi/wdnas.pass";
+        upsmon = "secondary";
       };
     };
   };
-
+  
   services.prometheus.exporters.node = {
     enable = true;
     port = 9100;
