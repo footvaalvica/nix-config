@@ -86,11 +86,24 @@
     sshfs
   ];
 
+
   # Firewall
   networking.firewall = {
     allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
     allowedUDPPorts = [443 3478 22000 21027];
   };
+
+  # Enable Wake-on-LAN for the main ethernet interface
+  networking.interfaces.eno1.wakeOnLan.enable = true;
+  # Optionally, install the wakeonlan utility
+  environment.systemPackages = with pkgs; [
+    git
+    gh
+    wireguard-tools
+    cifs-utils
+    sshfs
+    wakeonlan
+  ];
 
 power.ups = {
     enable = true;
@@ -123,13 +136,6 @@ power.ups = {
       upsmon = {
         passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
         upsmon = "primary";
-      };
-      
-      # The WD NAS likely only uses 'upsc' (no password) to poll status, 
-      # but if it attempts to login as a slave, it will use this.
-      wdnas = {
-        passwordFile = "/home/mateusp/nix-config/hosts/omi/wdnas.pass";
-        upsmon = "secondary";
       };
     };
   };
