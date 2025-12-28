@@ -35,7 +35,7 @@
       }
       {
         job_name = "nut";
-        metrics_path = "/ups_metrics;
+        metrics_path = "/ups_metrics";
         static_configs = [
           {
             targets = ["localhost:${toString config.services.prometheus.exporters.nut.port}"];
