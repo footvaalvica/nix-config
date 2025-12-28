@@ -94,29 +94,48 @@
 
   power.ups = {
     enable = true;
-    openFirewall = true;
     mode = "netserver";
+    openFirewall = true; # Opens port 3493
+    
+    # Define the UPS device
     ups."cyberpower-ups" = {
       driver = "usbhid-ups";
       port = "auto";
       description = "VLC UPS";
-      directives = 
-        [
-          "maxretry = 3"
-          "pollinterval = 5"
-        ];
+      directives = [
+        "maxretry = 3"
+        "pollinterval = 5"
+      ];
     };
-  
+
+    # 1. LISTEN CONFIGURATION
+    # By default, NixOS might only listen on localhost (127.0.0.1).
+    # We need to tell upsd to listen on all interfaces (0.0.0.0) or your specific LAN IP.
+    upsd.listen = [
+      { address = "0.0.0.0"; port = 3493; } 
+    ];
+
+    # 2. LOCAL MONITOR (For the PC itself)
     upsmon.monitor."cyberpower-ups" = {
       user = "upsmon";
       powerValue = 3;
+      system = "cyberpower-ups@localhost"; # Explicitly define system
     };
 
-    users.upsmon = {
-      upsmon = "primary";
-      passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
+    # 3. USERS DEFINITION
+    users = {
+      # The local user for the PC
+      upsmon = {
+        passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
+        upsmon = "primary"; # "primary" is the new term for "master" in NUT 2.8+
+      };
+      
+      # The remote user for the WD NAS
+      wdnas = {
+        passwordFile = "/home/mateusp/nix-config/hosts/omi/wdnas.pass"; # Create this file with a simple password
+        upsmon = "secondary"; # "secondary" is the new term for "slave"
+      };
     };
-
   };
 
   services.prometheus.exporters.node = {
