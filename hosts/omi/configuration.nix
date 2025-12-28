@@ -102,8 +102,9 @@
       description = "VLC UPS";
     };
 
-    users.upsmon = {
-      upsmon = "cyberpower-ups";    
+    upsmon.monitor."cyberpower-ups" = {
+      user = "upsmon";
+      powerValue = 3;
     };
   };
 
