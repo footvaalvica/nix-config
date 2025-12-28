@@ -8,7 +8,6 @@
   pkgs,
   lib,
   secrets,
-  agenix,
   ...
 }: {
   imports = [
@@ -127,7 +126,7 @@
     # 4. USERS DEFINITION
     users = {
       upsmon = {
-        passwordFile = config.age.secrets.prometheus-nut-exporter-password.path;
+        passwordFile = config.age.secrets.upsmon-password.path;
         upsmon = "primary";
       };
     };
