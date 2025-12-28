@@ -118,7 +118,7 @@
     # 2. LOCAL MONITOR (For the PC itself)
     upsmon.monitor."cyberpower-ups" = {
       user = "upsmon";
-      powerValue = 3;
+      powerValue = 1;
       system = "cyberpower-ups@omi"; # Explicitly define system
     };
 
