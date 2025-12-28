@@ -48,6 +48,7 @@
     };
     nut = {
       enable = true;
+      port = 9199;
       nutUser = "upsmon";
       passwordPath = config.age.secrets.prometheus-nut-exporter-password.path;
       openFirewall = true;
