@@ -103,7 +103,7 @@
     };
 
     upsmon.monitor."cyberpower-ups" = {
-      user = "upsmon";
+      user = "nutmon";
       powerValue = 3;
     };
   };
