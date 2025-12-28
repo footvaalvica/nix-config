@@ -126,10 +126,17 @@
     # 4. USERS DEFINITION
     users = {
       upsmon = {
-        passwordFile = "/home/mateusp/nix-config/hosts/omi/upsmon.pass";
+        passwordFile = config.age.secrets.prometheus-nut-exporter-password.path;
         upsmon = "primary";
       };
     };
+  };
+
+  age.secrets.upsmon-password = {
+    file = ../secrets/upsmon.pass.age;
+    mode = "770";
+    owner = "upsmon";
+    group = "upsmon";
   };
 
   services.cloudflare-dyndns = {
