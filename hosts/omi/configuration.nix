@@ -77,15 +77,6 @@
 
   users.groups.borg = {};
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    gh
-    wireguard-tools
-    cifs-utils
-    sshfs
-  ];
 
   # Firewall
   networking.firewall = {
@@ -95,14 +86,12 @@
 
   # Enable Wake-on-LAN for the main ethernet interface
   networking.interfaces.eno1.wakeOnLan.enable = true;
-  # Optionally, install the wakeonlan utility
   environment.systemPackages = with pkgs; [
     git
     gh
     wireguard-tools
     cifs-utils
     sshfs
-    wakeonlan
   ];
 
   power.ups = {
