@@ -13,7 +13,7 @@
   };
 
   age.secrets.prometheus-nut-exporter-password = {
-    file = "../secrets/upsmon.pass.age";
+    file = ../secrets/upsmon.pass.age;
     mode = "770";
     owner = "nut-exporter";
     group = "nut-exporter";
