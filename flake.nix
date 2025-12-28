@@ -25,6 +25,8 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    agenix.url = "github:ryantm/agenix";
+
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -59,6 +61,7 @@
     nur,
     website,
     deploy-rs,
+    agenix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -99,6 +102,10 @@
         modules = [
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
+          agenix.nixosMOdules.default
+          {
+            age.secrets."upsmon.pass".file = ./secrets/upsmon.pass.age;
+          }
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix

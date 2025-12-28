@@ -48,15 +48,6 @@
     };
   };
 
-  systemd.services.prometheus-nut-exporter.serviceConfig = {
-    # Allow the service to see your home folder
-    ProtectHome = "tmpfs"; 
-    # Create a "tunnel" directly to your secret file
-    BindPaths = [
-      "/home/mateusp/nix-config/hosts/omi/upsmon.pass"
-    ];
-  };
-
   services.grafana = {
     enable = true;
     settings.server = {
