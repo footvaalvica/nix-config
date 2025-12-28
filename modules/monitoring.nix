@@ -11,7 +11,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  cloudflare-dyndns.domains = ["grafana.footvaalvica.com"];
+  services.cloudflare-dyndns.domains  = ["grafana.footvaalvica.com"];
 
   services.prometheus = {
     enable = true;
