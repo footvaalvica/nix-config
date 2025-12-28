@@ -102,7 +102,7 @@
         modules = [
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
-          agenix.nixosMOdules.default
+          agenix.nixosModules.default
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
