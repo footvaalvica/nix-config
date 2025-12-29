@@ -43,6 +43,8 @@
           }
         ];
       }
+      # ! NOTE TO SELF: this is kinda useless since idk what to do with the
+      # ! metrics, but whatever, it's here if I need it later
       {
         job_name = "hass-vlc";
         scrape_interval = "60s";
