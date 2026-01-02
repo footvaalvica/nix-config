@@ -62,6 +62,7 @@
     brews = [
       "mas"
       "openssl@3"
+      "mole"
     ];
     casks = [
       "discord"
