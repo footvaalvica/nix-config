@@ -68,7 +68,6 @@
       "discord"
       "firefox"
       "visual-studio-code"
-      "google-chrome"
       "altserver"
       "obsidian"
       "transmission"
@@ -89,7 +88,6 @@
       "balenaetcher"
       "league-of-legends"
       "antigravity"
-      "google-earth-pro"
       "mediahuman-audio-converter"
       "unity-hub"
     ];
