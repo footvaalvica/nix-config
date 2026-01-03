@@ -72,7 +72,6 @@
       "obsidian"
       "transmission"
       "reaper"
-      "grandperspective"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
       "utm"
