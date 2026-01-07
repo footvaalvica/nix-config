@@ -135,14 +135,31 @@
     };
   };
   
-  
-
+##############################  
+  ## THESIS STUFFS
+##############################
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
     domains = ["omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com"];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
+
+  services.caddy = {
+    enable = true;
+    virtualHosts."thesis.footvaalvica.com".extraConfig = ''
+      reverse_proxy localhost:6565
+    '';
+    virtualHosts."backend-thesis.footvaalvica.com".extraConfig = ''
+      reverse_proxy localhost:8000
+    '';
+    acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
+  };
+
+####
+########################### THESIS STUFF END ################################
+####
+
 
   # mount local drive for borg backup
   fileSystems."/mnt/borg" = {
