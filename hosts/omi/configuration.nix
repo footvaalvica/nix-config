@@ -108,6 +108,8 @@
       directives = [
         "maxretry = 3"
         "pollinterval = 5"
+        "lowbatt = 50"
+        "ignorelb"
       ];
     };
 
