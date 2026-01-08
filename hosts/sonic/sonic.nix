@@ -89,6 +89,7 @@
       "antigravity"
       "mediahuman-audio-converter"
       "unity-hub"
+      "google-chrome"
     ];
     global.autoUpdate = false;
     masApps = {
