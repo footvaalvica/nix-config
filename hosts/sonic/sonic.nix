@@ -89,7 +89,7 @@
       "antigravity"
       "mediahuman-audio-converter"
       "unity-hub"
-      "ungoogled-chromium"
+      "microsoft-edge"
     ];
     global.autoUpdate = false;
     masApps = {
