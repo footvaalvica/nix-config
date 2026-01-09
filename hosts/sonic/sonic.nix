@@ -109,6 +109,7 @@
       SponsorBlock = 1573461917;
       DeArrow = 6451469297;
       IPScanner = 6443819966;
+      Tampermonkey = 6738342400;
     };
     onActivation = {
       cleanup = "zap";
