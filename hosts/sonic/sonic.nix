@@ -89,7 +89,7 @@
       "antigravity"
       "mediahuman-audio-converter"
       "unity-hub"
-      "microsoft-edge"
+      "vivaldi"
     ];
     global.autoUpdate = false;
     masApps = {
