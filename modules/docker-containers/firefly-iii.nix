@@ -172,7 +172,7 @@
   };
   virtualisation.oci-containers.containers."firefly_iii_cron" = {
     image = "alpine";
-    cmd = ["sh" "-c" " apk add tzdata && ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/${secrets.firefly.token};echo\" | crontab - && crond -f -L /dev/stdout"];
+    cmd = ["sh" "-c" " apk add tzdata && ln -s /usr/share/zoneinfo/Europe/Lisbon /etc/localtime | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/${secrets.firefly.token};echo\" | crontab - && crond -f -L /dev/stdout"];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=cron"
