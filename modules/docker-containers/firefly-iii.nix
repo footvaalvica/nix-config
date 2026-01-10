@@ -128,7 +128,7 @@
       "TRACKER_SITE_ID" = "";
       "TRACKER_URL" = "";
       "TRUSTED_PROXIES" = "*";
-      "TZ" = "Europe/Amsterdam";
+      "TZ" = "Europe/Lisbon";
       "USE_RUNNING_BALANCE" = "false";
       "VALID_URL_PROTOCOLS" = "";
     };
@@ -172,7 +172,7 @@
   };
   virtualisation.oci-containers.containers."firefly_iii_cron" = {
     image = "alpine";
-    cmd = ["sh" "-c" " apk add tzdata && ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/PLEASE_REPLACE_WITH_32_CHAR_CODE;echo\" | crontab - && crond -f -L /dev/stdout"];
+    cmd = ["sh" "-c" " apk add tzdata && ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/${secrets.firefly.token};echo\" | crontab - && crond -f -L /dev/stdout"];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=cron"
@@ -298,7 +298,7 @@
       "TRACKER_SITE_ID" = "";
       "TRACKER_URL" = "";
       "TRUSTED_PROXIES" = "*";
-      "TZ" = "Europe/Amsterdam";
+      "TZ" = "Europe/Lisbon";
       "USE_CACHE" = "true";
       "VANITY_URL" = "https://firefly.footvaalvica.com";
       "VERIFY_TLS_SECURITY" = "true";
