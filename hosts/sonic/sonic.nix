@@ -89,6 +89,7 @@
       "antigravity"
       "mediahuman-audio-converter"
       "unity-hub"
+      "vivaldi"
     ];
     global.autoUpdate = false;
     masApps = {
@@ -108,6 +109,7 @@
       SponsorBlock = 1573461917;
       DeArrow = 6451469297;
       IPScanner = 6443819966;
+      Tampermonkey = 6738342400;
     };
     onActivation = {
       cleanup = "zap";
