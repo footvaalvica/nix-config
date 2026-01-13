@@ -47,7 +47,7 @@
         job_name = "blackbox";
         metrics_path = "/probe";
         params = {
-          module = [ "http_2xx" ];
+          module = [ "my_tcp" "my_icmp" "my_udp" ];
         };
         static_configs = [
           {
