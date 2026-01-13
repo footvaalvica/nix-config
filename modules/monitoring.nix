@@ -116,6 +116,33 @@
       enable = true;
       port = 9115;
       openFirewall = true;
+      configFile = (pkgs.formats.json {}).generate "config.json" {
+              modules = {
+                my_tcp = {
+                  prober = "http";
+                  timeout = "${builtins.toString cfg.exporters.blackbox-exporter.timeout}s";
+                  http = {
+                    valid_status_codes = [ 200 201 300 301 ];
+                  };
+                };
+                my_icmp = {
+                  prober = "icmp";
+                  timeout = "${builtins.toString cfg.exporters.blackbox-exporter.timeout}s";
+                  icmp = {
+                    preferred_ip_protocol = "ip4";
+                  };
+                };
+                my_udp = {
+                  prober = "icmp";
+                  timeout = "${builtins.toString cfg.exporters.blackbox-exporter.timeout}s";
+                  icmp = {
+                    preferred_ip_protocol = "udp";
+                  };
+                };
+              };
+            };
+          };
+
     };
   };
 
