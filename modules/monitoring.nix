@@ -43,6 +43,41 @@
           }
         ];
       }
+      {
+        job_name = "blackbox";
+        metrics_path = "/probe";
+        params = {
+          module = [ "http_2xx" ];
+        };
+        static_configs = [
+          {
+            targets = [
+              "https://cloud.footvaalvica.com/"
+              "https://photos.footvaalvica.com/"
+              "https://homeassistantvlc.footvaalvica.com/"
+              "https://overleaf.footvaalvica.com/"
+              "https://firefly.footvaalvica.com/"
+              "https://grafana.footvaalvica.com/"
+              "https://www.footvaalvica.com/"
+              "https://footvaalvica.com/"
+            ];
+          }
+        ];
+        relabel_configs = [
+          {
+            source_labels = [ "__address__" ];
+            target_label = "__param_target";
+          }
+          {
+            source_labels = [ "__param_target" ];
+            target_label = "instance";
+          }
+          {
+            target_label = "__address__";
+            replacement = "localhost:${toString config.services.prometheus.exporters.blackbox.port}";
+          }
+        ];
+      }
       # ! NOTE TO SELF: this is kinda useless since idk what to do with the
       # ! metrics, but whatever, it's here if I need it later
       {
@@ -75,6 +110,11 @@
       port = 9199;
       nutUser = "upsmon";
       passwordPath = config.age.secrets.prometheus-nut-exporter-password.path;
+      openFirewall = true;
+    };
+    blackbox = {
+      enable = true;
+      port = 9115;
       openFirewall = true;
     };
   };
