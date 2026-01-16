@@ -84,7 +84,7 @@
     allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
     allowedUDPPorts = [9 443 3478 22000 21027];
   };
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ]
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   # Enable Wake-on-LAN for the main ethernet interface
   networking.interfaces.eno1.wakeOnLan.enable = true;
