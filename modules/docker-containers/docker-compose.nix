@@ -21,15 +21,11 @@
       "/home/mateusp/nix-config/modules/docker-containers/stremio-data:/root/.stremio-server:rw"
     ];
     ports = [
-      "12345:8080/tcp"
+      "8080:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
       "--device=/dev/dri:/dev/dri:rwm"
-      "--health-cmd=./restart_if_idle.sh"
-      "--health-interval=1h0m0s"
-      "--health-retries=1"
-      "--health-start-period=1h0m0s"
       "--network-alias=stremio"
       "--network=stremio-server_default"
     ];
