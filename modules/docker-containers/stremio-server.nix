@@ -60,7 +60,7 @@ in
       "${restartIfIdleScript}:/restart_if_idle.sh:ro"
     ];
     ports = [
-      "8080:8080/tcp"
+      "12345:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
@@ -69,8 +69,8 @@ in
       "--network=stremio-server_default"
       # Healthcheck implementation via Docker flags
       "--health-cmd=/restart_if_idle.sh"
-      "--health-interval=1h"
-      "--health-start-period=1h"
+      "--health-interval=1h0m0s"
+      "--health-start-period=1h0m0s"
       "--health-retries=1"
     ];
   };
@@ -82,10 +82,18 @@ in
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [ "docker-network-stremio-server_default.service" ];
-    requires = [ "docker-network-stremio-server_default.service" ];
-    partOf = [ "docker-compose-stremio-server-root.target" ];
-    wantedBy = [ "docker-compose-stremio-server-root.target" ];
+    after = [
+      "docker-network-stremio-server_default.service"
+    ];
+    requires = [
+      "docker-network-stremio-server_default.service"
+    ];
+    partOf = [
+      "docker-compose-stremio-server-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-stremio-server-root.target"
+    ];
   };
 
   # Networks
