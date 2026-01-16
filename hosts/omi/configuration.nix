@@ -28,6 +28,7 @@
     ../../modules/docker-containers/homeassistant.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
+    ../../modules/docker-containers/stremio-server.nix
   ];
 
   home-manager = {
