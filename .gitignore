@@ -1,2 +1,3 @@
 secret-key
 modules/docker-containers/sillytavern
+modules/docker-containers/stremio-data/
