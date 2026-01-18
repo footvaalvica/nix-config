@@ -60,6 +60,7 @@
               "https://grafana.footvaalvica.com/"
               "https://www.footvaalvica.com/"
               "https://footvaalvica.com/"
+              "http://omi:12345/"
             ];
           }
         ];
