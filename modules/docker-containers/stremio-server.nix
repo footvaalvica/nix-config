@@ -61,6 +61,8 @@ in
     ];
     ports = [
       "12345:8080/tcp"
+      "11470:11470"
+      "12470:12470"
     ];
     log-driver = "journald";
     extraOptions = [
