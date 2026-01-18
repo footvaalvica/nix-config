@@ -72,6 +72,11 @@ in
       "--health-interval=1h0m0s"
       "--health-start-period=1h0m0s"
       "--health-retries=1"
+      # VITAL FOR AV1 SOFTWARE DECODING:
+      "--cpu-shares=2048"          # Give it higher priority than other containers
+      "--cpus=6"                   # Allow it to burst across most of your 8 logical cores
+      "--shm-size=2gb"             # AV1 needs larger memory buffers for the "probe" process
+      "--memory=4g"                # Prevents OOM (Out of Memory) crashes during 10-bit AV1 parsing
     ];
   };
 
