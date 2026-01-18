@@ -46,6 +46,8 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {
@@ -62,6 +64,7 @@
     website,
     deploy-rs,
     agenix,
+    nixos-hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -103,6 +106,7 @@
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
           agenix.nixosModules.default
+          nixos-hardware.nixosModules.intel-nuc-8i7beh
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
