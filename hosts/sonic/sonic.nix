@@ -80,7 +80,7 @@
       "tjsousa/cask/altgr-weur"
       "anki"
       "steam"
-      "stremio"
+      "stremio@beta"
       "zoom"
       "lookaway"
       "musicbrainz-picard"
