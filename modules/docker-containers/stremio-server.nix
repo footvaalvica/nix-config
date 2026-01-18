@@ -119,8 +119,9 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
-  services.openvpn.servers = {
-    tecnicoVPN = { 
-      config = "${secrets.immich.postgres.password}";
-  };
+  # # services.openvpn.servers = {
+  # #   tecnicoVPN = { 
+  # #     config = "${secrets.immich.postgres.password}";
+  # #   };
+  # # };
 }

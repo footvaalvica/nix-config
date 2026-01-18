@@ -11,12 +11,6 @@
     enable = true;
   };
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   environment.systemPackages = with pkgs; [
     borgbackup
   ];
@@ -53,25 +47,4 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqacUuGE1cwsquurVTRnW2Ixa5108dMwlKoUEdwZZPs deployment_key"
     ];
   };
-
-  # # system.autoUpgrade = {
-  # #   enable = true;
-  # #   flake = inputs.self.outPath;
-  # #   flags = [
-  # #     "--update-input"
-  # #     "nixpkgs"
-  # #     "--no-write-lock-file"
-  # #     "-L" # print build logs
-  # #   ];
-  # #   dates = "02:00";
-  # #   randomizedDelaySec = "45min";
-  # # };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 }
