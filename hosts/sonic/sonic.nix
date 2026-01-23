@@ -90,6 +90,7 @@
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
+      "claude-code"
     ];
     global.autoUpdate = false;
     masApps = {
