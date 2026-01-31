@@ -28,6 +28,8 @@
     nix-direnv.enable = lib.mkForce false;
   };
 
+  programs.fish.interactiveShellInit = "ulimit -n 4096";
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
