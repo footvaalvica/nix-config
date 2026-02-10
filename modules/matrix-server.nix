@@ -12,10 +12,10 @@ let
   serverConfig."m.server" = "${fqdn}:443";
   
   ooye-registration = pkgs.writeText "ooye-registration.json" (builtins.toJSON {
-          id = "ooye";
-          as_token = secrets.matrix.discord_bridge.as_token;
-          hs_token = secrets.matrix.discord_bridge.hs_token;
-          namespaces = {
+    id = "ooye";
+    as_token = secrets.matrix.discord_bridge.as_token;
+    hs_token = secrets.matrix.discord_bridge.hs_token;
+    namespaces = {
             users = [
               {
                 exclusive = true;
@@ -100,7 +100,7 @@ in
     enable = true;
     settings.global = {
       server_name = "matrix.footvaalvica.com";
-      allow_registration = true;
+      allow_registration = false;
       address = "127.0.0.1";
       port = 6167;
       trusted_servers = [ "matrix.org" ];
