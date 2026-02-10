@@ -73,13 +73,10 @@ in
 
   services.matrix-synapse = {
     enable = true;
-    # The public base URL value must match the `base_url` value set in `clientConfig` above.
-    # The default value here is based on `server_name`, so if your `server_name` is different
-    # from the value of `fqdn` above, you will likely run into some mismatched domain names
-    # in client applications.
     settings = {
       server_name = "matrix.footvaalvica.com";
-      enable_registration = true;
+      # ! switch this when people wanna register, else just use matrix.org
+      enable_registration = false;
       public_baseurl = baseUrl;
 
       # Security & Verification
@@ -149,10 +146,6 @@ in
           url = "https://discord-bridge.footvaalvica.com";
         }))
       ];
-
-      # # turn_uris = ["turn:turn.footvaalvica.com:3478?transport=udp" "turn:turn.footvaalvica.com:3478?transport=tcp"];
-      # # turn_shared_secret = "will be world readable for local users :(";
-      # # turn_user_lifetime = "1h";
 
       listeners = [
       {
