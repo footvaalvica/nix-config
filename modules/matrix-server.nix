@@ -10,45 +10,6 @@ let
   baseUrl = "https://${fqdn}";
   clientConfig."m.homeserver".base_url = baseUrl;
   serverConfig."m.server" = "${fqdn}:443";
-  
-  ooye-registration = pkgs.writeText "ooye-registration.json" (builtins.toJSON {
-    id = "ooye";
-    as_token = secrets.matrix.discord_bridge.as_token;
-    hs_token = secrets.matrix.discord_bridge.hs_token;
-    namespaces = {
-            users = [
-              {
-                exclusive = true;
-                regex = "@_ooye_.*:${fqdn}";
-              }
-            ];
-            aliases = [
-              {
-                exclusive = true;
-                regex = "#_ooye_.*:${fqdn}";
-              }
-            ];
-          };
-          protocols = [ "discord" ];
-          sender_localpart = "_ooye_bot";
-          rate_limited = false;
-          socket = 6693;
-          ooye = {
-            namespace_prefix = "_ooye_";
-            server_name = fqdn;
-            max_file_size = 5000000;
-            content_length_workaround = false;
-            include_user_id_in_mxid = false;
-            invite = [ ];
-            receive_presences = true;
-            bridge_origin = "https://discord-bridge.footvaalvica.com";
-            server_origin = baseUrl;
-            discord_token = secrets.matrix.discord_bridge.discord_token;
-            discord_client_secret = secrets.matrix.discord_bridge.client_secret;
-            web_password = secrets.matrix.discord_bridge.web_password;
-          };
-          url = "https://discord-bridge.footvaalvica.com";
-        });
 in
 {
   services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "turn.footvaalvica.com" "discord-bridge.footvaalvica.com" ];
@@ -105,7 +66,6 @@ in
       port = 6167;
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
-      appservice_configs = [ "${ooye-registration}" ];
     };
   };
 

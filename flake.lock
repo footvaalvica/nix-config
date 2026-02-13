@@ -212,6 +212,22 @@
         "type": "github"
       }
     },
+    "neved4-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770444680,
+        "narHash": "sha256-EK+qr580wCcgBxyYteIPtipJxaZSKzyA7wD9MkTRxeA=",
+        "owner": "neved4",
+        "repo": "homebrew-tap",
+        "rev": "0ee2a6d96234cdfe3138d0760e4d954cd99ce90c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neved4",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -376,6 +392,7 @@
         "home-manager-2511": "home-manager-2511",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "neved4-tap": "neved4-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",

@@ -7,6 +7,7 @@
   secrets,
   homebrew-core,
   homebrew-cask,
+  neved4-tap,
   ...
 }: {
   home-manager = {
@@ -48,6 +49,7 @@
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
+      "neved4/homebrew-tap" = neved4-tap;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -80,7 +82,6 @@
       "tjsousa/cask/altgr-weur"
       "anki"
       "steam"
-      "stremio@beta"
       "zoom"
       "lookaway"
       "musicbrainz-picard"
@@ -92,6 +93,7 @@
       "vivaldi"
       "claude-code"
       "element"
+      "neved4/tap/cinny"
     ];
     global.autoUpdate = false;
     masApps = {
