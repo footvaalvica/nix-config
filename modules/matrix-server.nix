@@ -86,7 +86,7 @@ in
       async_transactions = false;
       as_token = "${secrets.matrix.discord_bridge.as_token}";
       hs_token = "${secrets.matrix.discord_bridge.hs_token}";
-    }
+    };
   };
 
   environment.systemPackages = with pkgs; [
