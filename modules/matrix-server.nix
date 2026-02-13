@@ -62,7 +62,6 @@ in
     settings.global = {
       server_name = "matrix.footvaalvica.com";
       allow_registration = false;
-      port = 6167;
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
     };
