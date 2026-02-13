@@ -82,6 +82,30 @@ in
           "matrix.footvaalvica.com" = "user";
           "@footvaalvica:matrix.footvaalvica.com" = "admin";
         };
+        
+        appservice = {
+          address = "http://localhost:29334";
+          hostname = "0.0.0.0";
+          port = 29334;
+          database = {
+            type = "sqlite3";
+            uri = "file:${config.services.mautrix-discord.dataDir}/mautrix-discord.db?_txlock=immediate";
+            max_open_conns = 20;
+            max_idle_conns = 2;
+            max_conn_idle_time = null;
+            max_conn_lifetime = null;
+          };
+          id = "discord";
+          bot = {
+            username = "discordbot";
+            displayname = "Discord bridge bot";
+            avatar = "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
+          };
+          ephemeral_events = true;
+          async_transactions = false;
+          as_token = "${secrets.matrix.discord_bridge.as_token}";
+          hs_token = "${secrets.matrix.discord_bridge.hs_token}";
+        };
       };
     
   };
