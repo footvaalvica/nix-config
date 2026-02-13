@@ -73,16 +73,25 @@ in
     nodejs
   ];
 
-  systemd.services.ooye-bridge = {
-    description = "Out of Your Element (Matrix-Discord Bridge)";
-    after = [ "network.target" "matrix-conduit.service" ];
-    wantedBy = [ "multi-user.target" ];
-    script = "/bin/sh -lc 'npm run start'";
-    serviceConfig = {
-      User = "mateusp";
-      WorkingDirectory = "/home/mateusp/Documents/out-of-your-element";
-      Restart = "always";
-      RestartSec = "10";
+  services.mautrix-discord = {
+    enable = true;
+    settings.global = {
+      {
+        homeserver = {
+          address = "https://matrix.footvaalvica.com";
+          domain = "matrix.footvaalvica.com";
+        };
+
+        appservice.public = {
+          prefix = "/public";
+          external = "https://discord-bridge.footvaalvica.com/public";
+        };
+
+        bridge.permissions = {
+          "matrix.footvaalvica.com" = "user";
+          "@footvaalvica:matrix.footvaalvica.com" = "admin";
+        };
+      }
     };
   };
 }
