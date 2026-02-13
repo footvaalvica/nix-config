@@ -62,6 +62,7 @@ in
     settings.global = {
       server_name = "matrix.footvaalvica.com";
       allow_registration = true;
+      yes_i_am_very_very_sure_i_want_an_open_registration_server_prone_to_abuse = true;
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
     };
