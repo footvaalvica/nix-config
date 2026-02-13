@@ -75,8 +75,7 @@ in
 
   services.mautrix-discord = {
     enable = true;
-    settings.global = {
-      {
+    settings = {
         homeserver = {
           address = "https://matrix.footvaalvica.com";
           domain = "matrix.footvaalvica.com";
@@ -91,7 +90,6 @@ in
           "matrix.footvaalvica.com" = "user";
           "@footvaalvica:matrix.footvaalvica.com" = "admin";
         };
-      }
-    };
+      };
   };
 }
