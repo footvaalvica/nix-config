@@ -81,11 +81,6 @@ in
           domain = "matrix.footvaalvica.com";
         };
 
-        appservice.public = {
-          prefix = "/public";
-          external = "https://discord-bridge.footvaalvica.com/public";
-        };
-
         bridge.permissions = {
           "matrix.footvaalvica.com" = "user";
           "@footvaalvica:matrix.footvaalvica.com" = "admin";
