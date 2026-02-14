@@ -82,6 +82,7 @@ in
           "matrix.footvaalvica.com" = "user";
           "@footvaalvica:matrix.footvaalvica.com" = "admin";
         };    
+    };
   };
 
   services.mautrix-discord = {
