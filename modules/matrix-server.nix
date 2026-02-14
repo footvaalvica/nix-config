@@ -72,6 +72,16 @@ in
 
   services.mautrix-whatsapp = {
     enable = true;
+    settings = {
+        homeserver = {
+          address = "https://matrix.footvaalvica.com";
+          domain = "matrix.footvaalvica.com";
+        };
+
+        bridge.permissions = {
+          "matrix.footvaalvica.com" = "user";
+          "@footvaalvica:matrix.footvaalvica.com" = "admin";
+        };    
   };
 
   services.mautrix-discord = {
