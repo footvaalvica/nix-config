@@ -70,6 +70,10 @@ in
     nodejs
   ];
 
+  services.mautrix-whatsapp = {
+    enable = true;
+  };
+
   services.mautrix-discord = {
     enable = true;
     settings = {
