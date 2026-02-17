@@ -94,6 +94,7 @@
       "claude-code"
       "element"
       "neved4/tap/cinny"
+      "soulseek"
     ];
     global.autoUpdate = false;
     masApps = {
