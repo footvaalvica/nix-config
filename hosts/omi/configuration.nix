@@ -171,21 +171,21 @@
   # #   options = ["defaults" "x-systemd.automount" "noauto" "users" "rw"];
   # # };
 
-  # Ensure borg backup directory has correct ownership
-  systemd.tmpfiles.rules = [
-    "d /mnt/borg 0755 root root -"
-    "d /mnt/borg/musicbackup 0750 borg borg -"
-  ];
+  # # # Ensure borg backup directory has correct ownership
+  # # systemd.tmpfiles.rules = [
+  # #   "d /mnt/borg 0755 root root -"
+  # #   "d /mnt/borg/musicbackup 0750 borg borg -"
+  # # ];
 
-  services.borgbackup = {
-    repos."musicbackup" = {
-      path = "/mnt/borg/musicbackup";
-      authorizedKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
-      ];
-      user = "borg";
-    };
-  };
+  # # services.borgbackup = {
+  # #   repos."musicbackup" = {
+  # #     path = "/mnt/borg/musicbackup";
+  # #     authorizedKeys = [
+  # #       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
+  # #     ];
+  # #     user = "borg";
+  # #   };
+  # # };
 
   # # services.dnsmasq.enable = true;
 
