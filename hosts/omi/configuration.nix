@@ -164,12 +164,12 @@
 ####
 
 
-  # mount local drive for borg backup
-  fileSystems."/mnt/borg" = {
-    device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
-    fsType = "ext4";
-    options = ["defaults" "x-systemd.automount" "noauto" "users" "rw"];
-  };
+  # # # mount local drive for borg backup
+  # # fileSystems."/mnt/borg" = {
+  # #   device = "/dev/disk/by-uuid/ae313132-7882-4c05-ae24-fd07e9ce6a00";
+  # #   fsType = "ext4";
+  # #   options = ["defaults" "x-systemd.automount" "noauto" "users" "rw"];
+  # # };
 
   # Ensure borg backup directory has correct ownership
   systemd.tmpfiles.rules = [
