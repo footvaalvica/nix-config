@@ -12,6 +12,17 @@
 
   programs.fish.enable = true;
 
+  users.users.mateusp = {
+    isNormalUser = true;
+    description = "Mateus Pinho";
+    extraGroups = ["networkmanager" "wheel" "docker" "ydotool"];
+    packages = with pkgs; [];
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzd+9n5/Y34hs5Q5+mSEAW9jCLOr7zQw/AMZwW68jBB mateusp@omi"
+    ];
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -67,11 +78,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   boot.loader.grub.memtest86.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
     git
+    gh
     htop
     tmux
     curl

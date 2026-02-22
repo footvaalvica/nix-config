@@ -117,6 +117,18 @@
           ./hosts/omi/configuration.nix
         ];
       };
+      tojo = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs secrets;};
+        modules = [
+          nur.modules.nixos.default
+          home-manager-2511.nixosModules.home-manager
+          agenix.nixosModules.default
+          # Import the previous configuration.nix we used,
+          # so the old configuration file still takes effect
+          ./hosts/tojo/configuration.nix
+        ];
+      };
     };
 
     deploy = {

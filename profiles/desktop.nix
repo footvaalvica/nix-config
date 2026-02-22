@@ -23,8 +23,8 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "pt";
-    variant = "";
+    layout = "us";
+    variant = "altgr-intl";
   };
 
   # Configure console keymap
@@ -67,6 +67,10 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Enable firefox
+  programs.firefox.enable = true;
+
 
   # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
   # If no user is logged in, the machine will power down after 20 minutes.

@@ -43,26 +43,12 @@
   boot.loader.grub.useOSProber = true;
 
   # Enable zram.
-  zramSwap.enable = true;
   networking.hostName = "omi"; # Define your hostname.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
     package = pkgs.bluez;
-  };
-
-  # Enable firefox
-  programs.firefox.enable = true;
-
-  users.users.mateusp = {
-    isNormalUser = true;
-    description = "Mateus Pinho";
-    extraGroups = ["networkmanager" "wheel" "docker" "ydotool"];
-    packages = with pkgs; [];
-    shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzd+9n5/Y34hs5Q5+mSEAW9jCLOr7zQw/AMZwW68jBB mateusp@omi"
-    ];
   };
 
   users.users.borg = {
@@ -79,19 +65,15 @@
 
   users.groups.borg = {};
 
-
   # Firewall
   networking.firewall = {
     allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
     allowedUDPPorts = [9 443 3478 22000 21027];
   };
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   # Enable Wake-on-LAN for the main ethernet interface
   networking.interfaces.eno1.wakeOnLan.enable = true;
   environment.systemPackages = with pkgs; [
-    git
-    gh
     wireguard-tools
     cifs-utils
     sshfs
@@ -138,15 +120,19 @@
     };
   };
   
-##############################  
-  ## THESIS STUFFS
-##############################
+
   services.cloudflare-dyndns = {
     enable = true;
     frequency = "*:0/5";
     domains = ["omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com"];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
+
+  ##############################  
+  ## THESIS STUFFS
+  ##############################
+
+  # remove the thesis domains above
 
   services.caddy = {
     enable = true;
