@@ -95,6 +95,7 @@
       "element"
       "neved4/tap/cinny"
       "soulseek"
+      "ghostty"
     ];
     global.autoUpdate = false;
     masApps = {
