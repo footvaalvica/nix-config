@@ -68,6 +68,7 @@
     ];
     casks = [
       "discord"
+      "alt-tab"
       "firefox"
       "visual-studio-code"
       "altserver"
