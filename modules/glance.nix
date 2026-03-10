@@ -6,13 +6,13 @@
 }: {
   services.caddy = {
     enable = true;
-    virtualHosts."footvaalvica.com".extraConfig = ''
+    virtualHosts."home.footvaalvica.com".extraConfig = ''
       reverse_proxy localhost:5423
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["footvaalvica.com"];
+  services.cloudflare-dyndns.domains = ["home.footvaalvica.com"];
 
   services.glance = {
     enable = true;

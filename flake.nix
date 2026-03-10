@@ -27,6 +27,8 @@
 
     agenix.url = "github:ryantm/agenix";
 
+    devenv.url = "github:cachix/devenv";
+
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -74,6 +76,7 @@
     website,
     deploy-rs,
     agenix,
+    devenv,
     nixos-hardware,
     ...
   } @ inputs: let
@@ -115,6 +118,9 @@
         modules = [
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
+          }
           agenix.nixosModules.default
           nixos-hardware.nixosModules.intel-nuc-8i7beh
           # Import the previous configuration.nix we used,
@@ -128,7 +134,11 @@
         modules = [
           nur.modules.nixos.default
           home-manager-2511.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
+          } 
           agenix.nixosModules.default
+          
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/tojo/configuration.nix
@@ -151,12 +161,15 @@
 
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core tjsousa-cask neved4-tap oteurk-sidebar;};
-
+      specialArgs = {inherit inputs outputs secrets;};
+    
       modules = [
         ./hosts/sonic/sonic.nix
         nix-homebrew.darwinModules.nix-homebrew
         home-manager.darwinModules.home-manager
+        {
+          home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
+        } 
       ];
     };
 

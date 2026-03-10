@@ -5,10 +5,6 @@
   pkgs,
   lib,
   secrets,
-  homebrew-core,
-  homebrew-cask,
-  neved4-tap,
-  oteurk-sidebar,
   ...
 }: {
   home-manager = {
@@ -47,11 +43,11 @@
 
     # Optional: Declarative tap management
     taps = {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
-      "neved4/homebrew-tap" = neved4-tap;
-      "otuerk/homebrew-sidebar" = oteurk-sidebar;
+      "neved4/homebrew-tap" = inputs.neved4-tap;
+      "otuerk/homebrew-sidebar" = inputs.oteurk-sidebar;
     };
 
     # Optional: Enable fully-declarative tap management

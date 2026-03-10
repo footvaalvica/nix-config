@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -14,7 +15,7 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    devenv
+    inputs.devenv.packages.${pkgs.system}.devenv
     nano
     git-crypt
     git-lfs
