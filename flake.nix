@@ -43,6 +43,10 @@
       url = "github:neved4/homebrew-tap";
       flake = false;
     };
+    oteurk-sidebar = {
+      url = "github:otuerk/homebrew-sidebar";
+      flake = false;
+    };
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
@@ -65,6 +69,7 @@
     homebrew-cask,
     tjsousa-cask,
     neved4-tap,
+    oteurk-sidebar,
     nur,
     website,
     deploy-rs,
@@ -146,7 +151,8 @@
 
     darwinConfigurations."sonic" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core tjsousa-cask neved4-tap;};
+      specialArgs = {inherit inputs outputs secrets homebrew-cask homebrew-core tjsousa-cask neved4-tap oteurk-sidebar;};
+
       modules = [
         ./hosts/sonic/sonic.nix
         nix-homebrew.darwinModules.nix-homebrew

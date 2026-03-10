@@ -8,6 +8,7 @@
   homebrew-core,
   homebrew-cask,
   neved4-tap,
+  oteurk-sidebar,
   ...
 }: {
   home-manager = {
@@ -50,6 +51,7 @@
       "homebrew/homebrew-cask" = homebrew-cask;
       "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
       "neved4/homebrew-tap" = neved4-tap;
+      "otuerk/homebrew-sidebar" = oteurk-sidebar;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -68,7 +70,7 @@
     ];
     casks = [
       "discord"
-      "alt-tab"
+      "dockdoor"
       "firefox"
       "visual-studio-code"
       "altserver"
@@ -116,6 +118,7 @@
       DeArrow = 6451469297;
       IPScanner = 6443819966;
       Tampermonkey = 6738342400;
+      # ! TODO ADD NepTunes herez
     };
     onActivation = {
       cleanup = "zap";
