@@ -119,7 +119,12 @@
       lfs.enable = true;
     };
 
-    fish.enable = true; # see note on other shells below
+    fish = {
+      enable = true; # see note on other shells below
+      shellAliases = {
+        nano = "micro";
+      };
+    };
   };
 
   home.sessionVariables = {
