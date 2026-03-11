@@ -122,6 +122,7 @@
 
   services.cloudflare-dyndns = {
     enable = true;
+    proxied = true;
     frequency = "*:0/5";
     domains = ["omi.footvaalvica.com" "thesis.footvaalvica.com" "backend-thesis.footvaalvica.com"];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
