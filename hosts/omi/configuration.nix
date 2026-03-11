@@ -21,7 +21,6 @@
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
-    ../../modules/webserver.nix
     ../../modules/matrix-server.nix
     ../../modules/glance.nix
     ../../modules/monitoring.nix
