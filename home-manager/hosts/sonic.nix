@@ -38,11 +38,6 @@
         user = "borg";
         identityFile = "~/.ssh/borg_key";
       };
-      "omi.footvaalvica.com" = {
-        user = "mateusp";
-        identityFile = "~/.ssh/omi_key";
-        hostname = "omi.footvaalvica.com";
-      };
     };
   };
 }

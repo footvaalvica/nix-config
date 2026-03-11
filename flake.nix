@@ -149,7 +149,7 @@
     deploy = {
       nodes = {
         omi = {
-          hostname = "omi.footvaalvica.com";
+          hostname = "omi";
           profiles.system = {
             user = "root";
             sshUser = "root";
