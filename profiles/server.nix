@@ -42,6 +42,10 @@
     '';
   };
 
+  virtualisation.docker.daemon.settings = {
+    dns = [ "100.100.100.100" "8.8.8.8" ];
+  };
+
   zramSwap.enable = true;
 
   users.users.root = {
