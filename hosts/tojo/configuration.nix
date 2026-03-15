@@ -24,6 +24,33 @@
     backupFileExtension = "backup";
   };
 
+  fileSystems."/mnt/backup" = {
+    device = "/dev/disk/by-label/backup";
+    fsType = "btrfs";
+    options = [ 
+      "compress=zstd"   # Automatically compresses data to save space
+      "nosuid"          # Security: prevents set-user-identifier bits from working
+      "nodev"           # Security: prevents interpreting character or block special devices
+      "nofail"          # CRITICAL: allows the PC to boot even if the drive is unplugged
+    ];
+  };
+
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /mnt/backup  omi(rw,nohide,insecure,no_subtree_check,no_root_squash)
+    '';
+  };
+
+  services.borgbackup.repos."omi-backups" = {
+    path = "/mnt/backup/borg-repo";
+    authorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH47ttBWUSRZ9W/m07YAVjxtZfBjSqTOJXOoQx16zXuV root@nextcloud-aio-borgbackup" # You will get this key from the Omi UI
+    ];
+  };
+  
+  networking.firewall.allowedTCPPorts = [ 2049 ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
