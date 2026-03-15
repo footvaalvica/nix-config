@@ -40,7 +40,7 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /mnt/backup  omi(rw,nohide,insecure,no_subtree_check,no_root_squash)
+      /mnt/backup omi(rw,nohide,insecure,no_subtree_check,no_root_squash)
     '';
   };
 
@@ -50,8 +50,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH47ttBWUSRZ9W/m07YAVjxtZfBjSqTOJXOoQx16zXuV root@nextcloud-aio-borgbackup" # You will get this key from the Omi UI
     ];
   };
-  
-  networking.firewall.allowedTCPPorts = [ 2049 ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
