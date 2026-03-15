@@ -155,16 +155,6 @@
   # #   "d /mnt/borg/musicbackup 0750 borg borg -"
   # # ];
 
-  # # services.borgbackup = {
-  # #   repos."musicbackup" = {
-  # #     path = "/mnt/borg/musicbackup";
-  # #     authorizedKeys = [
-  # #       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
-  # #     ];
-  # #     user = "borg";
-  # #   };
-  # # };
-
   # # services.dnsmasq.enable = true;
 
   # This value determines the NixOS release from which the default

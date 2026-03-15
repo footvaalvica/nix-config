@@ -32,6 +32,16 @@
     options = ["username=${secrets.smb.username}" "password=${secrets.smb.password}" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" "x-systemd.device-timeout=5s" "x-systemd.mount-timeout=5s" "rw" "mfsymlinks" "seal" "uid=1000" "gid=100" "file_mode=0777" "dir_mode=0777"];
   };
 
+  services.borgbackup = {
+    repos."musicbackup" = {
+      path = "/mnt/borg/musicbackup";
+      authorizedKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfjFl103Fyq71fCKpmCPsoPRNPDJqqwi7idOt+tPIxa borg@omi"
+      ];
+      user = "borg";
+    };
+  };
+
   fileSystems."/mnt/backup" = {
     device = "100.93.108.50:/mnt/backup/OtherServicesBackup";
     fsType = "nfs";
