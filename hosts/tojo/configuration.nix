@@ -32,6 +32,8 @@
       "nosuid"          # Security: prevents set-user-identifier bits from working
       "nodev"           # Security: prevents interpreting character or block special devices
       "nofail"          # CRITICAL: allows the PC to boot even if the drive is unplugged
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=60"
     ];
   };
 
