@@ -26,10 +26,11 @@
   programs.ssh = {
     enableDefaultConfig = false;
     enable = true;
-    extraConfig = ''
-      Host omi raidou joker
-        User mateusp
-    '';
+    matchBlocks = {
+      "omi tojo raidou joker" = {
+      	user = "mateusp";
+      };
+    };
   };
 
   programs.topgrade = {
