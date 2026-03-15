@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     borgbackup
+    btrfs-progs
   ];
 
   # Fail2Ban
