@@ -13,13 +13,13 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."homeassistantvlc.footvaalvica.com".extraConfig = ''
+    virtualHosts."homeassistant.footvaalvica.com".extraConfig = ''
       reverse_proxy localhost:8123
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["homeassistantvlc.footvaalvica.com"];
+  services.cloudflare-dyndns.domains = ["homeassistant.footvaalvica.com"];
 
   networking.firewall = {
     allowedTCPPorts = [8443 21063 21064 21065];
