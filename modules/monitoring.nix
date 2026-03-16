@@ -54,7 +54,6 @@
             targets = [
               "https://cloud.footvaalvica.com/"
               "https://photos.footvaalvica.com/"
-              "https://homeassistantvlc.footvaalvica.com/"
               "https://overleaf.footvaalvica.com/"
               "https://firefly.footvaalvica.com/"
               "https://grafana.footvaalvica.com/"
@@ -78,20 +77,6 @@
           {
             target_label = "__address__";
             replacement = "localhost:${toString config.services.prometheus.exporters.blackbox.port}";
-          }
-        ];
-      }
-      # ! NOTE TO SELF: this is kinda useless since idk what to do with the
-      # ! metrics, but whatever, it's here if I need it later
-      {
-        job_name = "hass-vlc";
-        scrape_interval = "60s";
-        metrics_path = "/api/prometheus";
-        authorization.credentials = "${secrets.hass.prometheus.token}";
-        scheme = "https";
-        static_configs = [
-          {
-            targets = ["homeassistantvlc.footvaalvica.com"];
           }
         ];
       }
