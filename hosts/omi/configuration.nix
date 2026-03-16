@@ -146,15 +146,6 @@
 ########################### THESIS STUFF END ################################
 ####
 
-
-  # # # Ensure borg backup directory has correct ownership
-  # # systemd.tmpfiles.rules = [
-  # #   "d /mnt/borg 0755 root root -"
-  # #   "d /mnt/borg/musicbackup 0750 borg borg -"
-  # # ];
-
-  # # services.dnsmasq.enable = true;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

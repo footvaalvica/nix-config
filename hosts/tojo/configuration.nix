@@ -17,6 +17,7 @@
       ../../profiles/server.nix
       ../../profiles/desktop.nix
       ../../profiles/default.nix
+      ../../modules/docker-containers/homeassistant.nix
     ];
 
   home-manager = {
@@ -60,6 +61,13 @@
     enable = true; # enables support for Bluetooth
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
     package = pkgs.bluez;
+  };
+
+  services.cloudflare-dyndns = {
+    enable = true;
+    proxied = true;
+    frequency = "*:0/5";
+    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 
   system.stateVersion = "25.11"; # Did you read the comment?

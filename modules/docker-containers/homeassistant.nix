@@ -22,7 +22,7 @@
   services.cloudflare-dyndns.domains = ["homeassistant.footvaalvica.com"];
 
   networking.firewall = {
-    allowedTCPPorts = [8443 21063 21064 21065];
+    allowedTCPPorts = [80 443 8443 21063 21064 21065];
     allowedUDPPorts = [5353];
   };
 
