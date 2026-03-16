@@ -4,7 +4,12 @@
   config,
   secrets,
   ...
-}: {
+}: let
+  # Resolve host-specific healthchecks URL from secrets.healthchecks.<hostname>.url
+  # and fail during evaluation if the host key is missing.
+  healthchecksUrl = lib.getAttrFromPath ["healthchecks" config.networking.hostName "url"] secrets;
+in {
+
   # Update DUCKDNs
   systemd.timers."ping-healthchecks" = {
     wantedBy = ["timers.target"];
@@ -18,7 +23,7 @@
   systemd.services."ping-healthchecks" = {
     script = ''
       source ${config.system.build.setEnvironment}
-      curl ${secrets.healthchecks.url}
+      curl ${healthchecksUrl}
     '';
     serviceConfig = {
       Type = "oneshot";

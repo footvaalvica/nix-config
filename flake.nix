@@ -26,9 +26,6 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     agenix.url = "github:ryantm/agenix";
-
-    devenv.url = "github:cachix/devenv";
-
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -76,7 +73,6 @@
     website,
     deploy-rs,
     agenix,
-    devenv,
     nixos-hardware,
     ...
   } @ inputs: let

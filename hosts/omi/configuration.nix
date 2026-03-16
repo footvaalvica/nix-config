@@ -17,7 +17,6 @@
     ../../profiles/server.nix
     ../../profiles/desktop.nix
     ../../profiles/default.nix
-    ../../modules/healthchecks.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
@@ -25,7 +24,6 @@
     ../../modules/glance.nix
     ../../modules/monitoring.nix
     # # ../../modules/vscode-server.nix
-    ../../modules/docker-containers/homeassistant.nix
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/docker-containers/stremio-server.nix

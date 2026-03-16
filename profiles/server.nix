@@ -7,6 +7,11 @@
   secrets,
   ...
 }: {
+
+  imports = [
+    ../modules/healthchecks.nix
+  ];
+
   virtualisation.podman = {
     enable = true;
   };

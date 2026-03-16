@@ -114,7 +114,7 @@
       DeArrow = 6451469297;
       IPScanner = 6443819966;
       Tampermonkey = 6738342400;
-      # ! TODO ADD NepTunes herez
+      NepTunes = 1006739057;
     };
     onActivation = {
       cleanup = "zap";
