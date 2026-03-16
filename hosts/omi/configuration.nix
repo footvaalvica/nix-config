@@ -17,7 +17,6 @@
     ../../profiles/server.nix
     ../../profiles/desktop.nix
     ../../profiles/default.nix
-    ../../modules/healthchecks.nix
     ../../modules/docker-containers/nextcloud.nix
     ../../modules/docker-containers/immich.nix
     ../../modules/docker-containers/watchtower.nix
