@@ -22,6 +22,7 @@
     yq
     ugrep
     wget
+    fastfetch
   ];
 
   # ...other config, other config...

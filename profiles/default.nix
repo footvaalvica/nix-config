@@ -90,6 +90,5 @@
     curl
     kdePackages.filelight
     borgbackup
-    fastfetch
   ];
 }
