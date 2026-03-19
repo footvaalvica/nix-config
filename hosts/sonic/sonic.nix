@@ -63,6 +63,7 @@
       "mas"
       "openssl@3"
       "mole"
+      "node"
     ];
     casks = [
       "discord"
