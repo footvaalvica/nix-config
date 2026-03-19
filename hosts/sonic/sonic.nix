@@ -64,6 +64,7 @@
       "openssl@3"
       "mole"
       "node"
+      "uv"
     ];
     casks = [
       "discord"
@@ -91,7 +92,6 @@
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
-      "claude-code"
       "element"
       "neved4/tap/cinny"
       "soulseek"
