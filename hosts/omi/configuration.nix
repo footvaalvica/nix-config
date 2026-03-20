@@ -27,7 +27,7 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/docker-containers/stremio-server.nix
-    ../../modules/ollama.nix
+    # # ../../modules/ollama.nix
   ];
 
   home-manager = {
