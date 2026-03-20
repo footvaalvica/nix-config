@@ -6,7 +6,7 @@
   services.ollama = {
     enable = true;
     # Optional: load models on startup
-    loadModels = ["qwen3:1.7b"];
+    loadModels = ["qwen3.5:2b"];
     openFirewall = true;
     host = "0.0.0.0";
   };
