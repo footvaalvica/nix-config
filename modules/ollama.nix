@@ -6,7 +6,7 @@
   services.ollama = {
     enable = true;
     # Optional: load models on startup
-    loadModels = ["deepseek-r1:1.5b" "deepseek-r1:7b" "taozhiyuai/llama-3-8b-ultra-instruct:q2_k"];
+    loadModels = ["qwen3:1.7b"];
     openFirewall = true;
     host = "0.0.0.0";
   };
