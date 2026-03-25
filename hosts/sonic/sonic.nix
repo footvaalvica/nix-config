@@ -112,6 +112,7 @@
       IPScanner = 6443819966;
       Tampermonkey = 6738342400;
       NepTunes = 1006739057;
+      XCode = 497799835;
     };
     onActivation = {
       cleanup = "zap";
