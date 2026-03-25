@@ -118,6 +118,7 @@
     git = {
       enable = true;
       lfs.enable = true;
+      signing.format = null;
     };
 
     fish = {

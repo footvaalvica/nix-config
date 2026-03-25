@@ -25,10 +25,6 @@
 
   programs = {
     fish.enable = true; # default shell on catalina
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
   };
 
   nix-homebrew = {

@@ -23,11 +23,6 @@
 
   services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
-  programs.direnv = {
-    enable = lib.mkForce false;
-    nix-direnv.enable = lib.mkForce false;
-  };
-
   programs.fish.interactiveShellInit = "ulimit -n 4096";
 
   programs.ssh = {
