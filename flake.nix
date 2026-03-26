@@ -4,7 +4,7 @@
   inputs = {
     # NixOS official package source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     # Use `github:nix-darwin/nix-darwin/nix-darwin-25.11` to use Nixpkgs 25.11.
@@ -38,10 +38,6 @@
       url = "github:tjsousa/homebrew-cask";
       flake = false;
     };
-    neved4-tap = {
-      url = "github:neved4/homebrew-tap";
-      flake = false;
-    };
     oteurk-sidebar = {
       url = "github:otuerk/homebrew-sidebar";
       flake = false;
@@ -67,7 +63,6 @@
     homebrew-core,
     homebrew-cask,
     tjsousa-cask,
-    neved4-tap,
     oteurk-sidebar,
     nur,
     website,

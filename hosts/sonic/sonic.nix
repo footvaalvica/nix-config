@@ -42,7 +42,6 @@
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
-      "neved4/homebrew-tap" = inputs.neved4-tap;
       "otuerk/homebrew-sidebar" = inputs.oteurk-sidebar;
     };
 
@@ -89,7 +88,6 @@
       "unity-hub"
       "vivaldi"
       "element"
-      "neved4/tap/cinny"
       "soulseek"
     ];
     global.autoUpdate = false;
