@@ -12,7 +12,7 @@ let
   serverConfig."m.server" = "${fqdn}:443";
 in
 {
-  services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "turn.footvaalvica.com" "discord-bridge.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" ];
 
   services.caddy = {
     enable = true;
@@ -41,16 +41,13 @@ in
         reverse_proxy http://127.0.0.1:6167
       }
     '';
-    virtualHosts."discord-bridge.footvaalvica.com".extraConfig = ''
-      reverse_proxy http://localhost:6693
-    '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
   # open the firewall
   networking.firewall = {
     allowedUDPPortRanges = [
-      { from = 49000; to = 50000; }
+      { from = 50201; to = 65535; }
     ];
     allowedUDPPorts = [ 3478 5349 ];
     allowedTCPPortRanges = [ ];
