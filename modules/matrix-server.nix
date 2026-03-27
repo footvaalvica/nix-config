@@ -12,7 +12,7 @@ let
   serverConfig."m.server" = "${fqdn}:443";
 in
 {
-  services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" ];
+  services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" "turn.footvaalvica.com" ];
 
   services.caddy = {
     enable = true;
@@ -61,10 +61,10 @@ in
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
       turn_uris = [
-        "turn:matrix.footvaalvica.com?transport=udp"
-        "turn:matrix.footvaalvica.com?transport=tcp"
-        "turns:matrix.footvaalvica.com?transport=udp"
-        "turns:matrix.footvaalvica.com?transport=tcp"
+        "turn:turn.footvaalvica.com?transport=udp"
+        "turn:turn.footvaalvica.com?transport=tcp"
+        "turns:turn.footvaalvica.com?transport=udp"
+        "turns:turn.footvaalvica.com?transport=tcp"
       ];
       turn_secret = "${secrets.matrix.turn_secret}";
       turn_ttl = 86400;
