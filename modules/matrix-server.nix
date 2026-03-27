@@ -61,10 +61,10 @@ in
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
       turn_uris = [
-        "turn:coturn.example.com?transport=udp"
-        "turn:coturn.example.com?transport=tcp"
-        "turns:coturn.example.com?transport=udp"
-        "turns:coturn.example.com?transport=tcp"
+        "turn:matrix.footvaalvica.com?transport=udp"
+        "turn:matrix.footvaalvica.com?transport=tcp"
+        "turns:matrix.footvaalvica.com?transport=udp"
+        "turns:matrix.footvaalvica.com?transport=tcp"
       ];
       turn_secret = "${secrets.matrix.turn_secret}";
       turn_ttl = 86400;
