@@ -83,7 +83,6 @@
       "musicbrainz-picard"
       "balenaetcher"
       "league-of-legends"
-      "antigravity"
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
