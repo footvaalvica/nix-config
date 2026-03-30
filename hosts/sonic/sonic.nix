@@ -62,6 +62,7 @@
       "uv"
     ];
     casks = [
+      "netnewswire"
       "discord"
       "dockdoor"
       "firefox"
