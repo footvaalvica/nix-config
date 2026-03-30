@@ -27,6 +27,7 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/docker-containers/stremio-server.nix
+    ../../modules/freshrss.nix
     # # ../../modules/ollama.nix
   ];
 
