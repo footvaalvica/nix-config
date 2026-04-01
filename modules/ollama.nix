@@ -5,6 +5,7 @@
 }: {
   services.ollama = {
     enable = true;
+    package = pkgs.unstable.ollama;
     # Optional: load models on startup
     loadModels = ["qwen3.5:2b"];
     openFirewall = true;
@@ -13,6 +14,7 @@
 
   services.open-webui = {
     enable = true;
+    package = pkgs.unstable.open-webui;
     openFirewall = true;
     port = 11111;
   };
