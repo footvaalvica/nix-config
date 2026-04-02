@@ -75,6 +75,7 @@
       "moonlight"
       "utm"
       "vorta"
+      "nextcloud"
       "betterdisplay"
       "tjsousa/cask/altgr-weur"
       "anki"
