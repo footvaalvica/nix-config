@@ -90,6 +90,7 @@
       "vivaldi"
       "element"
       "soulseek"
+      "stremio"
     ];
     global.autoUpdate = false;
     masApps = {
