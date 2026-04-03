@@ -84,7 +84,6 @@
       "lookaway"
       "musicbrainz-picard"
       "balenaetcher"
-      "league-of-legends"
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
