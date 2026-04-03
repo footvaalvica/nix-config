@@ -52,6 +52,7 @@
   };
 
   zramSwap.enable = true;
+  logrotate.enable = true;
 
   users.users.root = {
     openssh.authorizedKeys.keys = [
