@@ -88,7 +88,6 @@
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
-      "element"
       "soulseek"
       "stremio"
     ];
