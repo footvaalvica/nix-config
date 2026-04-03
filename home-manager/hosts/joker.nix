@@ -38,5 +38,9 @@
     };
   };
 
-  targets.genericLinux.enable = true;
+  targets.genericLinux = {
+    enable = true;
+    # TODO, when it works again, enable NVIDIA GPU support
+    # # gpu.nvidia = true;
+  };
 }
