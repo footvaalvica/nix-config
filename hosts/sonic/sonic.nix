@@ -75,6 +75,7 @@
       "moonlight"
       "utm"
       "vorta"
+      "nextcloud"
       "betterdisplay"
       "tjsousa/cask/altgr-weur"
       "anki"
@@ -83,12 +84,11 @@
       "lookaway"
       "musicbrainz-picard"
       "balenaetcher"
-      "league-of-legends"
       "mediahuman-audio-converter"
       "unity-hub"
       "vivaldi"
-      "element"
       "soulseek"
+      "stremio"
     ];
     global.autoUpdate = false;
     masApps = {
