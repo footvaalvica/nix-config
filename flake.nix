@@ -110,7 +110,7 @@
           nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
-            home-manager-2511.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
+            home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           }
           agenix.nixosModules.default
           nixos-hardware.nixosModules.intel-nuc-8i7beh
@@ -126,7 +126,7 @@
           nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
-            home-manager-2511.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
+            home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           } 
           agenix.nixosModules.default
           
