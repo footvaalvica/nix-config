@@ -108,7 +108,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager-2511.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           }
@@ -124,7 +124,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager-2511.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           } 
