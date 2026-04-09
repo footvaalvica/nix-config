@@ -124,7 +124,7 @@
     enable = true;
     proxied = true;
     frequency = "*:0/5";
-    domains = ["thesis.footvaalvica.com" "backend-thesis.footvaalvica.com"];
+    domains = ["app.thesis-application.win" "backend.thesis-application.win"];
     apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 
@@ -136,10 +136,10 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."thesis.footvaalvica.com".extraConfig = ''
+    virtualHosts."app.thesis-application.win".extraConfig = ''
       reverse_proxy localhost:6565
     '';
-    virtualHosts."backend-thesis.footvaalvica.com".extraConfig = ''
+    virtualHosts."backend.thesis-application.win".extraConfig = ''
       reverse_proxy localhost:8000
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
