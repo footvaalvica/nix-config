@@ -58,8 +58,6 @@
       "mas"
       "openssl@3"
       "mole"
-      "node"
-      "uv"
     ];
     casks = [
       "netnewswire"
