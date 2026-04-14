@@ -86,7 +86,6 @@
     git
     gh
     htop
-    tmux
     curl
     kdePackages.filelight
     borgbackup

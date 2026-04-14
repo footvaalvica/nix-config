@@ -127,6 +127,11 @@
         nano = "micro";
       };
     };
+
+    programs.zellij = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
 
   home.sessionVariables = {
