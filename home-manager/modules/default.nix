@@ -128,7 +128,7 @@
       };
     };
 
-    programs.zellij = {
+    zellij = {
       enable = true;
       enableFishIntegration = true;
     };
