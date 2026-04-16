@@ -133,7 +133,7 @@
       # enableFishIntegration = true;
     };
 
-    codex = {
+    opencode = {
       enable = true;
       context = ''
         # Code Quality
