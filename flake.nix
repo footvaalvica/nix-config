@@ -12,8 +12,6 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Home manager
-    home-manager-2511.url = "github:nix-community/home-manager/release-25.11";
-    home-manager-2511.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
@@ -58,7 +56,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    home-manager-2511,
     nix-darwin,
     nix-homebrew,
     homebrew-core,
@@ -109,7 +106,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager-2511.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           }
@@ -125,7 +122,7 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager-2511.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = { inherit inputs; };  # <-- this is the key one
           } 
