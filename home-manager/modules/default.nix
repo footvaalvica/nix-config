@@ -135,7 +135,7 @@
 
     codex = {
       enable = true;
-      custom-instructions = ''
+      context = ''
         # Code Quality
 
         ## 1. Think Before Coding
