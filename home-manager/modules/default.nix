@@ -207,7 +207,7 @@
         3. Explain what the fix is
         4. Find similar usages in the codebase and fix them too
       '';
-    }
+    };
   };
 
   home.sessionVariables = {
