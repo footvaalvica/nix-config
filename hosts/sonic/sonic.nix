@@ -71,6 +71,7 @@
       "reaper"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
+      "ordanbaird-ice"
       "utm"
       "vorta"
       "nextcloud"
@@ -109,7 +110,6 @@
       Tampermonkey = 6738342400;
       NepTunes = 1006739057;
       XCode = 497799835;
-      HiddenBar = 1452453066;
     };
     onActivation = {
       cleanup = "zap";
