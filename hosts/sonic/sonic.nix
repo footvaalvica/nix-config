@@ -71,7 +71,7 @@
       "reaper"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
-      "ordanbaird-ice"
+      "jordanbaird-ice"
       "utm"
       "vorta"
       "nextcloud"
