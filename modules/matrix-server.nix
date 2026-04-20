@@ -17,7 +17,7 @@ in
   services.caddy = {
     enable = true;
     virtualHosts."${fqdn}".extraConfig = ''
-      # Proxy all Matrix API and client requests to Conduit
+      # Proxy all Matrix API and client requests to Tuwunel
       reverse_proxy /_matrix/* http://127.0.0.1:6167
 
       # Discovery endpoints with proper CORS for web clients
@@ -36,7 +36,7 @@ in
         }
       }
 
-      # Fallback: proxy everything else (like the root) to Conduit
+      # Fallback: proxy everything else (like the root) to Tuwunel
       handle {
         reverse_proxy http://127.0.0.1:6167
       }
@@ -54,7 +54,7 @@ in
     allowedTCPPorts = [ 3478 5349 80 443 ];
   };
 
-  services.matrix-continuwuity = {
+  services.matrix-tuwunel = {
     enable = true;
     settings.global = {
       server_name = "matrix.footvaalvica.com";
@@ -135,7 +135,6 @@ in
   nixpkgs.config.permittedInsecurePackages = [
       "olm-3.2.16"
   ];
-
 
   # Runtime
   virtualisation.docker = {
