@@ -54,7 +54,7 @@ in
     allowedTCPPorts = [ 3478 5349 80 443 ];
   };
 
-  services.matrix-tuwunel = {
+  services.matrix-continuwuity = {
     enable = true;
     settings.global = {
       server_name = "matrix.footvaalvica.com";
