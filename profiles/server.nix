@@ -63,6 +63,8 @@
     enable = true;
     proxied = "true";
     updateOnStart = false;
+    provider.ipv6 = "none";
+    detectionTimeout = "10s";
     credentialsFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 
