@@ -61,7 +61,7 @@
 
   services.cloudflare-ddns = {
     enable = true;
-    proxied = true;
+    proxied = "true";
     updateOnStart = false;
     credentialsFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
