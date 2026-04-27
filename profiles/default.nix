@@ -85,11 +85,6 @@
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
 
-  networking.networkmanager.enable = true;
-  networking.
-  networking.
-  boot.loader.grub.memtest86.enable = true;
-
   environment.systemPackages = with pkgs; [
     wget
     git
