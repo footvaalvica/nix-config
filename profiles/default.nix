@@ -76,13 +76,18 @@
   };
 
   # Enable networking
-  networkmanager.enable = true;
   networking = {
+    networkmanager = {
+      enable = true;
+      wifi.powersave = true;
+    };
     firewall.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    networkmanager.wifi.powersave = false;
   };
-  
+
+  networking.networkmanager.enable = true;
+  networking.
+  networking.
   boot.loader.grub.memtest86.enable = true;
 
   environment.systemPackages = with pkgs; [
