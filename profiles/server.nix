@@ -59,12 +59,11 @@
     ];
   };
 
-  services.cloudflare-dyndns = {
+  services.cloudflare-ddns = {
     enable = true;
     proxied = true;
-    frequency = "*:0/5";
     updateOnStart = false;
-    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
+    credentialsFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
 
 }
