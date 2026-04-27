@@ -120,13 +120,7 @@
   };
   
 
-  services.cloudflare-dyndns = {
-    enable = true;
-    proxied = true;
-    frequency = "*:0/5";
-    domains = ["app.thesis-application.win" "backend.thesis-application.win"];
-    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
-  };
+  services.cloudflare-dyndns.domains = ["app.thesis-application.win" "backend.thesis-application.win"];
 
   ##############################  
   ## THESIS STUFFS

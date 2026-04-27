@@ -63,13 +63,6 @@
     package = pkgs.bluez;
   };
 
-  services.cloudflare-dyndns = {
-    enable = true;
-    proxied = true;
-    frequency = "*:0/5";
-    apiTokenFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
-  };
-
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
