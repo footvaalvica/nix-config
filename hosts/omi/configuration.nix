@@ -120,7 +120,7 @@
   };
   
 
-  services.cloudflare-dyndns.domains = ["app.thesis-application.win" "backend.thesis-application.win"];
+  services.cloudflare-ddns.domains = ["app.thesis-application.win" "backend.thesis-application.win"];
 
   ##############################  
   ## THESIS STUFFS

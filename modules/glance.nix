@@ -12,7 +12,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["home.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["home.footvaalvica.com"];
 
   services.glance = {
     enable = true;

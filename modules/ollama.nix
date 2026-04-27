@@ -27,5 +27,5 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["chat.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["chat.footvaalvica.com"];
 }

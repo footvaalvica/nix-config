@@ -19,7 +19,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["homeassistant.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["homeassistant.footvaalvica.com"];
 
   networking.firewall = {
     allowedTCPPorts = [80 443 8443 21063 21064 21065];

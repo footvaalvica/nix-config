@@ -21,7 +21,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["mealie.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["mealie.footvaalvica.com"];
 
   # Containers
   virtualisation.oci-containers.containers."mealie" = {

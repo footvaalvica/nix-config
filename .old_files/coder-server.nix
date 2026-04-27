@@ -14,7 +14,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["coder.footvaalvica.com" "code.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["coder.footvaalvica.com" "code.footvaalvica.com"];
 
   services.coder = {
     enable = true;

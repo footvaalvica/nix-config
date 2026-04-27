@@ -12,7 +12,7 @@ let
   serverConfig."m.server" = "${fqdn}:443";
 in
 {
-  services.cloudflare-dyndns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" "turn.footvaalvica.com" ];
+  services.cloudflare-ddns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" "turn.footvaalvica.com" ];
 
   services.caddy = {
     enable = true;

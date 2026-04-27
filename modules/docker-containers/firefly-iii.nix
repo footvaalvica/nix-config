@@ -23,7 +23,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["firefly.footvaalvica.com" "firefly-data-importer.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["firefly.footvaalvica.com" "firefly-data-importer.footvaalvica.com"];
 
   # Containers
   virtualisation.oci-containers.containers."firefly_iii_core" = {

@@ -7,7 +7,7 @@
   ...
 }: {
 
-  services.cloudflare-dyndns.domains = ["freshrss.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["freshrss.footvaalvica.com"];
 
   age.secrets.freshrss-password-file = {
     file = ../secrets/freshrss.age;

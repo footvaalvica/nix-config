@@ -18,7 +18,7 @@
     mode = "777";
   };
 
-  services.cloudflare-dyndns.domains  = ["grafana.footvaalvica.com"];
+  services.cloudflare-ddns.domains  = ["grafana.footvaalvica.com"];
 
   services.prometheus = {
     enable = true;

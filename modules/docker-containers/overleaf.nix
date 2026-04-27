@@ -13,7 +13,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-  services.cloudflare-dyndns.domains = ["overleaf.footvaalvica.com"];
+  services.cloudflare-ddns.domains = ["overleaf.footvaalvica.com"];
 
   # Runtime
   virtualisation.docker = {
