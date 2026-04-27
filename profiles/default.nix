@@ -81,7 +81,8 @@
     firewall.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
     networkmanager.wifi.powersave = false;
-  }
+  };
+  
   boot.loader.grub.memtest86.enable = true;
 
   environment.systemPackages = with pkgs; [
