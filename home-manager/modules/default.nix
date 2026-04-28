@@ -135,6 +135,9 @@
 
     opencode = {
       enable = true;
+      settings = {
+        plugin =  [ "@simonwjackson/opencode-direnv" ]
+      };
       context = ''
         # Code Quality
 
