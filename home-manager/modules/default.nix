@@ -136,7 +136,62 @@
     opencode = {
       enable = true;
       settings = {
-        plugin =  [ "@simonwjackson/opencode-direnv" ];
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json";
+        plugin = [ "@simonwjackson/opencode-direnv" "oh-my-opencode-slim" ];
+        agent = {
+          explore.disable = true;
+          general.disable = true;
+        };
+        lsp = true;
+        preset = "thirtydollars";
+        presets = {
+          thirtydollars = { 
+            orchestrator = { 
+              model = "openai/gpt-5.5";
+              skills = [ "*" ];
+              mcps =  [ "*" "websearch"]; 
+            };
+            oracle = { 
+              model = "openai/gpt-5.5";
+              variant = "high";
+              skills =  [];
+              mcps = [];
+            };
+            council.model = "openai/gpt-5.5";
+            librarian = { 
+              model = "openai/gpt-5.4-mini"; 
+              variant = "low"; 
+              skills = [];
+              mcps = [ "websearch" "context7" "grep_app" ]; 
+            };
+            explorer = { 
+              model = "openai/gpt-5.4-mini"; 
+              variant = "low"; 
+              skills = [];
+              mcps = [];
+            };
+            designer = { 
+              model = "github-copilot/gemini-3.1-pro-preview";
+              skills = [ "agent-browser" ];
+              mcps = []; 
+            };
+            fixer = { 
+              model = "openai/gpt-5.4-mini";
+              variant = "low"; 
+              skills = []; 
+              mcps = []; 
+            };
+          };
+        };
+        council = {
+          presets = {
+            default = {
+        	    alpha.model = "github-copilot/claude-sonnet-4.6";
+        	    beta.model = "github-copilot/gemini-3.1-pro-preview";
+        	    gamma.model = "openai/gpt-5.5"
+        	  };
+          };
+        };
       };
       context = ''
         # Code Quality
@@ -210,6 +265,10 @@
         3. Explain what the fix is
         4. Find similar usages in the codebase and fix them too
       '';
+      skills = {
+        codemap = ./skills/codemap;
+        simplify = ./skills/simplify;
+      };
     };
   };
 
