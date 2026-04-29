@@ -137,7 +137,7 @@
       enable = true;
       settings = {
         "$schema" = "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json";
-        plugin = [ "@simonwjackson/opencode-direnv" "oh-my-opencode-slim" ];
+        plugin = [ "@simonwjackson/opencode-direnv" "oh-my-opencode-slim" "true-mem" ];
         agent = {
           explore.disable = true;
           general.disable = true;
