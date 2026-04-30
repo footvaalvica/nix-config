@@ -208,6 +208,8 @@
         3. [Step] → verify: [check]
         ```
 
+        Include delegation to other agents (especially Fixer) when appropriate.
+
         Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
         # Debug Process
