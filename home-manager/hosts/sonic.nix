@@ -23,7 +23,34 @@
 
   services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
-  programs.fish.interactiveShellInit = "ulimit -n 4096";
+  programs = {
+    fish.interactiveShellInit = "ulimit -n 4096";
+    zed-editor = {
+      enable = true;
+      userSettings = {
+        load_direnv = "shell_hook";
+        colorize_brackets = true;
+        agent_servers = {
+          opencode = {
+            type = "registry";
+          };
+          codex-acp = {
+            type = "registry";
+          };
+          github-copilot-cli = {
+            type = "registry";
+          };
+        };
+        ui_font_size = 16;
+        buffer_font_size = 15;
+        theme = {
+          mode = "system";
+          light = "Ayu Light";
+          dark = "Ayu Dark";
+        };
+      };
+    };
+  };
 
   programs.ssh = {
     enable = true;

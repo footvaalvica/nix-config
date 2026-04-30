@@ -120,7 +120,11 @@
   };
   
 
-  services.cloudflare-ddns.domains = ["app.thesis-application.win" "backend.thesis-application.win"];
+  services.cloudflare-ddns.domains = [
+    "app.thesis-application.win"
+    "backend.thesis-application.win"
+    "backend-thesis.footvaalvica.com"
+  ];
 
   ##############################  
   ## THESIS STUFFS
@@ -134,6 +138,9 @@
       reverse_proxy localhost:6565
     '';
     virtualHosts."backend.thesis-application.win".extraConfig = ''
+      reverse_proxy localhost:8000
+    '';
+    virtualHosts."backend-thesis.footvaalvica.com".extraConfig = ''
       reverse_proxy localhost:8000
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
