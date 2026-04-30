@@ -84,6 +84,23 @@
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
       secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+      homeManagerUnstablePkgs =
+        {
+          inputs,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          home-manager = {
+            useGlobalPkgs = false;
+            sharedModules = [
+              {
+                _module.args.pkgs = lib.mkForce inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+              }
+            ];
+          };
+        };
     in
     {
       # Your custom packages
@@ -113,6 +130,7 @@
             {
               home-manager.extraSpecialArgs = { inherit inputs; }; # <-- this is the key one
             }
+            homeManagerUnstablePkgs
             agenix.nixosModules.default
             nixos-hardware.nixosModules.intel-nuc-8i7beh
             # Import the previous configuration.nix we used,
@@ -129,6 +147,7 @@
             {
               home-manager.extraSpecialArgs = { inherit inputs; }; # <-- this is the key one
             }
+            homeManagerUnstablePkgs
             agenix.nixosModules.default
 
             # Import the previous configuration.nix we used,

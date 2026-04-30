@@ -21,7 +21,7 @@
     ];
 
   home-manager = {
-    users.mateusp.imports = [../../home-manager/hosts/omi.nix];
+    users.mateusp.imports = [../../home-manager/hosts/tojo.nix];
     backupFileExtension = "backup";
   };
 
