@@ -188,8 +188,8 @@
             default = {
         	    alpha.model = "github-copilot/claude-sonnet-4.6";
         	    beta.model = "github-copilot/gemini-3.1-pro-preview";
-        	    gamma.model = "openai/gpt-5.5"
-        	  };
+        	    gamma.model = "openai/gpt-5.5";
+        	};
           };
         };
       };
