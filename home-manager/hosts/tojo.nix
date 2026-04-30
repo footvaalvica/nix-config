@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  _module.args.pkgs = inputs.nixpkgs-unstable.legacyPackages."x86_64-linux";
+
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
