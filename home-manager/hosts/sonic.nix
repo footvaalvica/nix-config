@@ -1,10 +1,8 @@
 {
-  config,
-  pkgs,
   lib,
-  self,
   ...
-}: {
+}:
+{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -27,26 +25,53 @@
     fish.interactiveShellInit = "ulimit -n 4096";
     zed-editor = {
       enable = true;
+      mutableUserSettings = true;
       userSettings = {
-        load_direnv = "shell_hook";
-        colorize_brackets = true;
-        agent_servers = {
-          opencode = {
-            type = "registry";
+        icon_theme = "Zed (Default)";
+        edit_predictions = {
+          provider = "copilot";
+        };
+        agent = {
+          dock = "right";
+          favorite_models = [ ];
+          model_parameters = [ ];
+          default_model = {
+            provider = "copilot_chat";
+            model = "gpt-5.4";
           };
-          codex-acp = {
-            type = "registry";
+          inline_alternatives = [
+            {
+              provider = "copilot_chat";
+              model = "gpt-5-mini";
+            }
+            {
+              provider = "copilot_chat";
+              model = "claude-haiku-4.5";
+            }
+          ];
+          commit_message_model = {
+            provider = "copilot_chat";
+            model = "gpt-5-mini";
           };
-          github-copilot-cli = {
-            type = "registry";
+          thread_summary_model = {
+            provider = "copilot_chat";
+            model = "gpt-5-mini";
           };
         };
+        project_panel.dock = "left";
+        git_panel.dock = "left";
+        agent_servers = {
+          github-copilot-cli.type = "registry";
+          codex-acp.type = "registry";
+          opencode.type = "registry";
+        };
+        base_keymap = "VSCode";
         ui_font_size = 16;
         buffer_font_size = 15;
         theme = {
           mode = "system";
           light = "Ayu Light";
-          dark = "Ayu Dark";
+          dark = "Dark OLED";
         };
       };
     };

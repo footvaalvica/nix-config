@@ -1,20 +1,18 @@
 {
   inputs,
-  outputs,
   config,
   pkgs,
-  lib,
-  secrets,
   ...
-}: {
+}:
+{
   home-manager = {
-    users.mateusp.imports = [../../home-manager/hosts/sonic.nix];
+    users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
     backupFileExtension = "backup";
   };
 
   networking.hostName = "sonic";
 
-  users.knownUsers = ["mateusp"];
+  users.knownUsers = [ "mateusp" ];
   users.users.mateusp = {
     home = "/Users/mateusp";
     shell = pkgs.fish;
@@ -60,12 +58,11 @@
       "mole"
     ];
     casks = [
+      "zed"
       "netnewswire"
-      "cmux"
       "discord"
       "dockdoor"
       "firefox"
-      "visual-studio-code"
       "altserver"
       "obsidian"
       "transmission"
