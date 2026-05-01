@@ -71,7 +71,7 @@
         theme = {
           mode = "system";
           light = "Ayu Light";
-          dark = "Dark OLED";
+          dark = "Ayu Dark";
         };
       };
     };
