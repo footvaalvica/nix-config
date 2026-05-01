@@ -59,7 +59,7 @@
           };
         };
         project_panel.dock = "left";
-        git_panel.dock = "left";
+        git_panel.dock = "right";
         agent_servers = {
           github-copilot-cli.type = "registry";
           codex-acp.type = "registry";
