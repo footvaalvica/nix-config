@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   imports = [
   ];
 
@@ -134,11 +130,11 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim" ];
+      tui.plugin = ["oh-my-opencode-slim@1.0.6"];
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim"
+          "oh-my-opencode-slim@1.0.6"
           "true-mem"
         ];
         agent = {
@@ -231,13 +227,13 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.0.6/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
             orchestrator = {
               model = "openai/gpt-5.5-fast";
-              skills = [ "*" ];
+              skills = ["*"];
               mcps = [
                 "*"
                 "!context7"
@@ -246,14 +242,14 @@
             oracle = {
               model = "openai/gpt-5.5-fast";
               variant = "high";
-              skills = [ ];
-              mcps = [ ];
+              skills = [];
+              mcps = [];
             };
             council.model = "openai/gpt-5.5-fast";
             librarian = {
               model = "openai/gpt-5.3-codex-spark";
               variant = "low";
-              skills = [ ];
+              skills = [];
               mcps = [
                 "websearch"
                 "context7"
@@ -263,19 +259,19 @@
             explorer = {
               model = "openai/gpt-5.3-codex-spark";
               variant = "low";
-              skills = [ ];
-              mcps = [ ];
+              skills = [];
+              mcps = [];
             };
             designer = {
               model = "github-copilot/gemini-3.1-pro-preview";
-              skills = [ "agent-browser" ];
-              mcps = [ ];
+              skills = ["agent-browser"];
+              mcps = [];
             };
             fixer = {
               model = "openai/gpt-5.3-codex-spark";
               variant = "low";
-              skills = [ ];
-              mcps = [ ];
+              skills = [];
+              mcps = [];
             };
           };
         };
