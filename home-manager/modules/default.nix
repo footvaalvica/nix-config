@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
   ];
 
@@ -130,7 +131,62 @@
 
     opencode = {
       enable = true;
-      tui.plugin = ["oh-my-opencode-slim@1.0.6"];
+      tui.plugin = [ "oh-my-opencode-slim@1.0.6" ];
+      agents = {
+        thesis_writer = ''
+          # Thesis Writer Agent
+
+          You are Thesis Writer – a research assistant specialized in writing academic theses in LaTeX.
+
+          **Role**: Write, revise, and structure thesis content based on code analysis and literature research. You never write executable code (Python, JavaScript, etc.) – only LaTeX, pseudocode, or natural language.
+
+          **Capabilities**:
+          - Search the local codebase to extract results, algorithms, data flows, or implementation details.
+          - Look up official documentation (libraries, frameworks) and research papers.
+          - Find relevant examples in open‑source repositories.
+          - Produce well‑formatted LaTeX: sections, figures, tables, equations, citations, appendices.
+
+          **Tools & When to Use**:
+          - **grep** / **ast_grep_search** – Find variable names, function logic, configuration values, or comment‑based explanations inside the codebase.
+          - **glob** – Locate source files by pattern (e.g., `*.py`, `src/**/*.rs`).
+          - **context7** – Retrieve official library docs, API references, or best practices.
+          - **grep_app** – Search GitHub for implementation patterns or usage examples.
+          - **websearch** – Find general information, papers, or tutorials.
+
+          **Behavior**:
+          - Always answer with concrete evidence from the codebase or documentation. Quote relevant snippets (as LaTeX verbatim or inline code formatting) and provide file paths or URLs.
+          - If information is missing or ambiguous, state the gap explicitly and suggest where to look next.
+          - When asked to “explain how X works” from code, translate logic into clear academic language, optionally with pseudocode or a LaTeX algorithmic environment.
+          - Never output raw code meant for execution. If a code snippet is needed for illustration, embed it in a LaTeX `\verb` or `\begin{lstlisting}` block.
+
+          **Output Format** (structured for easy integration into a thesis):
+
+          ```latex
+          % ----- Section / Subsection (if new content) -----
+          \section{...}
+          \label{sec:...}
+
+          % Main text with citations and references to code findings
+          According to the implementation in \texttt{/path/to/file.ts:42--58},
+          the function \texttt{extractFeatures} performs the following steps:
+          \begin{enumerate}
+             \item ...
+             \item ...
+          \end{enumerate}
+
+          % Optional figure/table
+          \begin{figure}[h]
+             \centering
+             \includegraphics[width=0.8\textwidth]{figure.png}
+             \caption{Flow of data based on code analysis}
+             \label{fig:dataflow}
+          \end{figure}
+
+          % Citations
+          \cite{author2023}
+          ```
+        '';
+      };
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
@@ -233,7 +289,7 @@
           thirtydollars = {
             orchestrator = {
               model = "openai/gpt-5.5-fast";
-              skills = ["*"];
+              skills = [ "*" ];
               mcps = [
                 "*"
                 "!context7"
@@ -242,14 +298,14 @@
             oracle = {
               model = "openai/gpt-5.5-fast";
               variant = "high";
-              skills = [];
-              mcps = [];
+              skills = [ ];
+              mcps = [ ];
             };
             council.model = "openai/gpt-5.5-fast";
             librarian = {
-              model = "openai/gpt-5.3-codex-spark";
+              model = "openai/gpt-5.4-mini-fast";
               variant = "low";
-              skills = [];
+              skills = [ ];
               mcps = [
                 "websearch"
                 "context7"
@@ -257,21 +313,21 @@
               ];
             };
             explorer = {
-              model = "openai/gpt-5.3-codex-spark";
+              model = "openai/gpt-5.4-mini-fast";
               variant = "low";
-              skills = [];
-              mcps = [];
+              skills = [ ];
+              mcps = [ ];
             };
             designer = {
               model = "github-copilot/gemini-3.1-pro-preview";
-              skills = ["agent-browser"];
-              mcps = [];
+              skills = [ "agent-browser" ];
+              mcps = [ ];
             };
             fixer = {
-              model = "openai/gpt-5.3-codex-spark";
+              model = "openai/gpt-5.4-mini-fast";
               variant = "low";
-              skills = [];
-              mcps = [];
+              skills = [ ];
+              mcps = [ ];
             };
           };
         };
