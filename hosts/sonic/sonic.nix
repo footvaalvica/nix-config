@@ -85,6 +85,7 @@
       "vivaldi"
       "soulseek"
       "stremio"
+      "skim"
     ];
     global.autoUpdate = false;
     masApps = {
