@@ -31,6 +31,16 @@
         edit_predictions = {
           provider = "copilot";
         };
+        languages = {
+          LaTeX = {
+            show_edit_predictions = false;
+            soft_wrap = "editor_width";
+          };
+          Markdown = {
+            show_edit_predictions = false;
+            soft_wrap = "editor_width";
+          };
+        };
         agent = {
           dock = "right";
           favorite_models = [ ];
