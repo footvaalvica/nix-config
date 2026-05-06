@@ -22,8 +22,6 @@
 
   services.cloudflare-ddns.domains = [ "homeassistant.footvaalvica.com" ];
 
-  services.zigbee2mqtt.enable = true;
-
   networking.firewall = {
     allowedTCPPorts = [
       80
