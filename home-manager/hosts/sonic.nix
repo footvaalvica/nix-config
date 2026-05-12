@@ -25,6 +25,7 @@
     fish.interactiveShellInit = "ulimit -n 4096";
     zed-editor = {
       enable = true;
+      package = null;
       mutableUserSettings = true;
       userSettings = {
         icon_theme = "Zed (Default)";
