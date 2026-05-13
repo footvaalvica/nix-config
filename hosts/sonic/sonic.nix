@@ -84,6 +84,7 @@
       "unity-hub"
       "vivaldi"
       "soulseek"
+      "openchamber"
       "stremio"
       "skim"
     ];
