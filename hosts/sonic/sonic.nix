@@ -85,8 +85,9 @@
       "vivaldi"
       "soulseek"
       "openchamber"
-      "stremio"
+      # "stremio"
       "skim"
+      "mos"
     ];
     global.autoUpdate = false;
     masApps = {
@@ -127,7 +128,6 @@
       dock.show-recents = false;
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
-      NSGlobalDomain."com.apple.swipescrolldirection" = false;
       iCal."first day of week" = "Monday";
       NSGlobalDomain.AppleShowAllExtensions = true;
       NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
