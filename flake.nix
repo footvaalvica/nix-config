@@ -96,7 +96,9 @@
             useGlobalPkgs = false;
             sharedModules = [
               {
-                _module.args.pkgs = lib.mkForce inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+                _module.args.pkgs =
+                  lib.mkForce
+                    inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
               }
             ];
           };

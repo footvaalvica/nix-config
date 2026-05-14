@@ -85,7 +85,7 @@
       "vivaldi"
       "soulseek"
       "openchamber"
-      # "stremio"
+      "stremio"
       "skim"
       "mos"
     ];
