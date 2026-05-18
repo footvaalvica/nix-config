@@ -169,8 +169,9 @@
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim@1.0.6"
+          "oh-my-opencode-slim@1.1.1"
           "true-mem"
+          "opencode-ralph-loop"
         ];
         agent = {
           explore.disable = true;
