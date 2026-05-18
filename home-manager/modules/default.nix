@@ -131,7 +131,7 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@1.0.6" ];
+      tui.plugin = [ "oh-my-opencode-slim@1.1.1" ];
       agents = {
         thesis_writer = ''
           ---
@@ -171,7 +171,6 @@
           "@simonwjackson/opencode-direnv"
           "oh-my-opencode-slim@1.1.1"
           "true-mem"
-          "opencode-ralph-loop"
         ];
         agent = {
           explore.disable = true;
@@ -256,6 +255,7 @@
       skills = {
         codemap = ./skills/codemap;
         simplify = ./skills/simplify;
+        clonedeps = ./skills/clonedeps;
       };
     };
   };
@@ -263,7 +263,7 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.0.6/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.1.1/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
