@@ -28,7 +28,6 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/freshrss.nix
-    ../../modules/docker-containers/openchamber.nix
     # # ../../modules/ollama.nix
   ];
 
