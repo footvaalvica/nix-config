@@ -9,7 +9,8 @@
   lib,
   secrets,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -27,11 +28,12 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/freshrss.nix
+    ../../modules/docker-containers/openchamber.nix
     # # ../../modules/ollama.nix
   ];
 
   home-manager = {
-    users.mateusp.imports = [../../home-manager/hosts/omi.nix];
+    users.mateusp.imports = [ ../../home-manager/hosts/omi.nix ];
     backupFileExtension = "backup";
   };
 
@@ -62,12 +64,26 @@
     ];
   };
 
-  users.groups.borg = {};
+  users.groups.borg = { };
 
   # Firewall
   networking.firewall = {
-    allowedTCPPorts = [80 443 3478 8080 8384 8443 22000];
-    allowedUDPPorts = [9 443 3478 22000 21027];
+    allowedTCPPorts = [
+      80
+      443
+      3478
+      8080
+      8384
+      8443
+      22000
+    ];
+    allowedUDPPorts = [
+      9
+      443
+      3478
+      22000
+      21027
+    ];
   };
 
   # Enable Wake-on-LAN for the main ethernet interface
@@ -118,7 +134,6 @@
       };
     };
   };
-  
 
   services.cloudflare-ddns.domains = [
     "app.thesis-application.win"
@@ -126,7 +141,7 @@
     "backend-thesis.footvaalvica.com"
   ];
 
-  ##############################  
+  ##############################
   ## THESIS STUFFS
   ##############################
 
@@ -146,9 +161,9 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
-####
-########################### THESIS STUFF END ################################
-####
+  ####
+  ########################### THESIS STUFF END ################################
+  ####
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
