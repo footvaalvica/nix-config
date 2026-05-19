@@ -148,16 +148,24 @@ in {
 
       "docker-build-openchamber" = {
         path = [
+          pkgs.coreutils
           pkgs.docker
           pkgs.git
+          pkgs.gnused
         ];
         serviceConfig = {
           Type = "oneshot";
           TimeoutSec = 300;
-          WorkingDirectory = cfg.sourceDir;
         };
         script = ''
-          docker build -t ${image} .
+          build_dir=$(mktemp -d)
+          trap 'rm -rf "$build_dir"' EXIT
+
+          cp -R --no-preserve=mode,ownership ${lib.escapeShellArg (toString cfg.sourceDir)}/. "$build_dir"
+          chmod -R u+w "$build_dir"
+          sed -i 's/FROM oven\/bun:1/FROM oven\/bun:1.3.5/g' "$build_dir/Dockerfile"
+
+          docker build -t ${image} "$build_dir"
         '';
       };
     };
