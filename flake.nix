@@ -21,6 +21,11 @@
       flake = false;
     };
 
+    openchamber = {
+      url = "github:openchamber/openchamber";
+      flake = false;
+    };
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     agenix.url = "github:ryantm/agenix";

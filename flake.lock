@@ -347,6 +347,22 @@
         "type": "github"
       }
     },
+    "openchamber": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779195234,
+        "narHash": "sha256-691cXcdOYbdN0Rv4K3USYh/QJfZ5tve0zwZGqlHMFgY=",
+        "owner": "openchamber",
+        "repo": "openchamber",
+        "rev": "e6ee4a2a5ee85b6cad1e867a744d110129c3dea6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "openchamber",
+        "repo": "openchamber",
+        "type": "github"
+      }
+    },
     "oteurk-sidebar": {
       "flake": false,
       "locked": {
@@ -377,6 +393,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
+        "openchamber": "openchamber",
         "oteurk-sidebar": "oteurk-sidebar",
         "tjsousa-cask": "tjsousa-cask",
         "website": "website"
