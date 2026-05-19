@@ -28,6 +28,7 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/freshrss.nix
+    ../../modules/openchamber.nix
     # # ../../modules/ollama.nix
   ];
 
@@ -139,6 +140,21 @@
     "backend.thesis-application.win"
     "backend-thesis.footvaalvica.com"
   ];
+
+  services.openchamber = {
+    enable = true;
+
+    reverseProxy = {
+      enable = true;
+      hostName = "openchamber.footvaalvica.com";
+    };
+
+    environment = {
+      UI_PASSWORD = "${secrets.matrix.discord_bridge.web_password}";
+    };
+
+    cloudflareDdns.enable = true;
+  };
 
   ##############################
   ## THESIS STUFFS
