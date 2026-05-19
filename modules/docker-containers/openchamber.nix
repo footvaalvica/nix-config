@@ -8,6 +8,8 @@
   cfg = config.services.openchamber;
   image = "compose2nix/openchamber";
   network = "openchamber_default";
+  buildService = "docker-build-openchamber.service";
+  networkService = "docker-network-${network}.service";
   targetName = "docker-compose-openchamber-root";
   target = "${targetName}.target";
 
@@ -118,8 +120,14 @@ in {
           RestartSec = lib.mkOverride 90 "100ms";
           RestartSteps = lib.mkOverride 90 9;
         };
-        after = ["docker-network-${network}.service"];
-        requires = ["docker-network-${network}.service"];
+        after = [
+          buildService
+          networkService
+        ];
+        requires = [
+          buildService
+          networkService
+        ];
         partOf = [target];
         wantedBy = [target];
       };
