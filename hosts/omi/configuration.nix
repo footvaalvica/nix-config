@@ -28,7 +28,6 @@
     ../../modules/docker-containers/firefly-iii.nix
     ../../modules/docker-containers/overleaf.nix
     ../../modules/freshrss.nix
-    ../../modules/openchamber.nix
     # # ../../modules/ollama.nix
   ];
 
@@ -92,6 +91,7 @@
     wireguard-tools
     cifs-utils
     sshfs
+    unstable.opencode
     inputs.agenix.packages."${system}".default
   ];
 
@@ -143,6 +143,7 @@
 
   services.openchamber = {
     enable = true;
+    port = 3456;
 
     reverseProxy = {
       enable = true;
