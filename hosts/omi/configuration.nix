@@ -141,21 +141,6 @@
     "backend-thesis.footvaalvica.com"
   ];
 
-  services.openchamber = {
-    enable = true;
-    port = 3456;
-
-    reverseProxy = {
-      enable = true;
-      hostName = "openchamber.footvaalvica.com";
-    };
-
-    environment = {
-      UI_PASSWORD = "${secrets.matrix.discord_bridge.web_password}";
-    };
-
-    cloudflareDdns.enable = true;
-  };
 
   ##############################
   ## THESIS STUFFS
