@@ -86,7 +86,6 @@
       "soulseek"
       "openchamber"
       "skim"
-      "stremio"
       "mos"
     ];
     global.autoUpdate = false;
