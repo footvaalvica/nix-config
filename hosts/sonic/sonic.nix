@@ -86,6 +86,7 @@
       "soulseek"
       "openchamber"
       "skim"
+      "stremio"
       "mos"
     ];
     global.autoUpdate = false;
@@ -109,6 +110,7 @@
       Tampermonkey = 6738342400;
       NepTunes = 1006739057;
       XCode = 497799835;
+      SocialFocus = 1661093205;
     };
     onActivation = {
       cleanup = "zap";
