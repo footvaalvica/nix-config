@@ -25,7 +25,7 @@
   programs.ssh = {
     enableDefaultConfig = false;
     enable = true;
-    matchBlocks = {
+    settings = {
       "omi tojo raidou joker" = {
         user = "mateusp";
       };

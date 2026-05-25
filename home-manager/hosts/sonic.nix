@@ -91,7 +91,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "borg@*" = {
         user = "borg";
         identityFile = "~/.ssh/borg_key";
