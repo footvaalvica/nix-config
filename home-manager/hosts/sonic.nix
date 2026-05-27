@@ -28,6 +28,7 @@
       package = null;
       mutableUserSettings = true;
       userSettings = {
+        buffer_font_family = "Liga SFMono Nerd Font";
         icon_theme = "Zed (Default)";
         edit_predictions = {
           provider = "copilot";
