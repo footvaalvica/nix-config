@@ -83,10 +83,12 @@ in
       database_backend = "rocksdb";
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
-      matrix_rtc.foci = {
-        type = "livekit";
-        livekit_service_url = "https://livekit.footvaalvica.com";
-      };
+      matrix_rtc.foci = [
+        {
+          type = "livekit";
+          livekit_service_url = "https://livekit.footvaalvica.com";
+        }
+      ];
     };
   };
 
