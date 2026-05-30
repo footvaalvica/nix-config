@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   secrets,
   ...
@@ -49,6 +48,15 @@ in
 
   # open the firewall
   networking.firewall = {
+    allowedUDPPorts = [
+      3478
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 50300;
+        to = 50400;
+      }
+    ];
     allowedTCPPorts = [
       80
       443
@@ -127,6 +135,7 @@ in
   services.livekit = {
     enable = true;
     openFirewall = true;
+    keyFile = "./matrix-key-file.txt";
     settings = {
       port = 7880;
       bind_addresses = "";
@@ -136,6 +145,13 @@ in
         port_range_end = 50200;
         use_external_ip = true;
         enable_loopback_candidate = false;
+      };
+      turn = {
+        enabled = true;
+        udp_port = 3478;
+        relay_range_start = 50300;
+        relay_range_end = 50400;
+        domain = "livekit.footvaalvica.com";
       };
     };
   };
@@ -148,5 +164,6 @@ in
     enable = true;
     port = 8081;
     livekitUrl = "wss://livekit.footvaalvica.com";
+    keyFile = "./matrix-key-file.txt";
   };
 }
