@@ -59,10 +59,15 @@
               "https://photos.footvaalvica.com/"
               "https://overleaf.footvaalvica.com/"
               "https://firefly.footvaalvica.com/"
+              "https://firefly-data-importer.footvaalvica.com"
               "https://grafana.footvaalvica.com/"
               "https://www.footvaalvica.com/"
               "https://footvaalvica.com/"
+              "https://home.footvaalvica.com/"
               "https://matrix.footvaalvica.com/"
+              "https://freshrss.footvaalvica.com/"
+              "https://livekit.footvaalvica.com/  "
+              "https://homeassistant.footvaalvica.com"
             ];
           }
         ];
