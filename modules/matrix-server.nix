@@ -4,7 +4,7 @@
   config,
   secrets,
   ...
-}: 
+}:
 let
   fqdn = "matrix.footvaalvica.com";
   baseUrl = "https://${fqdn}";
@@ -12,12 +12,15 @@ let
   serverConfig."m.server" = "${fqdn}:443";
 in
 {
-  services.cloudflare-ddns.domains = ["matrix.footvaalvica.com" "livekit.footvaalvica.com" "turn.footvaalvica.com" ];
+  services.cloudflare-ddns.domains = [
+    "matrix.footvaalvica.com"
+    "livekit.footvaalvica.com"
+  ];
 
   services.caddy = {
     enable = true;
     virtualHosts."${fqdn}".extraConfig = ''
-      # Proxy all Matrix API and client requests to Tuwunel
+      # Proxy all Matrix API and client requests to Continuwuity
       reverse_proxy /_matrix/* http://127.0.0.1:6167
 
       # Discovery endpoints with proper CORS for web clients
@@ -36,7 +39,7 @@ in
         }
       }
 
-      # Fallback: proxy everything else (like the root) to Tuwunel
+      # Fallback: proxy everything else (like the root) to Continuwuity
       handle {
         reverse_proxy http://127.0.0.1:6167
       }
@@ -46,12 +49,10 @@ in
 
   # open the firewall
   networking.firewall = {
-    allowedUDPPortRanges = [
-      { from = 50201; to = 63000; }
+    allowedTCPPorts = [
+      80
+      443
     ];
-    allowedUDPPorts = [ 3478 5349 ];
-    allowedTCPPortRanges = [ ];
-    allowedTCPPorts = [ 3478 5349 80 443 ];
   };
 
   services.matrix-continuwuity = {
@@ -60,14 +61,6 @@ in
       server_name = "matrix.footvaalvica.com";
       trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
-      turn_uris = [
-        "turn:turn.footvaalvica.com?transport=udp"
-        "turn:turn.footvaalvica.com?transport=tcp"
-        "turns:turn.footvaalvica.com?transport=udp"
-        "turns:turn.footvaalvica.com?transport=tcp"
-      ];
-      turn_secret = "${secrets.matrix.turn_secret}";
-      turn_ttl = 86400;
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
     };
@@ -80,102 +73,76 @@ in
   services.mautrix-whatsapp = {
     enable = true;
     settings = {
-        homeserver = {
-          address = "https://matrix.footvaalvica.com";
-          domain = "matrix.footvaalvica.com";
-        };
+      homeserver = {
+        address = "https://matrix.footvaalvica.com";
+        domain = "matrix.footvaalvica.com";
+      };
 
-        bridge.permissions = {
-          "matrix.footvaalvica.com" = "user";
-          "@footvaalvica:matrix.footvaalvica.com" = "admin";
-        };    
+      bridge.permissions = {
+        "matrix.footvaalvica.com" = "user";
+        "@footvaalvica:matrix.footvaalvica.com" = "admin";
+      };
     };
   };
 
   services.mautrix-discord = {
     enable = true;
     settings = {
-        homeserver = {
-          address = "https://matrix.footvaalvica.com";
-          domain = "matrix.footvaalvica.com";
-        };
-
-        bridge.permissions = {
-          "matrix.footvaalvica.com" = "user";
-          "@footvaalvica:matrix.footvaalvica.com" = "admin";
-        };
-        
-        appservice = {
-          address = "http://localhost:29334";
-          hostname = "0.0.0.0";
-          port = 29334;
-          database = {
-            type = "sqlite3";
-            uri = "file:${config.services.mautrix-discord.dataDir}/mautrix-discord.db?_txlock=immediate";
-            max_open_conns = 20;
-            max_idle_conns = 2;
-            max_conn_idle_time = null;
-            max_conn_lifetime = null;
-          };
-          id = "discord";
-          bot = {
-            username = "discordbot";
-            displayname = "Discord bridge bot";
-            avatar = "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
-          };
-          ephemeral_events = true;
-          async_transactions = false;
-          as_token = "${secrets.matrix.discord_bridge.as_token}";
-          hs_token = "${secrets.matrix.discord_bridge.hs_token}";
-        };
+      homeserver = {
+        address = "https://matrix.footvaalvica.com";
+        domain = "matrix.footvaalvica.com";
       };
-    
+
+      bridge.permissions = {
+        "matrix.footvaalvica.com" = "user";
+        "@footvaalvica:matrix.footvaalvica.com" = "admin";
+      };
+
+      appservice = {
+        address = "http://localhost:29334";
+        hostname = "0.0.0.0";
+        port = 29334;
+        database = {
+          type = "sqlite3";
+          uri = "file:${config.services.mautrix-discord.dataDir}/mautrix-discord.db?_txlock=immediate";
+          max_open_conns = 20;
+          max_idle_conns = 2;
+          max_conn_idle_time = null;
+          max_conn_lifetime = null;
+        };
+        id = "discord";
+        bot = {
+          username = "discordbot";
+          displayname = "Discord bridge bot";
+          avatar = "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
+        };
+        ephemeral_events = true;
+        async_transactions = false;
+        as_token = "${secrets.matrix.discord_bridge.as_token}";
+        hs_token = "${secrets.matrix.discord_bridge.hs_token}";
+      };
+    };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-      "olm-3.2.16"
-  ];
-
-  # Runtime
-  virtualisation.docker = {
+  services.livekit = {
     enable = true;
-    autoPrune.enable = true;
-  };
-  virtualisation.oci-containers.backend = "docker";
-
-  # Containers
-  virtualisation.oci-containers.containers."coturn-server" = {
-    image = "docker.io/coturn/coturn";
-    volumes = [
-      "/home/mateusp/nix-config/modules/docker-containers/coturn.conf:/etc/coturn/turnserver.conf:rw"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--network=host"
-    ];
-  };
-  systemd.services."docker-coturn-server" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
+    openFirewall = true;
+    settings = {
+      port = 7880;
+      bind_addresses = "";
+      rtc = {
+        tcp_port = 7881;
+        port_range_start = 50100;
+        port_range_end = 50200;
+        use_external_ip = true;
+        enable_loopback_candidate = false;
+      };
     };
-    partOf = [
-      "docker-compose-coturn-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-coturn-root.target"
-    ];
   };
 
-  # Root service
-  # When started, this will automatically create all resources and start
-  # the containers. When stopped, this will teardown all resources.
-  systemd.targets."docker-compose-coturn-root" = {
-    unitConfig = {
-      Description = "Root target generated by compose2nix.";
-    };
-    wantedBy = [ "multi-user.target" ];
+  services.lk-jwt-service = {
+    enable = true;
+    port = 8081;
+    livekitUrl = "wss://livekit.footvaalvica.com";
   };
 }
