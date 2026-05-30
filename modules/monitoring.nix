@@ -66,7 +66,7 @@
               "https://home.footvaalvica.com/"
               "https://matrix.footvaalvica.com/"
               "https://freshrss.footvaalvica.com/"
-              "https://livekit.footvaalvica.com/  "
+              "https://livekit.footvaalvica.com/"
               "https://homeassistant.footvaalvica.com"
             ];
           }
