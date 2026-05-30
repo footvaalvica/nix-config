@@ -43,6 +43,18 @@ in
         reverse_proxy http://127.0.0.1:6167
       }
     '';
+    virtualHosts."livekit.footvaalvica.com" = {
+      extraConfig = ''
+        # for lk-jwt-service
+        @lk-jwt-service path /sfu/get* /healthz* /get_token*
+        route @lk-jwt-service {
+          reverse_proxy 127.0.0.1:8081
+        }
+
+        # for livekit
+        reverse_proxy 127.0.0.1:7880
+      '';
+    };
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
 
@@ -71,6 +83,10 @@ in
       database_backend = "rocksdb";
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
+      matrix_rtc.foci = {
+        type = "livekit";
+        livekit_service_url = "https://livekit.footvaalvica.com";
+      };
     };
   };
 
@@ -135,7 +151,7 @@ in
   services.livekit = {
     enable = true;
     openFirewall = true;
-    keyFile = "./matrix-key-file.txt";
+    keyFile = "/home/mateusp/nix-config/modules/matrix-key-file.txt";
     settings = {
       port = 7880;
       bind_addresses = "";
@@ -164,6 +180,6 @@ in
     enable = true;
     port = 8081;
     livekitUrl = "wss://livekit.footvaalvica.com";
-    keyFile = "./matrix-key-file.txt";
+    keyFile = "/home/mateusp/nix-config/modules/matrix-key-file.txt";
   };
 }
