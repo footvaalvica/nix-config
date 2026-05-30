@@ -81,6 +81,7 @@
       "musicbrainz-picard"
       "balenaetcher"
       "mediahuman-audio-converter"
+      "stremio"
       "unity-hub"
       "vivaldi"
       "soulseek"
