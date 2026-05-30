@@ -1,10 +1,9 @@
 {
   config,
   pkgs,
-  agenix,
-  secrets,
   ...
-}: {
+}:
+{
   services.caddy = {
     enable = true;
     virtualHosts."grafana.footvaalvica.com".extraConfig = ''
@@ -18,7 +17,7 @@
     mode = "777";
   };
 
-  services.cloudflare-ddns.domains  = ["grafana.footvaalvica.com"];
+  services.cloudflare-ddns.domains = [ "grafana.footvaalvica.com" ];
 
   services.prometheus = {
     enable = true;
@@ -29,7 +28,7 @@
         static_configs = [
           {
             targets = [
-              "localhost:${toString config.services.prometheus.exporters.node.port}" 
+              "localhost:${toString config.services.prometheus.exporters.node.port}"
             ];
           }
         ];
@@ -39,7 +38,7 @@
         metrics_path = "/ups_metrics";
         static_configs = [
           {
-            targets = ["localhost:${toString config.services.prometheus.exporters.nut.port}"];
+            targets = [ "localhost:${toString config.services.prometheus.exporters.nut.port}" ];
           }
         ];
       }
@@ -47,7 +46,11 @@
         job_name = "blackbox";
         metrics_path = "/probe";
         params = {
-          module = [ "my_tcp" "my_icmp" "my_udp" ];
+          module = [
+            "my_tcp"
+            "my_icmp"
+            "my_udp"
+          ];
         };
         static_configs = [
           {
@@ -60,8 +63,6 @@
               "https://www.footvaalvica.com/"
               "https://footvaalvica.com/"
               "https://matrix.footvaalvica.com/"
-              "https://discord-bridge.footvaalvica.com/"
-              "http://omi:12345/"
             ];
           }
         ];
@@ -103,14 +104,19 @@
       enable = true;
       port = 9115;
       openFirewall = true;
-      configFile = (pkgs.formats.json {}).generate "config.json" {
+      configFile = (pkgs.formats.json { }).generate "config.json" {
         modules = {
           my_tcp = {
             prober = "http";
-              timeout = "5s";
-              http = {
-                valid_status_codes = [ 200 201 300 301 ];
-              };
+            timeout = "5s";
+            http = {
+              valid_status_codes = [
+                200
+                201
+                300
+                301
+              ];
+            };
           };
           my_icmp = {
             prober = "icmp";
