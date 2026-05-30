@@ -140,6 +140,10 @@ in
     };
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
   services.lk-jwt-service = {
     enable = true;
     port = 8081;
