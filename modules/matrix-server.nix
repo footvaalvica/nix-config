@@ -156,7 +156,6 @@ in
     keyFile = "/home/mateusp/nix-config/modules/matrix-key-file.txt";
     settings = {
       port = 7880;
-      bind_addresses = [];
       rtc = {
         tcp_port = 7881;
         port_range_start = 50100;
