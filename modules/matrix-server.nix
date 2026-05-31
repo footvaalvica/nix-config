@@ -209,7 +209,6 @@ in
       homeservers = {
         "matrix.footvaalvica.com" = {
           url = "${baseUrl}";
-          secret = "${secrets.matrix.registration_shared_secret}";
         };
       };
       server.hostname = "0.0.0.0";
