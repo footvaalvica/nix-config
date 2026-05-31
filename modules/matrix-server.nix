@@ -202,6 +202,9 @@ in
   services.maubot = {
     enable = true;
     plugins = [ maubotSonglinkPlugin ];
+    settings = {
+      server.hostname = "0.0.0.0";
+    };
   };
 
   systemd.tmpfiles.rules = [
