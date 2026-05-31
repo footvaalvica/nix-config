@@ -9,6 +9,7 @@
   home.homeDirectory = "/home/mateusp";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
     devenv

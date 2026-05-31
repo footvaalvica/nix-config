@@ -33,6 +33,18 @@ let
     homeserver = mautrixHomeserver;
     bridge.permissions = mautrixPermissions;
   };
+
+  maubotSonglinkPlugin = pkgs.maubot.plugins.buildMaubotPlugin rec {
+    pname = "com.cyber.songlinkbot";
+    version = "1.2.3";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "tstrijdhorst";
+      repo = "maubot-songlink-plugin";
+      rev = "185fc2435b3599b55db332eb00c47394355cc6b9";
+      sha256 = "0l2r2wjhvibgfa3m9z7dsvlfm60f6xdwvgm6m7xlwl3b4rr0130i";
+    };
+  };
 in
 {
   services.cloudflare-ddns.domains = [
@@ -189,5 +201,6 @@ in
 
   services.maubot = {
     enable = true;
+    plugins = [ maubotSonglinkPlugin ];
   };
 }

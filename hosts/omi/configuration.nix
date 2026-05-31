@@ -92,7 +92,7 @@
     cifs-utils
     sshfs
     unstable.opencode
-    inputs.agenix.packages."${system}".default
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   power.ups = {
