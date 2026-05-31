@@ -186,4 +186,8 @@ in
     livekitUrl = "wss://${livekitFqdn}";
     keyFile = livekitKeyFile;
   };
+
+  services.maubot = {
+    enable = true;
+  };
 }
