@@ -203,4 +203,9 @@ in
     enable = true;
     plugins = [ maubotSonglinkPlugin ];
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/maubot/plugins 0750 maubot maubot -"
+    "d /var/lib/maubot/trash 0750 maubot maubot -"
+  ];
 }
