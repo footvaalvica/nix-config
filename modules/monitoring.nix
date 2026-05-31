@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  secrets,
   ...
 }:
 {
@@ -144,11 +145,14 @@
 
   services.grafana = {
     enable = true;
-    settings.server = {
-      http_addr = "0.0.0.0";
-      http_port = 3000;
-      root_url = "https://grafana.footvaalvica.com/";
-      enable_gzip = true;
+    settings = {
+      server = {
+        http_addr = "0.0.0.0";
+        http_port = 3000;
+        root_url = "https://grafana.footvaalvica.com/";
+        enable_gzip = true;
+      };
+      security.secret_key = "${secrets.grafana.secret_key}";
     };
     provision = {
       enable = true;
