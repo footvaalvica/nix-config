@@ -203,6 +203,9 @@ in
     enable = true;
     plugins = [ maubotSonglinkPlugin ];
     settings = {
+      admins = {
+        footvaalvica = "${secrets.matrix.discord_bridge.web_password}";
+      };
       server.hostname = "0.0.0.0";
     };
   };
