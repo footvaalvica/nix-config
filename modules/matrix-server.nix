@@ -3,7 +3,8 @@
   config,
   secrets,
   ...
-}: let
+}:
+let
   domain = "footvaalvica.com";
   fqdn = "matrix.footvaalvica.com";
   livekitFqdn = "livekit.${domain}";
@@ -32,7 +33,8 @@
     homeserver = mautrixHomeserver;
     bridge.permissions = mautrixPermissions;
   };
-in {
+in
+{
   services.cloudflare-ddns.domains = [
     fqdn
     livekitFqdn
@@ -100,9 +102,9 @@ in {
     enable = true;
     settings.global = {
       server_name = fqdn;
-      trusted_servers = ["matrix.org"];
+      trusted_servers = [ "matrix.org" ];
       database_backend = "rocksdb";
-      url_preview_domain_explicit_allowlist = ["*"];
+      url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
       matrix_rtc.foci = [
         {
@@ -124,33 +126,31 @@ in {
 
   services.mautrix-discord = {
     enable = true;
-    settings =
-      mautrixSettings
-      // {
-        appservice = {
-          address = "http://localhost:29334";
-          hostname = "0.0.0.0";
-          port = 29334;
-          database = {
-            type = "sqlite3";
-            uri = "file:${config.services.mautrix-discord.dataDir}/mautrix-discord.db?_txlock=immediate";
-            max_open_conns = 20;
-            max_idle_conns = 2;
-            max_conn_idle_time = null;
-            max_conn_lifetime = null;
-          };
-          id = "discord";
-          bot = {
-            username = "discordbot";
-            displayname = "Discord bridge bot";
-            avatar = "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
-          };
-          ephemeral_events = true;
-          async_transactions = false;
-          as_token = "${secrets.matrix.discord_bridge.as_token}";
-          hs_token = "${secrets.matrix.discord_bridge.hs_token}";
+    settings = mautrixSettings // {
+      appservice = {
+        address = "http://localhost:29334";
+        hostname = "0.0.0.0";
+        port = 29334;
+        database = {
+          type = "sqlite3";
+          uri = "file:${config.services.mautrix-discord.dataDir}/mautrix-discord.db?_txlock=immediate";
+          max_open_conns = 20;
+          max_idle_conns = 2;
+          max_conn_idle_time = null;
+          max_conn_lifetime = null;
         };
+        id = "discord";
+        bot = {
+          username = "discordbot";
+          displayname = "Discord bridge bot";
+          avatar = "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
+        };
+        ephemeral_events = true;
+        async_transactions = false;
+        as_token = "${secrets.matrix.discord_bridge.as_token}";
+        hs_token = "${secrets.matrix.discord_bridge.hs_token}";
       };
+    };
   };
 
   services.livekit = {
