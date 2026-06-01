@@ -14,7 +14,6 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ../modules/default.nix
-    ../profiles/non-nixos-system.nix
   ];
 
   home.username = lib.mkForce "deck";
@@ -31,7 +30,8 @@
     };
   };
 
-  programs.nh.flake = lib.mkForce "/home/deck/nix-config";
+  programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
+  programs.nh.homeFlake = lib.mkForce "${config.home.homeDirectory}/nix-config/";
 
   targets.genericLinux.enable = true;
 

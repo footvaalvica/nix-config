@@ -30,6 +30,15 @@
       nix-direnv.enable = true;
     };
 
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/mateusp/nix-config";
+      homeFlake = "/home/mateusp/nix-config";
+      darwinFlake = "/Users/mateusp/nix-config";
+    };
+
     atuin = {
       enable = true;
       enableFishIntegration = true;
