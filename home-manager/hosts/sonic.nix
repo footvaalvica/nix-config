@@ -13,6 +13,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ../modules/default.nix
+    ../profiles/non-nixos-system.nix
   ];
 
   home = {
@@ -23,6 +24,7 @@
 
   programs = {
     fish.interactiveShellInit = "ulimit -n 4096";
+    nh.flake = lib.mkForce "/Users/mateusp/nix-config"; # sets NH_OS_FLAKE variable for you
     zed-editor = {
       enable = true;
       package = null;

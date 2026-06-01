@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -13,6 +14,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ../modules/default.nix
+    ../profiles/non-nixos-system.nix
   ];
 
   home.sessionVariables = {
@@ -20,14 +22,19 @@
     NO_GUI = "1";
   };
 
+  targets.genericLinux.enable = true;
+
   programs.topgrade = {
     enable = true;
     settings = {
       misc = {
-        disable = ["waydroid" "nix"]; # Disable waydroid for now until I configure it properly
-        ignore_failures = [];
+        disable = [
+          "waydroid"
+          "nix"
+        ]; # Disable waydroid for now until I configure it properly
+        ignore_failures = [ ];
       };
-      git.repos = ["${config.home.homeDirectory}/nix-config"];
+      git.repos = [ "${config.home.homeDirectory}/nix-config" ];
       linux = {
         rpm_ostree = true;
         home_manager_arguments = [
@@ -36,11 +43,5 @@
         ];
       };
     };
-  };
-
-  targets.genericLinux = {
-    enable = true;
-    # TODO, when it works again, enable NVIDIA GPU support
-    # # gpu.nvidia = true;
   };
 }

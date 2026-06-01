@@ -1,7 +1,5 @@
 { ... }:
 {
-  targets.genericLinux.enable = true;
-
   programs.nh = {
     enable = true;
     clean.enable = true;

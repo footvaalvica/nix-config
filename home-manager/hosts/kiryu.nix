@@ -14,13 +14,12 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ../modules/default.nix
+    ../profiles/non-nixos-system.nix
   ];
 
   home.username = lib.mkForce "deck";
   home.homeDirectory = lib.mkForce "/home/deck";
   home.sessionPath = [ "/opt/tailscale" ];
-
-  targets.genericLinux.enable = true;
 
   programs.ssh = {
     enableDefaultConfig = false;
@@ -31,6 +30,10 @@
       };
     };
   };
+
+  programs.nh.flake = lib.mkForce "/home/deck/nix-config";
+
+  targets.genericLinux.enable = true;
 
   programs.topgrade = {
     enable = true;
