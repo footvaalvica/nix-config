@@ -6,7 +6,8 @@
   lib,
   secrets,
   ...
-}: {
+}:
+{
 
   imports = [
     ../modules/healthchecks.nix
@@ -48,10 +49,18 @@
   };
 
   virtualisation.docker.daemon.settings = {
-    dns = [ "100.100.100.100" "8.8.8.8" ];
+    dns = [
+      "100.100.100.100"
+      "8.8.8.8"
+    ];
   };
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
 
   users.users.root = {
     openssh.authorizedKeys.keys = [

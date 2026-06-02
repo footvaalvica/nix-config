@@ -146,7 +146,6 @@
         plugin = [
           "@simonwjackson/opencode-direnv"
           "oh-my-opencode-slim@1.1.1"
-          "true-mem"
         ];
         agent = {
           explore.disable = true;
