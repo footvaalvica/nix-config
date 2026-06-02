@@ -243,7 +243,7 @@
         presets = {
           thirtydollars = {
             orchestrator = {
-              model = "openai/gpt-5.5-fast";
+              model = "openai/gpt-5.5";
               skills = [ "*" ];
               mcps = [
                 "*"
@@ -251,14 +251,14 @@
               ];
             };
             oracle = {
-              model = "openai/gpt-5.5-fast";
+              model = "openai/gpt-5.5";
               variant = "high";
               skills = [ ];
               mcps = [ ];
             };
-            council.model = "openai/gpt-5.5-fast";
+            council.model = "openai/gpt-5.5";
             librarian = {
-              model = "openai/gpt-5.4-mini-fast";
+              model = "openai/gpt-5.4-mini";
               variant = "low";
               skills = [ ];
               mcps = [
@@ -268,7 +268,7 @@
               ];
             };
             explorer = {
-              model = "openai/gpt-5.4-mini-fast";
+              model = "openai/gpt-5.4-mini";
               variant = "low";
               skills = [ ];
               mcps = [ ];
@@ -279,7 +279,7 @@
               mcps = [ ];
             };
             fixer = {
-              model = "openai/gpt-5.4-mini-fast";
+              model = "openai/gpt-5.4-mini";
               variant = "low";
               skills = [ ];
               mcps = [ ];
