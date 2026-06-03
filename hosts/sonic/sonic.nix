@@ -87,6 +87,7 @@
       "openchamber"
       "skim"
       "mos"
+      "inkscape"
     ];
     global.autoUpdate = false;
     masApps = {
