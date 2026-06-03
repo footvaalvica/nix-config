@@ -90,55 +90,6 @@
     };
   };
 
-  programs.macos-terminal = {
-    enable = true;
-    profiles = {
-      "My Profile".settings = {
-
-        # Colors
-        BackgroundColor = {
-          colorSpace = "gray";
-          white = 0.0;
-        };
-
-        TextColor = {
-          colorSpace = "gray";
-          white = 0.95;
-        };
-
-        TextBoldColor = {
-          colorSpace = "gray";
-          white = 1.0;
-        };
-
-        CursorColor = {
-          colorSpace = "gray";
-          white = 0.3;
-        };
-
-        SelectionColor = {
-          colorSpace = "gray";
-          white = 0.25;
-        };
-
-        # Font
-        Font = {
-          name = "LigaSFMonoNerdFont-Regular";
-          size = 14;
-        };
-
-        BackgroundBlur = 0.0;
-        Bell = false;
-        FontAntialias = true;
-        FontWidthSpacing = 1;
-
-        ShowWindowSettingsNameInTitle = false;
-        shellExitAction = 2;
-        useOptionAsMetaKey = true;
-      };
-    };
-  };
-
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
