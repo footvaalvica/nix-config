@@ -141,11 +141,11 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@1.1.1" ];
+      tui.plugin = [ "oh-my-opencode-slim@1.1.2" ];
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim@1.1.1"
+          "oh-my-opencode-slim@1.1.2"
         ];
         agent = {
           explore.disable = true;
@@ -238,7 +238,7 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.1.1/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.1.2/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
