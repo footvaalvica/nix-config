@@ -56,6 +56,7 @@
       "mas"
       "openssl@3"
       "mole"
+      "container"
     ];
     casks = [
       "zed"
