@@ -261,13 +261,13 @@
             };
             oracle = {
               model = "openai/gpt-5.5";
-              variant = "high";
+              variant = "xhigh";
               skills = [ ];
               mcps = [ ];
             };
             council.model = "openai/gpt-5.5";
             librarian = {
-              model = "openai/gpt-5.4-mini";
+              model = "openai/gpt-5.3-codex-spark";
               variant = "low";
               skills = [ ];
               mcps = [
@@ -277,7 +277,7 @@
               ];
             };
             explorer = {
-              model = "openai/gpt-5.4-mini";
+              model = "openai/gpt-5.3-codex-spark";
               variant = "low";
               skills = [ ];
               mcps = [ ];
