@@ -139,13 +139,19 @@
       # enableFishIntegration = true;
     };
 
+    mcp = {
+      enable = true;
+      # place future mcp configuration here
+    };
+
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@1.1.2" ];
+      tui.plugin = [ "oh-my-opencode-slim@2.0.0" ];
+      enableMcpIntegration = true;
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim@1.1.2"
+          "oh-my-opencode-slim@2.0.0"
         ];
         agent = {
           explore.disable = true;
@@ -231,6 +237,8 @@
         codemap = ./skills/codemap;
         simplify = ./skills/simplify;
         clonedeps = ./skills/clonedeps;
+        deepwork = ./skills/deepwork;
+        oh-my-opencode-slim = ./skills/oh-my-opencode-slim;
       };
     };
   };
@@ -238,16 +246,17 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@1.1.2/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.0.0/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
             orchestrator = {
               model = "openai/gpt-5.5";
+              variant = "medium";
               skills = [ "*" ];
               mcps = [
                 "*"
-                "!context7"
+                "websearch"
               ];
             };
             oracle = {
@@ -264,7 +273,7 @@
               mcps = [
                 "websearch"
                 "context7"
-                "grep_app"
+                "gh_grep"
               ];
             };
             explorer = {
@@ -274,12 +283,12 @@
               mcps = [ ];
             };
             designer = {
-              model = "github-copilot/gemini-3.1-pro-preview";
-              skills = [ "agent-browser" ];
+              model = "github-copilot/gemini-3.5-flash";
+              skills = [ ];
               mcps = [ ];
             };
             fixer = {
-              model = "openai/gpt-5.4-mini";
+              model = "openai/gpt-5.5";
               variant = "low";
               skills = [ ];
               mcps = [ ];
@@ -290,7 +299,7 @@
           presets = {
             default = {
               alpha.model = "github-copilot/claude-sonnet-4.6";
-              beta.model = "github-copilot/gemini-3.1-pro-preview";
+              beta.model = "github-copilot/gemini-3.5-flash";
               gamma.model = "openai/gpt-5.5";
             };
           };
