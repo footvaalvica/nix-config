@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -29,6 +30,22 @@
       };
     };
   };
+
+  # THIS MIGHT BREAK IF VALVE UPDATES KDE TO WAYLAND ONLY???? HOPE THEY DONT
+  home.file.".Xmodmap".text = ''
+    keycode 108 = Super_R
+    keycode 134 = ISO_Level3_Shift
+
+    clear mod4
+    clear mod5
+
+    add mod4 = Super_R
+    add mod5 = ISO_Level3_Shift
+  '';
+
+  xsession.initExtra = ''
+    ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+  '';
 
   programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
   programs.nh.homeFlake = lib.mkForce "${config.home.homeDirectory}/nix-config/";
