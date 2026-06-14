@@ -146,12 +146,12 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@2.0.0" ];
+      tui.plugin = [ "oh-my-opencode-slim@2.0.2" ];
       enableMcpIntegration = true;
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim@2.0.0"
+          "oh-my-opencode-slim@2.0.2"
         ];
         agent = {
           explore.disable = true;
@@ -234,11 +234,13 @@
         4. Find similar usages in the codebase and fix them too
       '';
       skills = {
-        codemap = ./skills/codemap;
-        simplify = ./skills/simplify;
         clonedeps = ./skills/clonedeps;
+        codemap = ./skills/codemap;
         deepwork = ./skills/deepwork;
         oh-my-opencode-slim = ./skills/oh-my-opencode-slim;
+        reflect = ./skills/reflect;
+        simplify = ./skills/simplify;
+        worktrees = ./skills/worktrees;
       };
     };
   };
@@ -246,7 +248,7 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.0.0/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.0.2/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
@@ -267,7 +269,7 @@
             };
             council.model = "openai/gpt-5.5";
             librarian = {
-              model = "openai/gpt-5.3-codex-spark";
+              model = "openai/gpt-5.4-mini";
               variant = "low";
               skills = [ ];
               mcps = [
@@ -277,7 +279,7 @@
               ];
             };
             explorer = {
-              model = "openai/gpt-5.3-codex-spark";
+              model = "openai/gpt-5.4-mini";
               variant = "low";
               skills = [ ];
               mcps = [ ];
