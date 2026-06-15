@@ -80,6 +80,7 @@
       "zoom"
       "lookaway"
       "musicbrainz-picard"
+      "stremio"
       "balenaetcher"
       "mediahuman-audio-converter"
       "unity-hub"
