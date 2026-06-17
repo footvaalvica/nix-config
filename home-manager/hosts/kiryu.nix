@@ -43,11 +43,32 @@
     add mod5 = ISO_Level3_Shift
   '';
 
-  xsession.initExtra = ''
-    if ! ${pkgs.xorg.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
-      ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+  home.file.".xprofile".text = ''
+    if ${pkgs.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
+      ${pkgs.setxkbmap}/bin/setxkbmap
+    else
+      ${pkgs.xmodmap}/bin/xmodmap ~/.Xmodmap
     fi
   '';
+
+  xdg.configFile."autostart-scripts/keychron-keymap.sh" = {
+    executable = true;
+    text = ''
+      #!${pkgs.bash}/bin/bash
+      sleep 2
+
+      log="$HOME/.local/state/keychron-keymap.log"
+      ${pkgs.coreutils}/bin/mkdir -p "$(${pkgs.coreutils}/bin/dirname "$log")"
+
+      if ${pkgs.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
+        ${pkgs.setxkbmap}/bin/setxkbmap
+        printf '%s Keychron detected: ran setxkbmap\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
+      else
+        ${pkgs.xmodmap}/bin/xmodmap ~/.Xmodmap
+        printf '%s Keychron not detected: ran xmodmap\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
+      fi
+    '';
+  };
 
   programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
   programs.nh.homeFlake = lib.mkForce "${config.home.homeDirectory}/nix-config/";
