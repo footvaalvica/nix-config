@@ -22,6 +22,14 @@
   services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
   programs = {
+    mcp = {
+      servers = {
+        codebase-memory-mcp = {
+          type = "stdio";
+          command = "/Users/mateusp/.local/bin/codebase-memory-mcp";
+        };
+      };
+    };
     fish.interactiveShellInit = "ulimit -n 4096";
     nh.flake = lib.mkForce "/Users/mateusp/nix-config"; # sets NH_OS_FLAKE variable for you
     zed-editor = {
