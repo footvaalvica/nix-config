@@ -61,7 +61,6 @@
     casks = [
       "zed"
       "netnewswire"
-      "discord"
       "dockdoor"
       "firefox"
       "altserver"
