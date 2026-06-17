@@ -30,7 +30,6 @@
         ]; # Disable waydroid for now until I configure it properly
         ignore_failures = [ "containers" ];
       };
-      git.repos = [ "${config.home.homeDirectory}/nix-config" ];
       linux = {
         rpm_ostree = true;
         home_manager_arguments = [

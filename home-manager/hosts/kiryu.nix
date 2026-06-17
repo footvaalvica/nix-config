@@ -61,7 +61,6 @@
         "system"
         "nix"
       ];
-      git.repos = [ "${config.home.homeDirectory}/nix-config" ];
       linux.home_manager_arguments = [
         "--flake"
         "${config.home.homeDirectory}/nix-config/#${config.home.username}@kiryu"
