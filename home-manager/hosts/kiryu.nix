@@ -44,7 +44,9 @@
   '';
 
   xsession.initExtra = ''
-    ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+    if ! ${pkgs.xorg.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
+      ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+    fi
   '';
 
   programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
