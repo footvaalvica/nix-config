@@ -1,9 +1,9 @@
 {
   config,
   lib,
+  pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -18,7 +18,7 @@
 
   home.username = lib.mkForce "deck";
   home.homeDirectory = lib.mkForce "/home/deck";
-  home.sessionPath = [ "/opt/tailscale" ];
+  home.sessionPath = ["/opt/tailscale"];
 
   programs.ssh = {
     enableDefaultConfig = false;
@@ -30,44 +30,47 @@
     };
   };
 
-  # # THIS MIGHT BREAK IF VALVE UPDATES KDE TO WAYLAND ONLY???? HOPE THEY DONT
-  # home.file.".Xmodmap".text = ''
-  #   keycode 108 = Super_R
-  #   keycode 134 = ISO_Level3_Shift
+  home.packages = [pkgs.xremap];
 
-  #   clear mod4
-  #   clear mod5
+  xdg.configFile."xremap/keychron-keymap.yml".text = ''
+    modmap:
+      - name: Right Alt/Super fix for non-Keychron keyboards
+        remap:
+          KEY_RIGHTALT: KEY_RIGHTMETA
+          KEY_RIGHTMETA: KEY_RIGHTALT
+  '';
 
-  #   add mod4 = Super_R
-  #   add mod5 = ISO_Level3_Shift
-  # '';
+  systemd.user.services.keychron-keymap = {
+    Unit = {
+      Description = "Remap right Alt/Super when no Keychron keyboard is connected";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+    };
 
-  # home.file.".xprofile".text = ''
-  #   if ${pkgs.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
-  #     ${pkgs.setxkbmap}/bin/setxkbmap
-  #   else
-  #     ${pkgs.xmodmap}/bin/xmodmap ~/.Xmodmap
-  #   fi
-  # '';
+    Service = {
+      ExecCondition = ''${pkgs.bash}/bin/bash -c "! ${pkgs.gnugrep}/bin/grep -qi keychron /proc/bus/input/devices"'';
+      ExecStart = "${pkgs.xremap}/bin/xremap --watch=device %h/.config/xremap/keychron-keymap.yml";
+      Restart = "on-failure";
+      RestartSec = 2;
+    };
 
-  # xdg.configFile."autostart-scripts/keychron-keymap.sh" = {
-  #   executable = true;
-  #   text = ''
-  #     #!${pkgs.bash}/bin/bash
-  #     sleep 2
+    Install.WantedBy = ["graphical-session.target"];
+  };
 
-  #     log="$HOME/.local/state/keychron-keymap.log"
-  #     ${pkgs.coreutils}/bin/mkdir -p "$(${pkgs.coreutils}/bin/dirname "$log")"
+  xdg.configFile."autostart-scripts/keychron-keymap-log.sh" = {
+    executable = true;
+    text = ''
+      #!${pkgs.bash}/bin/bash
+      log="$HOME/.local/state/keychron-keymap.log"
+      ${pkgs.coreutils}/bin/mkdir -p "$(${pkgs.coreutils}/bin/dirname "$log")"
 
-  #     if ${pkgs.xinput}/bin/xinput list --name-only | ${pkgs.gnugrep}/bin/grep -qi 'keychron'; then
-  #       ${pkgs.setxkbmap}/bin/setxkbmap
-  #       printf '%s Keychron detected: ran setxkbmap\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
-  #     else
-  #       ${pkgs.xmodmap}/bin/xmodmap ~/.Xmodmap
-  #       printf '%s Keychron not detected: ran xmodmap\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
-  #     fi
-  #   '';
-  # };
+      if ${pkgs.gnugrep}/bin/grep -qi 'keychron' /proc/bus/input/devices; then
+        printf '%s Keychron detected: xremap service skipped\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
+      else
+        printf '%s Keychron not detected: xremap service should be active\n' "$(${pkgs.coreutils}/bin/date -Is)" >> "$log"
+      fi
+    '';
+  };
 
   programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
   programs.nh.homeFlake = lib.mkForce "${config.home.homeDirectory}/nix-config/";
