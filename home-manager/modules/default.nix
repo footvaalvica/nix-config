@@ -12,7 +12,6 @@
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
-    devenv
     nano
     git-crypt
     git-lfs
@@ -29,6 +28,8 @@
       enable = true;
       nix-direnv.enable = true;
     };
+
+    devenv.enable = true;
 
     nh = {
       enable = true;
