@@ -44,6 +44,12 @@
       /mnt/backup omi(rw,nohide,insecure,no_subtree_check,no_root_squash)
     '';
   };
+  
+  # this is for WoL of other pc
+  networking.interfaces.eno1.ipv4.addresses = [{
+    address = "10.10.10.1";
+    prefixLength = 24;
+  }];
 
   services.borgbackup.repos."omi-backups" = {
     path = "/mnt/backup/borg-repo";
