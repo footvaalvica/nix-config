@@ -64,6 +64,7 @@
       "dockdoor"
       "firefox"
       "altserver"
+      "vlc"
       "obsidian"
       "transmission"
       "reaper"
