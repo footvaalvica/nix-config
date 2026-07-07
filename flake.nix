@@ -199,6 +199,21 @@
         ];
       };
 
+      darwinConfigurations."cloud" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs outputs secrets; };
+            
+        modules = [
+          ./hosts/cloud/configuration.nix
+          nix-homebrew.darwinModules.nix-homebrew
+          home-manager.darwinModules.home-manager
+          {   
+            home-manager.extraSpecialArgs = { inherit inputs; }; # <-- this is the key one
+          }
+        ];
+      };      
+
+
       checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
