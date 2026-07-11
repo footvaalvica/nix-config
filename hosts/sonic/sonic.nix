@@ -95,7 +95,6 @@
     masApps = {
       GarageBand = 682658836;
       NordVPN = 905953485;
-      Mattermost = 1614666244;
       Wireguard = 1451685025;
       MicrosoftApp = 1295203466; # Microsoft Remote Desktop
       MicrosoftWord = 462054704;
