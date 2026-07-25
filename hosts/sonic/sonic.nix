@@ -61,7 +61,6 @@
     casks = [
       "zed"
       "netnewswire"
-      "background-music"
       "dockdoor"
       "firefox"
       "altserver"
