@@ -54,14 +54,15 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       "mas"
-      "openssl@3"
       "mole"
       "container"
     ];
     casks = [
+      "vorssaint"
+      # # "dockdoor"
+      # # "mos"
       "zed"
       "netnewswire"
-      "dockdoor"
       "firefox"
       "altserver"
       "vlc"
@@ -88,7 +89,6 @@
       "soulseek"
       "openchamber"
       "skim"
-      "mos"
       "inkscape"
     ];
     global.autoUpdate = false;
