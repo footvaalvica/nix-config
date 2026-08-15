@@ -71,6 +71,7 @@
       "reaper"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
+      "ghostty"
       "utm"
       "vorta"
       "nextcloud"

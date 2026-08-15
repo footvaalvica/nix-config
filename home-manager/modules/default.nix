@@ -148,12 +148,12 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@2.0.3" ];
+      tui.plugin = [ "oh-my-opencode-slim@2.2.14" ];
       enableMcpIntegration = true;
       settings = {
         plugin = [
           "@simonwjackson/opencode-direnv"
-          "oh-my-opencode-slim@2.0.3"
+          "oh-my-opencode-slim@2.2.14"
         ];
         agent = {
           explore.disable = true;
@@ -193,6 +193,8 @@
         reflect = ./skills/reflect;
         simplify = ./skills/simplify;
         worktrees = ./skills/worktrees;
+        loop-engineering = ./skills/loop-engineering;
+        verification-planning = ./skills/verification-planning;
       };
     };
   };
@@ -200,61 +202,39 @@
   xdg = {
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
-        "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.0.3/oh-my-opencode-slim.schema.json";
+        "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.2.14/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
           thirtydollars = {
             orchestrator = {
-              model = "openai/gpt-5.5";
-              variant = "medium";
-              skills = [ "*" ];
-              mcps = [
-                "*"
-                "websearch"
-              ];
+              model = "opencode-go/minimax-m3";
+              variant = "thinking";
             };
             oracle = {
-              model = "openai/gpt-5.5";
-              variant = "xhigh";
-              skills = [ ];
-              mcps = [ ];
+              model = "opencode-go/qwen3.7-max";
+              variant = "max";
             };
-            council.model = "openai/gpt-5.5";
             librarian = {
-              model = "openai/gpt-5.4-mini";
-              variant = "low";
-              skills = [ ];
+              model = "opencode-go/deepseek-v4-flash";
+              variant = "high";
               mcps = [
-                "websearch"
                 "context7"
                 "gh_grep"
               ];
             };
             explorer = {
-              model = "openai/gpt-5.4-mini";
-              variant = "low";
-              skills = [ ];
-              mcps = [ ];
+              model = "opencode-go/deepseek-v4-flash";
+              variant = "high";
             };
             designer = {
-              model = "github-copilot/gemini-3.5-flash";
-              skills = [ ];
-              mcps = [ ];
+              model = "opencode-go/kimi-k2.7-code";
             };
             fixer = {
-              model = "openai/gpt-5.5";
-              variant = "low";
-              skills = [ ];
-              mcps = [ ];
+              model = "opencode-go/deepseek-v4-flash";
+              variant = "high";
             };
-          };
-        };
-        council = {
-          presets = {
-            default = {
-              alpha.model = "github-copilot/claude-sonnet-4.6";
-              beta.model = "github-copilot/gemini-3.5-flash";
-              gamma.model = "openai/gpt-5.5";
+            observer = {
+              model = "opencode-go/mimo-v2.5";
             };
           };
         };
