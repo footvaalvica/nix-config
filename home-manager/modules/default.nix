@@ -204,7 +204,7 @@
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
         "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.2.14/oh-my-opencode-slim.schema.json";
-        preset = "thirtydollars";
+        preset = "openai";
         presets = {
           openai = {
             orchestrator = {
