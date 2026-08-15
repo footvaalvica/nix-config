@@ -154,7 +154,12 @@
         plugin = [
           "@simonwjackson/opencode-direnv"
           "oh-my-opencode-slim@2.2.14"
+          "@cortexkit/opencode-magic-context@latest"
         ];
+        compaction = {
+          auto = false;
+          prune = false;
+        };
         agent = {
           explore.disable = true;
           general.disable = true;
@@ -201,6 +206,15 @@
   };
 
   xdg = {
+    configFile."opencode/magic-context.jsonc".source = pkgs.writeText "magic-context.jsonc" (
+      builtins.toJSON {
+        "$schema" = "https://raw.githubusercontent.com/cortexkit/magic-context/master/assets/magic-context.schema.json";
+        historian = {
+          model = "openai/gpt-5.6-luna";
+        };
+      }
+    );
+
     configFile."opencode/oh-my-opencode-slim.json".source = pkgs.writeText "oh-my-opencode-slim.json" (
       builtins.toJSON {
         "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.2.14/oh-my-opencode-slim.schema.json";
