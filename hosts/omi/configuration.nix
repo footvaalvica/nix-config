@@ -9,8 +9,7 @@
   lib,
   secrets,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -32,7 +31,7 @@
   ];
 
   home-manager = {
-    users.mateusp.imports = [ ../../home-manager/hosts/omi.nix ];
+    users.mateusp.imports = [../../home-manager/hosts/omi.nix];
     backupFileExtension = "backup";
   };
 
@@ -63,7 +62,7 @@
     ];
   };
 
-  users.groups.borg = { };
+  users.groups.borg = {};
 
   # Firewall
   networking.firewall = {
@@ -140,7 +139,6 @@
     "backend.thesis-application.win"
     "backend-thesis.footvaalvica.com"
   ];
-
 
   ##############################
   ## THESIS STUFFS

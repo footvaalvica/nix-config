@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   inputs,
   outputs,
@@ -11,14 +10,14 @@
   secrets,
   ...
 }: {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../profiles/server.nix
-      ../../profiles/desktop.nix
-      ../../profiles/default.nix
-      ../../modules/docker-containers/homeassistant.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../profiles/server.nix
+    ../../profiles/desktop.nix
+    ../../profiles/default.nix
+    ../../modules/docker-containers/homeassistant.nix
+  ];
 
   home-manager = {
     users.mateusp.imports = [../../home-manager/hosts/tojo.nix];
@@ -28,11 +27,11 @@
   fileSystems."/mnt/backup" = {
     device = "/dev/disk/by-label/backup";
     fsType = "btrfs";
-    options = [ 
-      "compress=zstd"   # Automatically compresses data to save space
-      "nosuid"          # Security: prevents set-user-identifier bits from working
-      "nodev"           # Security: prevents interpreting character or block special devices
-      "nofail"          # CRITICAL: allows the PC to boot even if the drive is unplugged
+    options = [
+      "compress=zstd" # Automatically compresses data to save space
+      "nosuid" # Security: prevents set-user-identifier bits from working
+      "nodev" # Security: prevents interpreting character or block special devices
+      "nofail" # CRITICAL: allows the PC to boot even if the drive is unplugged
       "x-systemd.automount"
       "x-systemd.idle-timeout=60"
     ];
@@ -44,12 +43,14 @@
       /mnt/backup omi(rw,nohide,insecure,no_subtree_check,no_root_squash)
     '';
   };
-  
+
   # this is for WoL of other pc
-  networking.interfaces.eno1.ipv4.addresses = [{
-    address = "10.10.10.1";
-    prefixLength = 24;
-  }];
+  networking.interfaces.eno1.ipv4.addresses = [
+    {
+      address = "10.10.10.1";
+      prefixLength = 24;
+    }
+  ];
 
   services.borgbackup.repos."omi-backups" = {
     path = "/mnt/backup/borg-repo";
@@ -70,5 +71,4 @@
   };
 
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }

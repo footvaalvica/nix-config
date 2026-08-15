@@ -3,16 +3,15 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home-manager = {
-    users.mateusp.imports = [ ../../home-manager/hosts/sonic.nix ];
+    users.mateusp.imports = [../../home-manager/hosts/sonic.nix];
     backupFileExtension = "backup";
   };
 
   networking.hostName = "sonic";
 
-  users.knownUsers = [ "mateusp" ];
+  users.knownUsers = ["mateusp"];
   users.users.mateusp = {
     home = "/Users/mateusp";
     shell = pkgs.fish;

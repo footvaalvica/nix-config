@@ -9,7 +9,6 @@
   # and fail during evaluation if the host key is missing.
   healthchecksUrl = lib.getAttrFromPath ["healthchecks" config.networking.hostName "url"] secrets;
 in {
-
   # Update DUCKDNs
   systemd.timers."ping-healthchecks" = {
     wantedBy = ["timers.target"];

@@ -6,7 +6,6 @@
   agenix,
   ...
 }: {
-
   services.cloudflare-ddns.domains = ["freshrss.footvaalvica.com"];
 
   age.secrets.freshrss-password-file = {
@@ -22,8 +21,7 @@
       youtube
       reddit-image
     ];
-    baseUrl = "https://freshrss.footvaalvica.com"; 
-	passwordFile = config.age.secrets.freshrss-password-file.path;
+    baseUrl = "https://freshrss.footvaalvica.com";
+    passwordFile = config.age.secrets.freshrss-password-file.path;
   };
 }
-

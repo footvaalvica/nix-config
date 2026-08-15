@@ -3,8 +3,7 @@
   pkgs,
   secrets,
   ...
-}:
-{
+}: {
   services.caddy = {
     enable = true;
     virtualHosts."grafana.footvaalvica.com".extraConfig = ''
@@ -18,7 +17,7 @@
     mode = "777";
   };
 
-  services.cloudflare-ddns.domains = [ "grafana.footvaalvica.com" ];
+  services.cloudflare-ddns.domains = ["grafana.footvaalvica.com"];
 
   services.prometheus = {
     enable = true;
@@ -39,7 +38,7 @@
         metrics_path = "/ups_metrics";
         static_configs = [
           {
-            targets = [ "localhost:${toString config.services.prometheus.exporters.nut.port}" ];
+            targets = ["localhost:${toString config.services.prometheus.exporters.nut.port}"];
           }
         ];
       }
@@ -74,11 +73,11 @@
         ];
         relabel_configs = [
           {
-            source_labels = [ "__address__" ];
+            source_labels = ["__address__"];
             target_label = "__param_target";
           }
           {
-            source_labels = [ "__param_target" ];
+            source_labels = ["__param_target"];
             target_label = "instance";
           }
           {
@@ -110,7 +109,7 @@
       enable = true;
       port = 9115;
       openFirewall = true;
-      configFile = (pkgs.formats.json { }).generate "config.json" {
+      configFile = (pkgs.formats.json {}).generate "config.json" {
         modules = {
           my_tcp = {
             prober = "http";

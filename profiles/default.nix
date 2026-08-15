@@ -5,8 +5,7 @@
   lib,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./tailscale.nix
   ];
@@ -22,7 +21,7 @@
       "docker"
       "ydotool"
     ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzd+9n5/Y34hs5Q5+mSEAW9jCLOr7zQw/AMZwW68jBB mateusp@omi"
@@ -55,37 +54,35 @@
     };
   };
 
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        # Enable flakes and new 'nix' command
-        experimental-features = "nix-command flakes";
-        # Opinionated: disable global registry
-        flake-registry = "";
-        # Workaround for https://github.com/NixOS/nix/issues/9574
-        nix-path = config.nix.nixPath;
-        trusted-users = [
-          "root"
-          "mateusp"
-        ];
-        auto-optimise-store = true;
-      };
-      # Opinionated: disable channels
-      channel.enable = false;
-
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 30d";
-      };
-
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  nix = let
+    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  in {
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Opinionated: disable global registry
+      flake-registry = "";
+      # Workaround for https://github.com/NixOS/nix/issues/9574
+      nix-path = config.nix.nixPath;
+      trusted-users = [
+        "root"
+        "mateusp"
+      ];
+      auto-optimise-store = true;
     };
+    # Opinionated: disable channels
+    channel.enable = false;
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    # Opinionated: make flake registry and nix path match flake inputs
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  };
 
   # Enable networking
   networking = {

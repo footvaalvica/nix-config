@@ -3,16 +3,15 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home-manager = {
-    users.mpinho.imports = [ ../../home-manager/hosts/cloud.nix ];
+    users.mpinho.imports = [../../home-manager/hosts/cloud.nix];
     backupFileExtension = "backup";
   };
 
   # # networking.hostName = "sonic";
 
-  users.knownUsers = [ "mpinho" ];
+  users.knownUsers = ["mpinho"];
   users.users.mpinho = {
     home = "/Users/mpinho";
     shell = pkgs.fish;

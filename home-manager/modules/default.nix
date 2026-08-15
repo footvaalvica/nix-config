@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
   ];
 
@@ -43,7 +42,7 @@
     atuin = {
       enable = true;
       enableFishIntegration = true;
-      flags = [ "--disable-ctrl-r" ];
+      flags = ["--disable-ctrl-r"];
     };
 
     eza = {
@@ -133,6 +132,7 @@
       enable = true; # see note on other shells below
       shellAliases = {
         nano = "micro";
+        oc = "opencode";
       };
     };
 
@@ -148,7 +148,7 @@
 
     opencode = {
       enable = true;
-      tui.plugin = [ "oh-my-opencode-slim@2.2.14" ];
+      tui.plugin = ["oh-my-opencode-slim@2.2.14"];
       enableMcpIntegration = true;
       settings = {
         plugin = [
@@ -160,6 +160,7 @@
           general.disable = true;
         };
         lsp = true;
+        formatter = true;
       };
       context = ''
         You are a lazy senior developer. Lazy means efficient, not careless. The best code is the code never written.
@@ -205,36 +206,48 @@
         "$schema" = "https://unpkg.com/oh-my-opencode-slim@2.2.14/oh-my-opencode-slim.schema.json";
         preset = "thirtydollars";
         presets = {
-          thirtydollars = {
+          openai = {
             orchestrator = {
-              model = "opencode-go/minimax-m3";
-              variant = "thinking";
+              model = "openai/gpt-5.6-terra";
+              variant = "high";
+              skills = ["*"];
+              mcps = [
+                "*"
+                "!context7"
+              ];
             };
             oracle = {
-              model = "opencode-go/qwen3.7-max";
-              variant = "max";
+              model = "openai/gpt-5.6-sol";
+              variant = "high";
+              skills = ["simplify"];
+              mcps = [];
             };
             librarian = {
-              model = "opencode-go/deepseek-v4-flash";
-              variant = "high";
+              model = "openai/gpt-5.6-luna";
+              variant = "low";
+              skills = [];
               mcps = [
                 "context7"
                 "gh_grep"
               ];
             };
             explorer = {
-              model = "opencode-go/deepseek-v4-flash";
-              variant = "high";
+              model = "openai/gpt-5.6-luna";
+              variant = "low";
+              skills = [];
+              mcps = [];
             };
             designer = {
-              model = "opencode-go/kimi-k2.7-code";
+              model = "openai/gpt-5.6-luna";
+              variant = "medium";
+              skills = [];
+              mcps = [];
             };
             fixer = {
-              model = "opencode-go/deepseek-v4-flash";
+              model = "openai/gpt-5.6-luna";
               variant = "high";
-            };
-            observer = {
-              model = "opencode-go/mimo-v2.5";
+              skills = [];
+              mcps = [];
             };
           };
         };

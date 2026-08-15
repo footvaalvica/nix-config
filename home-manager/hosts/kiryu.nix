@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -19,7 +18,7 @@
 
   home.username = lib.mkForce "deck";
   home.homeDirectory = lib.mkForce "/home/deck";
-  home.sessionPath = [ "/opt/tailscale" ];
+  home.sessionPath = ["/opt/tailscale"];
 
   programs.ssh = {
     enableDefaultConfig = false;
@@ -31,7 +30,7 @@
     };
   };
 
-  home.packages = [ pkgs.xremap ];
+  home.packages = [pkgs.xremap];
 
   xdg.configFile."xremap/keychron-keymap.yml".text = ''
     modmap:
@@ -44,8 +43,8 @@
   systemd.user.services.keychron-keymap = {
     Unit = {
       Description = "Remap right Alt/Super when no Keychron keyboard is connected";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
     };
 
     Service = {
@@ -55,7 +54,7 @@
       RestartSec = 2;
     };
 
-    Install.WantedBy = [ "graphical-session.target" ];
+    Install.WantedBy = ["graphical-session.target"];
   };
 
   xdg.configFile."autostart-scripts/keychron-keymap-log.sh" = {

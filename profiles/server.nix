@@ -6,9 +6,7 @@
   lib,
   secrets,
   ...
-}:
-{
-
+}: {
   imports = [
     ../modules/healthchecks.nix
   ];
@@ -76,5 +74,4 @@
     detectionTimeout = "10s";
     credentialsFile = "/home/mateusp/nix-config/hosts/omi/cloudflaretoken.txt";
   };
-
 }

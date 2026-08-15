@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -31,7 +30,7 @@
           "waydroid"
           "nix"
         ]; # Disable waydroid for now until I configure it properly
-        ignore_failures = [ ];
+        ignore_failures = [];
       };
       linux = {
         rpm_ostree = true;
