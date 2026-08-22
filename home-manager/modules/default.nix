@@ -166,6 +166,32 @@
         };
         lsp = true;
         formatter = true;
+        provider = {
+          openai = {
+            models = {
+              "gpt-5.6-luna" = {
+                limit = {
+                  context = 260000;
+                  output = 128000;
+                };
+              };
+
+              "gpt-5.6-terra" = {
+                limit = {
+                  context = 260000;
+                  output = 128000;
+                };
+              };
+
+              "gpt-5.6-sol" = {
+                limit = {
+                  context = 260000;
+                  output = 128000;
+                };
+              };
+            };
+          };
+        };
       };
       context = ''
         You are a lazy senior developer. Lazy means efficient, not careless. The best code is the code never written.
