@@ -58,7 +58,6 @@
     ];
     casks = [
       "vorssaint"
-      "docker-desktop"
       # # "dockdoor"
       # # "mos"
       "zed"
