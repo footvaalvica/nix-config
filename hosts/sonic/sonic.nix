@@ -39,6 +39,7 @@
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "tjsousa/homebrew-cask" = inputs.tjsousa-cask;
+      "SableClient/homebrew-sable" = inputs.sable-client;
       "otuerk/homebrew-sidebar" = inputs.oteurk-sidebar;
     };
 
@@ -76,6 +77,7 @@
       "nextcloud"
       "betterdisplay"
       "tjsousa/cask/altgr-weur"
+      "SableClient/sable/sable"
       "anki"
       "steam"
       "zoom"

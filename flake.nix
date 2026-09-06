@@ -41,6 +41,10 @@
       url = "github:tjsousa/homebrew-cask";
       flake = false;
     };
+    sable-client = {
+      url = "github:SableClient/homebrew-sable";
+      flake = false;
+    };
     oteurk-sidebar = {
       url = "github:otuerk/homebrew-sidebar";
       flake = false;
@@ -66,6 +70,7 @@
     homebrew-core,
     homebrew-cask,
     tjsousa-cask,
+    sable-client,
     oteurk-sidebar,
     nur,
     website,
