@@ -93,18 +93,25 @@ in {
 
   # open the firewall
   networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+      7881
+    ];
+
     allowedUDPPorts = [
       3478
     ];
+
     allowedUDPPortRanges = [
+      {
+        from = 50100;
+        to = 50200;
+      }
       {
         from = 50300;
         to = 50400;
       }
-    ];
-    allowedTCPPorts = [
-      80
-      443
     ];
   };
 

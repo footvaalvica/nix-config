@@ -66,6 +66,7 @@
       "obsidian"
       "transmission"
       "reaper"
+      "chatgpt"
       "font-sf-mono-nerd-font-ligaturized"
       "moonlight"
       "ghostty"
