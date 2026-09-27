@@ -53,6 +53,27 @@
     ];
   };
 
+  fileSystems."/mnt/matrix-media" = {
+    device = "//192.168.1.250/Mateus/Matrix";
+    fsType = "cifs";
+    options = [
+      "username=${secrets.smb.username}"
+      "password=${secrets.smb.password}"
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+      "rw"
+      "mfsymlinks"
+      "seal"
+      "uid=0"
+      "gid=0"
+      "file_mode=0666"
+      "dir_mode=0777"
+    ];
+  };
+
   fileSystems."/mnt/borg" = {
     device = "//192.168.1.250/Mateus/Backup/";
     fsType = "cifs";
