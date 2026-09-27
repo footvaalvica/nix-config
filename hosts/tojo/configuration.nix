@@ -40,12 +40,24 @@
   };
 
   # this is for WoL of other pc
-  networking.interfaces.eno1.ipv4.addresses = [
-    {
-      address = "10.10.10.1";
-      prefixLength = 24;
-    }
-  ];
+  networking.networkmanager.ensureProfiles.profiles = {
+    direct-fedora = {
+      connection = {
+        id = "direct-fedora";
+        type = "ethernet";
+        interface-name = "eno1";
+        autoconnect = true;
+      };
+  
+      ipv4 = {
+        method = "manual";
+        addresses = "10.10.10.1/24";
+        never-default = true;
+      };
+  
+      ipv6.method = "disabled";
+    };
+  };
 
   services.borgbackup.repos."omi-backups" = {
     path = "/mnt/backup/borg-repo";
