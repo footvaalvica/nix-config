@@ -92,22 +92,19 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-    homeManagerUnstablePkgs = {
-      inputs,
-      lib,
-      pkgs,
-      ...
-    }: {
-      home-manager = {
-        useGlobalPkgs = false;
-        sharedModules = [
-          {
-            _module.args.pkgs =
-              lib.mkForce
-              inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-          }
-        ];
-      };
+    omiHomeManager = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+      extraSpecialArgs = {inherit inputs outputs self;};
+      modules = [
+        ./home-manager/hosts/omi.nix
+      ];
+    };
+    tojoHomeManager = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+      extraSpecialArgs = {inherit inputs outputs self;};
+      modules = [
+        ./home-manager/hosts/tojo.nix
+      ];
     };
   in {
     # Your custom packages
@@ -133,13 +130,11 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {inherit inputs;}; # <-- this is the key one
-          }
-          homeManagerUnstablePkgs
           agenix.nixosModules.default
           nixos-hardware.nixosModules.intel-nuc-8i7beh
+          (import ./modules/home-manager-unstable.nix {
+            activationPackage = omiHomeManager.activationPackage;
+          })
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/omi/configuration.nix
@@ -150,12 +145,10 @@
         specialArgs = {inherit inputs outputs secrets;};
         modules = [
           nur.modules.nixos.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {inherit inputs;}; # <-- this is the key one
-          }
-          homeManagerUnstablePkgs
           agenix.nixosModules.default
+          (import ./modules/home-manager-unstable.nix {
+            activationPackage = tojoHomeManager.activationPackage;
+          })
 
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
@@ -231,6 +224,8 @@
           ./home-manager/hosts/joker.nix
         ];
       };
+      "mateusp@omi" = omiHomeManager;
+      "mateusp@tojo" = tojoHomeManager;
     };
   };
 }

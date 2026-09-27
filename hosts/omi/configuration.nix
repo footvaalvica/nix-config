@@ -30,10 +30,9 @@
     # # ../../modules/ollama.nix
   ];
 
-  home-manager = {
-    users.mateusp.imports = [../../home-manager/hosts/omi.nix];
-    backupFileExtension = "backup";
-  };
+  # Home Manager runs as a standalone activation package from the Omi NixOS module.
+  # Keep the scheduled standalone upgrade disabled so system switches own activation.
+  services.home-manager.autoUpgrade.enable = lib.mkForce false;
 
   # Bootloader.
   boot.loader.grub.enable = true;
