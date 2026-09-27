@@ -17,6 +17,12 @@
   livekitJwtPort = 8081;
 
   clientConfig."m.homeserver".base_url = baseUrl;
+  clientConfig."org.matrix.msc4143.rtc_foci" = [
+    {
+      type = "livekit";
+      livekit_service_url = livekitUrl;
+    }
+  ];
   serverConfig."m.server" = "${fqdn}:443";
 
   mautrixHomeserver = {
