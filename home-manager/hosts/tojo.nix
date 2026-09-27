@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -15,4 +16,7 @@
     # ./nvim.nix
     ../modules/default.nix
   ];
+
+  # The NixOS system switch owns Home Manager activation on this host.
+  services.home-manager.autoUpgrade.enable = lib.mkForce false;
 }

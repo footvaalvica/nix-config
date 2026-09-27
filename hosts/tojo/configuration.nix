@@ -19,10 +19,6 @@
     ../../modules/docker-containers/homeassistant.nix
   ];
 
-  # Home Manager runs as a standalone activation package from the Tojo NixOS module.
-  # Keep the scheduled standalone upgrade disabled so system switches own activation.
-  services.home-manager.autoUpgrade.enable = lib.mkForce false;
-
   fileSystems."/mnt/backup" = {
     device = "/dev/disk/by-label/backup";
     fsType = "btrfs";
