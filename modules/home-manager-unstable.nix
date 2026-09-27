@@ -1,4 +1,4 @@
-{activationPackage}: {
+{activationPackage}: {config, ...}: {
   systemd.services.home-manager-mateusp = {
     description = "Home Manager configuration for mateusp";
     wantedBy = ["multi-user.target"];
@@ -11,6 +11,7 @@
       User = "mateusp";
       RemainAfterExit = true;
       Environment = [
+        "PATH=${config.nix.package}/bin"
         "HOME=/home/mateusp"
         "USER=mateusp"
         "LOGNAME=mateusp"
