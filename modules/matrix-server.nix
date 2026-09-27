@@ -144,7 +144,7 @@ in {
     description = "Copy existing Continuwuity media to the NAS";
     wantedBy = ["continuwuity.service"];
     before = ["continuwuity.service"];
-    requiresMountsFor = ["/mnt/matrix-media"];
+    unitConfig.RequiresMountsFor = "/mnt/matrix-media";
     serviceConfig.Type = "oneshot";
     script = ''
       marker=/var/lib/continuwuity/.matrix-media-migrated
@@ -162,7 +162,7 @@ in {
   };
 
   systemd.services.continuwuity = {
-    requiresMountsFor = ["/mnt/matrix-media"];
+    unitConfig.RequiresMountsFor = "/mnt/matrix-media";
     after = ["continuwuity-media-migrate.service"];
     serviceConfig.BindPaths = [
       "/mnt/matrix-media:/var/lib/continuwuity/media"
