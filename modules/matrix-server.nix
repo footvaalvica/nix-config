@@ -138,32 +138,8 @@ in {
     };
   };
 
-  # Seed the NAS media directory once before Continuwuity starts. Preserve
-  # existing NAS files and keep RocksDB on the local StateDirectory.
-  systemd.services.continuwuity-media-migrate = {
-    description = "Copy existing Continuwuity media to the NAS";
-    wantedBy = ["continuwuity.service"];
-    before = ["continuwuity.service"];
-    unitConfig.RequiresMountsFor = "/mnt/matrix-media";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      marker=/var/lib/continuwuity/.matrix-media-migrated
-      if [ -e "$marker" ]; then
-        exit 0
-      fi
-
-      if [ -d /var/lib/continuwuity/media ]; then
-        ${pkgs.rsync}/bin/rsync -a --ignore-existing \
-          /var/lib/continuwuity/media/ /mnt/matrix-media/
-      fi
-
-      touch "$marker"
-    '';
-  };
-
   systemd.services.continuwuity = {
     unitConfig.RequiresMountsFor = "/mnt/matrix-media";
-    after = ["continuwuity-media-migrate.service"];
     serviceConfig.BindPaths = [
       "/mnt/matrix-media:/var/lib/continuwuity/media"
     ];
