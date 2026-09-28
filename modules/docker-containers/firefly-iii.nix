@@ -27,7 +27,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."firefly_iii_core" = {
-    image = "fireflyiii/core:latest";
+    image = "fireflyiii/core:version-6.7.3";
     environment = {
       "ALLOW_WEBHOOKS" = "false";
       "APP_DEBUG" = "false";
@@ -240,7 +240,7 @@
     ];
   };
   virtualisation.oci-containers.containers."firefly_iii_importer" = {
-    image = "fireflyiii/data-importer:latest";
+    image = "fireflyiii/data-importer:version-2.3.5";
     environment = {
       "APP_DEBUG" = "false";
       "APP_ENV" = "local";
