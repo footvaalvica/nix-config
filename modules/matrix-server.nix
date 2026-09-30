@@ -123,6 +123,7 @@ in {
 
   services.matrix-continuwuity = {
     enable = true;
+    package = pkgs.matrix-continuwuity_latest;
     settings.global = {
       server_name = fqdn;
       trusted_servers = ["matrix.org"];
