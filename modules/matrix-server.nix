@@ -126,8 +126,13 @@ in {
     package = pkgs.matrix-continuwuity_latest;
     settings.global = {
       server_name = fqdn;
-      trusted_servers = ["matrix.org"];
+      # Example config, using maintainers' recommended homeservers
+      trusted_servers = ["codestorm.net" "starstruck.systems" "unredacted.org" "matrix.org"];
       database_backend = "rocksdb";
+      # disables sending read receipts
+      allow_outgoing_read_receipts = false;
+      # disables sending typing notifications
+      allow_outgoing_typing = false;
       url_preview_domain_explicit_allowlist = ["*"];
       url_preview_allow_audio_video = true;
       matrix_rtc.foci = [
