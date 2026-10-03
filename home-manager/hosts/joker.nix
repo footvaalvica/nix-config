@@ -27,12 +27,6 @@
     NO_GUI = "1";
   };
 
-  systemd.user.settings = {
-    Manager = {
-      DefaultLimitMEMLOCK = "infinity";
-    };
-  };
-
   programs.nh.flake = lib.mkForce "${config.home.homeDirectory}/nix-config";
   programs.nh.homeFlake = lib.mkForce "${config.home.homeDirectory}/nix-config/";
 
