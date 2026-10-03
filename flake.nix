@@ -217,7 +217,7 @@
           ./home-manager/hosts/kiryu.nix
         ];
       };
-      "mateusp@joker" = home-manager.lib.homeManagerConfiguration {
+      "deck@joker" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [

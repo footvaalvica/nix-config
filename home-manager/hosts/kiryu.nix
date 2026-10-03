@@ -24,7 +24,7 @@
     enableDefaultConfig = false;
     enable = true;
     settings = {
-      "omi tojo joker" = {
+      "omi tojo" = {
         user = "mateusp";
       };
     };
