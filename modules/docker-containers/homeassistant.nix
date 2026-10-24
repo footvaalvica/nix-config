@@ -13,7 +13,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."homeassistant.footvaalvica.com".extraConfig = ''
-      reverse_proxy 127.0.0.1:8123
+      reverse_proxy localhost:8123
     '';
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
   };
