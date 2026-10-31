@@ -55,7 +55,6 @@
       "zed"
       "dockdoor"
       "obsidian"
-      "font-sf-mono-nerd-font-ligaturized"
       "betterdisplay"
       "tjsousa/cask/altgr-weur"
       "lookaway"
