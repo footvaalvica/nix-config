@@ -84,7 +84,6 @@
     wireguard-tools
     cifs-utils
     sshfs
-    unstable.opencode
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
